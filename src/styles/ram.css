@@ -1,0 +1,416 @@
+@font-face {
+  font-family: "RQND Pro";
+  src: url("../assets/fonts/TT_RQNDPro_Beta-Medium.8753bf813acd68368.da5b5541321909cc4f5a5192c78df49e.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* VERY IMPORTANT: Override sir's layout for our RAM exhibit */
+.content:has(.ram-stage) {
+  display: block !important;
+  padding-inline: 1.5rem !important;
+}
+
+.content:has(.ram-stage) > .toc {
+  display: none !important;
+}
+
+.content:has(.ram-stage) > .content__block {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: unset !important;
+}
+
+.content:has(.ram-stage) .content__titlemeta,
+.content:has(.ram-stage) .article {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.article:has(.ram-stage) {
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: var(--bg2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 5px 5px !important;
+}
+
+/* Main wrapper */
+.ram-stage {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  overflow: hidden;
+  border-radius: var(--radius) !important;
+  background: #020503;
+}
+
+.ram-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  color: white;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  background: #020503;
+}
+
+/* Continuous vertical grid lines */
+.ram-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 33.25%, rgba(255,255,255,0.22) 33.33%, transparent 33.45%),
+    linear-gradient(90deg, transparent 66.55%, rgba(255,255,255,0.22) 66.66%, transparent 66.8%);
+}
+
+.ram-page * {
+  box-sizing: border-box;
+}
+
+.canva-hero,
+.split-section,
+.big-section,
+.content-card {
+  position: relative;
+  z-index: 2;
+}
+
+/* Shared glow for non-hero sections */
+.split-section::before,
+.big-section::before,
+.content-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(0, 255, 136, 0.34),
+    rgba(0, 255, 136, 0.13) 18%,
+    transparent 42%
+  );
+}
+
+/* Hero section */
+.canva-hero {
+  min-height: clamp(620px, 64vw, 850px);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Separate hero glow */
+.hero-circle-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 43%,
+    rgba(0, 255, 136, 0.34),
+    rgba(0, 255, 136, 0.13) 18%,
+    transparent 42%
+  );
+}
+
+/* Nintendo Switch image */
+.canva-hero > img,
+.hero-switch {
+  position: absolute;
+  width: min(58%, 760px);
+  top: 13%;
+  left: 51%;
+  transform: translateX(-50%) rotate(-8deg);
+  z-index: 3;
+  filter: none;
+}
+
+/* Hero text blocks */
+.hook-text {
+  position: absolute;
+  top: 30%;
+  left: 7%;
+  width: min(25%, 320px);
+  z-index: 4;
+  color: white;
+  font-size: clamp(0.65rem, 1vw, 0.9rem);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+}
+
+.facts-text {
+  position: absolute;
+  top: 8%;
+  right: 40%;
+  width: min(25%, 320px);
+  z-index: 4;
+  color: white;
+  font-size: clamp(0.65rem, 1vw, 0.9rem);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+}
+
+.hook-text p,
+.facts-text p {
+  margin: 0;
+}
+
+/* Discussion points */
+.discussion-points {
+  position: absolute;
+  top: 34%;
+  right: 0;
+  width: 66.7%;
+  display: grid;
+  z-index: 2;
+}
+
+.discussion-points a {
+  position: relative;
+  display: block;
+  padding: 0.85rem 1rem 0.85rem 40%;
+  color: white;
+  text-align: right;
+  text-decoration: none;
+  font-size: clamp(0.65rem, 0.9vw, 0.85rem);
+  font-weight: 500;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+}
+
+.discussion-points a::before {
+  content: "";
+  position: absolute;
+  left: 70px;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: rgba(255,255,255,.22);
+}
+
+.discussion-points a:hover {
+  color: #9cffcb;
+  text-shadow: 0 0 12px rgba(0, 255, 136, 0.8);
+}
+
+/* Main title */
+.hero-title-block {
+  position: absolute;
+  left: 4%;
+  bottom: 10%;
+  z-index: 20;
+}
+
+.hero-title-block h1,
+.ram-page .hero-title-block .hero-title {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin: 0 !important;
+  color: #d9ffe9 !important;
+  font-family: "RQND Pro", Arial, sans-serif !important;
+  font-size: clamp(3rem, 6.5vw, 5.8rem) !important;
+  font-weight: 1000 !important;
+  line-height: 0.9 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase;
+  border: none !important;
+  text-shadow:
+    0 0 8px #00ff88,
+    0 0 18px #00ff88,
+    0 0 36px rgba(0, 255, 136, 0.95),
+    0 0 58px rgba(0, 255, 136, 0.55) !important;
+}
+
+.hero-title-block p {
+  margin-top: 1rem;
+  color: white;
+  font-size: clamp(0.75rem, 1.2vw, 1.1rem);
+  font-weight: 500;
+  letter-spacing: clamp(0.2rem, 0.55vw, 0.45rem);
+  text-transform: uppercase;
+}
+
+/* Decorations */
+.corner-lines {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 24%;
+  height: 30%;
+  z-index: 4;
+  opacity: 0.9;
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+}
+
+.scroll-mark {
+  position: absolute;
+  right: 5%;
+  bottom: 7%;
+  z-index: 20;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.scroll-mark span {
+  width: clamp(52px, 5vw, 78px);
+  height: clamp(30px, 3vw, 44px);
+  border-left: 3px solid white;
+  border-bottom: 3px solid white;
+  transform: rotate(-45deg);
+}
+
+/* Sections */
+.split-section {
+  min-height: clamp(560px, 55vw, 730px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: clamp(2rem, 6vw, 5rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.big-section {
+  min-height: clamp(560px, 55vw, 730px);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: clamp(2rem, 6vw, 5rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.ram-page h2,
+.split-section h2,
+.big-section h2 {
+  margin: 0;
+  color: #d9ffe9 !important;
+  font-family: "RQND Pro", Arial, sans-serif !important;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: none !important;
+  text-shadow:
+    0 0 8px #00ff88,
+    0 0 18px #00ff88,
+    0 0 38px rgba(0, 255, 136, 0.8);
+}
+
+.split-section h3 {
+  color: white;
+  font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+
+.split-section p,
+.big-section p,
+.content-card p {
+  max-width: 520px;
+  color: white;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.08rem;
+}
+
+/* Old content-card fallback */
+.content-card {
+  min-height: 520px;
+  margin: 0;
+  padding: clamp(2rem, 6vw, 5rem);
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: none;
+}
+
+.num {
+  display: none;
+}
+
+.steps,
+.timeline {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.steps div,
+.timeline span {
+  padding: 1rem;
+  color: #00ff88;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #00ff88;
+  background: rgba(0, 255, 136, 0.08);
+  box-shadow: inset 0 0 18px rgba(0, 255, 136, 0.14);
+}
+
+/* Mobile */
+@media (max-width: 850px) {
+  .content:has(.ram-stage) {
+    padding-inline: 0.75rem !important;
+  }
+
+  .canva-hero {
+    min-height: 720px;
+  }
+
+  .canva-hero > img,
+  .hero-switch {
+    width: 90%;
+    top: 24%;
+  }
+
+  .hook-text {
+    top: 12%;
+    left: 7%;
+    width: 70%;
+  }
+
+  .facts-text,
+  .discussion-points,
+  .scroll-mark {
+    display: none;
+  }
+
+  .hero-title-block {
+    left: 7%;
+    bottom: 10%;
+  }
+
+  .hero-title-block h1 {
+    font-size: clamp(2.5rem, 12vw, 4.2rem) !important;
+  }
+
+  .split-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: left;
+  }
+
+  .split-section,
+  .big-section,
+  .content-card {
+    min-height: 560px;
+  }
+}
