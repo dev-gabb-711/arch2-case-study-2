@@ -8,9 +8,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-
-
-/* ------- VERY IMPORTANT: For the Table of Contents navigation ------- */
+/* ------- Table of Contents navigation ------- */
 .article > h2 {
   height: 0;
   margin: 0 !important;
@@ -21,41 +19,40 @@
   border: 0 !important;
 }
 
-
 .article > h2:nth-of-type(1) {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
 
 .article > h2:nth-of-type(2) {
-  margin-top: 720px !important;
-  margin-bottom: -720px !important;
+  margin-top: 56.25% !important;
+  margin-bottom: -56.25% !important;
 }
 
 .article > h2:nth-of-type(3) {
-  margin-top: 1620px !important;
-  margin-bottom: -1620px !important;
+  margin-top: 112.5% !important;
+  margin-bottom: -112.5% !important;
 }
 
 .article > h2:nth-of-type(4) {
-  margin-top: 2350px !important;
-  margin-bottom: -2350px !important;
+  margin-top: 168.75% !important;
+  margin-bottom: -168.75% !important;
 }
 
 .article > h2:nth-of-type(5) {
-  margin-top: 3080px !important;
-  margin-bottom: -3080px !important;
+  margin-top: 225% !important;
+  margin-bottom: -225% !important;
 }
 
 .article > h2:nth-of-type(6) {
-  margin-top: 3810px !important;
-  margin-bottom: -3810px !important;
+  margin-top: 281.25% !important;
+  margin-bottom: -281.25% !important;
 }
-/* -------------------------------------------------------------------- */
+/* -------------------------------------------- */
 
 
 
-/* Make only the article card wrap the exhibit nicely */
+/* Article card */
 .article:has(.ram-stage) {
   padding: 0 !important;
   overflow: hidden !important;
@@ -77,14 +74,13 @@
 
 .ram-page {
   position: relative;
+  container-type: inline-size;
   width: 100%;
-  max-width: 980px;
-  min-height: 100vh;
+  max-width: 1120px;
   overflow: hidden;
   color: white;
-  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-  box-sizing: border-box;
   background: #020503;
+  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
 }
 
 .ram-page,
@@ -93,12 +89,32 @@
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
 }
 
-/* Vertical grid lines */
+/* Main exhibit screens */
+.ram-hero,
+.what-section,
+.big-section {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  min-height: unset;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Only section content stays above page overlays */
+.ram-hero > *,
+.what-section > *,
+.big-section > * {
+  position: relative;
+}
+
+/* Vertical grid lines: behind graphics (Continuous)*/
 .ram-page::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
   background:
     linear-gradient(90deg, transparent 50%, rgba(255,255,255,0.22) 50.08%, transparent 50.18%),
@@ -115,34 +131,17 @@
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(0, 255, 136, 0.055) 0,
-      rgba(0, 255, 136, 0.055) 1px,
+      rgba(0, 255, 136, 0.045) 0,
+      rgba(0, 255, 136, 0.045) 1px,
       transparent 1px,
       transparent 5px
     ),
-    radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.08), transparent 55%),
-    linear-gradient(180deg, rgba(0, 255, 136, 0.08), transparent 22%, transparent 72%, rgba(0, 255, 136, 0.08));
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.08), transparent 55%);
   mix-blend-mode: screen;
-  opacity: 0.75;
+  opacity: 0.72;
 }
 
-.ram-hero,
-.split-section,
-.big-section,
-.content-card {
-  position: relative;
-  z-index: 2;
-}
-
-/* Hero section */
-.ram-hero {
-  width: 100%;
-  max-width: 980px;
-  min-height: clamp(620px, 64vw, 850px);
-  overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-}
-
+/* Hero glow */
 .hero-circle-glow {
   position: absolute;
   inset: 0;
@@ -150,11 +149,11 @@
   pointer-events: none;
   background:
     radial-gradient(
-      circle at 50% 45%,
-      rgba(0, 255, 136, 0.72),
-      rgba(0, 255, 136, 0.34) 13%,
-      rgba(0, 255, 136, 0.14) 25%,
-      transparent 43%
+      circle at 52% 48%,
+      rgba(0, 255, 136, 0.5),
+      rgba(0, 255, 136, 0.23) 18%,
+      rgba(0, 255, 136, 0.07) 33%,
+      transparent 52%
     );
 }
 
@@ -165,86 +164,73 @@
   pointer-events: none;
   user-select: none;
   object-fit: contain;
-  filter: none;
 }
 
 .hud-top-corner {
   top: 1%;
-  left: 0.5%;
-  width: min(27vw, 390px);
+  left: 1%;
+  width: 30%;
 }
 
 .hud-title-line {
-  left: 2.5%;
-  bottom: 1.8%;
-  width: min(40vw, 540px);
+  left: 3%;
+  bottom: 0.5%;
+  width: 40%;
 }
 
 .hud-point-line {
-  right: 13.2%;
-  bottom: 33%;
-  width: min(27vw, 380px);
+  right: 13.3%;
+  bottom: 25%;
+  width: 30%;
+  z-index: 10; /* behind switch */
 }
 
 .hud-arrows {
-  right: 3.2%;
-  bottom: 9%;
-  width: min(6.2vw, 90px);
+  right: 3%;
+  bottom: 10%;
+  width: 7.8%;
 }
 
-/* Hero text */
-.discussion-label {
-  position: absolute;
-  right: 13.2%;
-  bottom: 28%;
-  width: min(27vw, 380px);
-  z-index: 19;
-  pointer-events: none;
-  color: white;
-  font-size: clamp(0.65rem, 1vw, 0.9rem);
-  font-weight: 500;
-  line-height: 1.55;
-  letter-spacing: 0.18rem;
-  text-transform: uppercase;
-}
-
-.discussion-label .label-title {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-}
-
+/* Hero image */
 .hero-switch {
   position: absolute;
-  width: min(50%, 700px);
-  top: 16%;
+  width: 49%;
+  top: 15%;
   left: 48%;
   transform: translateX(-50%) rotate(-8deg);
-  z-index: 10;
-  filter: none;
+  z-index: 18; /* above discussion lines */
+  filter: drop-shadow(0 2.2cqw 2.8cqw rgba(0, 0, 0, 0.55));
+}
+
+/* Hero text blocks */
+.hook-text,
+.facts-text,
+.more-text,
+.discussion-label,
+.discussion-points a {
+  color: white;
+  font-size: clamp(0.42rem, 1.08cqw, 0.84rem);
+  font-weight: 600;
+  line-height: 1.55;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
 .hook-text {
   position: absolute;
-  top: 18%;
-  left: 6%;
-  width: min(25%, 320px);
+  top: 20.5%;
+  left: 6.6%;
+  width: 24%;
   z-index: 20;
-  color: white;
-  font-size: clamp(0.65rem, 1vw, 0.9rem);
-  font-weight: 500;
-  line-height: 1.55;
-  letter-spacing: 0.18rem;
-  text-transform: uppercase;
-  padding: 1.25rem;
+  padding: 1.5%;
 }
 
 .hook-text::before,
 .hook-text::after {
   content: "";
   position: absolute;
-  width: 42px;
-  height: 42px;
+  width: 13%;
+  aspect-ratio: 1;
   pointer-events: none;
 }
 
@@ -257,69 +243,68 @@
 
 .hook-text::after {
   right: 0;
-  bottom: 0;
+  bottom: 0%;
   border-right: 2px solid rgba(255,255,255,.75);
   border-bottom: 2px solid rgba(255,255,255,.75);
 }
 
 .facts-text {
   position: absolute;
-  top: 8%;
-  right: 21%;
-  width: min(25%, 320px);
+  top: 8.2%;
+  right: 21.2%;
+  width: 28%;
   z-index: 20;
-  color: white;
-  font-size: clamp(0.65rem, 1vw, 0.9rem);
-  font-weight: 500;
-  line-height: 1.55;
-  letter-spacing: 0.18rem;
-  text-transform: uppercase;
 }
 
-.hook-text p,
-.facts-text p {
-  margin: 0;
+.more-text {
+  position: absolute;
+  top: 76%;
+  right: 14%;
+  width: 28%;
+  z-index: 20;
 }
 
-/* Discussion links */
+
+.discussion-label {
+  display: none;
+}
+
 .discussion-points {
   position: absolute;
-  top: 32.5%;
-  left: 50.08%;
-  width: 36.64%;
+  top: 38.7%;
+  left: 58.4%;
+  width: 28.2%;
   display: grid;
-  z-index: 6;
+  z-index: 12;
 }
+
 
 .discussion-points a {
   position: relative;
   display: block;
-  padding: 0.85rem 1rem 0.85rem 0;
+  padding: 2.45% 1.5% 2.45% 0;
   color: white;
   text-align: right;
   text-decoration: none;
-  font-size: clamp(0.65rem, 0.9vw, 0.85rem);
-  font-weight: 500;
-  letter-spacing: 0.14rem;
-  text-transform: uppercase;
+  z-index: 1;
 }
 
 .discussion-points a::before {
   content: "";
   position: absolute;
-  left: 0;
+  left: -58%;
   right: 0;
   top: 0;
   height: 1px;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.28);
+  z-index: -1;
 }
-
 .discussion-points a:hover {
   color: #9cffcb;
   text-shadow: 0 0 12px rgba(0, 255, 136, 0.8);
 }
 
-/* Glowing titles only */
+/* Glowing titles */
 .hero-title-block h1,
 .hero-title-block .hero-title,
 .glow-title,
@@ -328,22 +313,20 @@
   font-family: "RQND Pro", Arial, sans-serif !important;
 }
 
-/* Main title */
+/* Main hero title */
 .hero-title-block {
   position: absolute;
-  left: 4%;
-  bottom: 10%;
-  z-index: 20;
+  left: 3.9%;
+  bottom: 11.7%;
+  z-index: 24;
 }
 
 .hero-title-block h1,
 .hero-title-block .hero-title {
   display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
   margin: 0 !important;
   color: #d9ffe9 !important;
-  font-size: clamp(3rem, 6.5vw, 5.8rem) !important;
+  font-size: clamp(2rem, 6.55cqw, 4.85rem) !important;
   font-weight: 1000 !important;
   line-height: 0.9 !important;
   letter-spacing: 0.04em !important;
@@ -357,57 +340,48 @@
 }
 
 .hero-title-block p {
-  display: block;
-  width: fit-content;
-  margin-top: 1rem;
+  margin: 1.4% 0 0;
   color: white;
-  font-size: clamp(0.75rem, 1.2vw, 1.1rem);
+  font-size: clamp(0.54rem, 1.47cqw, 1rem);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.62rem;
+  letter-spacing: 0.24rem;
 }
 
 .scroll-mark {
   display: none;
 }
 
-/* -------------- Section 1 -------------- */
+
+/* SECTION 1: What is RAM?*/
 .what-section {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   background:
     radial-gradient(
-      circle at 48% 55%,
-      rgba(0, 255, 136, 0.38),
-      rgba(0, 255, 136, 0.13) 23%,
-      transparent 54%
+      circle at 50% 48%,
+      rgba(0, 255, 136, 0.34),
+      rgba(0, 255, 136, 0.13) 24%,
+      transparent 55%
     );
 }
 
 .what-left {
   position: absolute;
-  left: 2.8%;
+  left: 3.5%;
   top: 35%;
-  width: 31%;
-  z-index: 4;
-  padding-right: 0;
+  width: 35%;
+  z-index: 14;
 }
 
 .what-left h3 {
-  margin: 0 0 1.9rem !important;
+  margin: 0 0 5% !important;
   padding: 0 !important;
   color: white !important;
-  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-  font-size: clamp(0.85rem, 1.15vw, 1.2rem) !important;
-  font-weight: 600 !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0.24rem !important;
+  font-size: clamp(0.55rem, 1.25cqw, 1rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.26em !important;
   text-transform: uppercase !important;
   border: none !important;
-  text-decoration: none !important;
-  box-shadow: none !important;
   background: none !important;
 }
 
@@ -419,39 +393,36 @@
 
 .what-left p {
   margin: 0;
-  max-width: 430px;
   color: white;
-  font-size: clamp(0.72rem, 0.9vw, 0.95rem);
-  font-weight: 500;
+  font-size: clamp(0.48rem, 1.05cqw, 0.86rem);
+  font-weight: 600;
   line-height: 1.45;
-  letter-spacing: 0.08rem;
+  letter-spacing: 0.08em;
 }
 
 .gameboy-image {
   position: absolute;
-  left: 47%;
-  top: 35%;
-  width: min(23vw, 360px);
-  z-index: 5;
+  left: 50%;
+  top: 25%;
+  width: 30%;
+  z-index: 10;
   transform: translateX(-50%);
   filter: drop-shadow(0 24px 34px rgba(0, 0, 0, 0.65));
 }
 
 .what-right {
   position: absolute;
-  right: 3%;
-  top: 9%;
-  width: 45%;
-  z-index: 8;
-  padding-top: 0;
+  right: 3.5%;
+  top: 10.5%;
+  width: 42%;
+  z-index: 14;
   text-align: right;
 }
 
 .what-right h2 {
   margin: 0;
   color: #d9ffe9 !important;
-  font-family: "RQND Pro", Arial, sans-serif !important;
-  font-size: clamp(2.6rem, 4.2vw, 4.6rem);
+  font-size: clamp(1.7rem, 4.6cqw, 4rem);
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: 0.03em;
@@ -465,247 +436,107 @@
 }
 
 .what-right > p {
-  margin-top: 1.2rem;
+  margin-top: 4%;
   color: white;
-  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-  font-size: clamp(0.72rem, 1vw, 0.95rem);
+  font-size: clamp(0.52rem, 1.35cqw, 1rem);
   font-weight: 500;
-  letter-spacing: 0.34rem;
+  line-height: 1.2;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
 .what-callout {
   position: absolute;
-  top: 40vh;
-  right: 30%;
-  width: 260px;
-  z-index: 12;
+  top: 180%;
+  right: 16%;
+  width: 50%;
+  z-index: 14;
   color: white;
   text-align: left;
-  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-  font-size: clamp(0.68rem, 0.82vw, 0.85rem);
-  font-weight: 500;
-  line-height: 1.55;
-  letter-spacing: 0.08rem;
+  font-size: clamp(0.48rem, 1.02cqw, 0.86rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
 }
 
 .pointer {
   position: absolute;
-  top: 34vh;
-  right: 33%;
-  width: min(28vw, 380px);
-  z-index: 11;
+  top: 235%;
+  right: 30%;
+  width: 80%;
+  z-index: 9;
   pointer-events: none;
   user-select: none;
 }
 
-/* -------------- Other sections -------------- */
-.split-section {
-  min-height: clamp(560px, 55vw, 730px);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: clamp(2rem, 6vw, 5rem);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-}
 
+
+/* Other sections */
 .big-section {
-  min-height: clamp(560px, 55vw, 730px);
   display: grid;
   place-items: center;
   text-align: center;
-  padding: clamp(2rem, 6vw, 5rem);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.split-section::before,
-.big-section::before,
-.content-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(
-    circle at 50% 45%,
-    rgba(0, 255, 136, 0.34),
-    rgba(0, 255, 136, 0.13) 18%,
-    transparent 42%
-  );
+  padding: 6%;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(0, 255, 136, 0.34),
+      rgba(0, 255, 136, 0.13) 18%,
+      transparent 42%
+    );
 }
 
 .big-section h2,
-.split-section h2,
 .ram-page h2.glow-title {
   margin: 0;
   color: #d9ffe9 !important;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(1.6rem, 5.2cqw, 4.2rem);
   font-weight: 800;
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   border: none !important;
-  border-bottom: none !important;
   text-shadow:
     0 0 8px #00ff88,
     0 0 18px #00ff88,
     0 0 38px rgba(0, 255, 136, 0.8);
 }
 
-.split-section h3 {
-  color: white;
-  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-  font-size: clamp(0.9rem, 1.4vw, 1.2rem);
-  font-weight: 600;
-  letter-spacing: 0.2rem;
-  text-transform: uppercase;
-  border: none !important;
-}
-
-.split-section h3::before,
-.split-section h3::after {
-  content: none !important;
-  display: none !important;
-}
-
-.split-section p,
-.big-section p,
-.content-card p {
+.big-section p {
   max-width: 520px;
   color: white;
-  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-size: clamp(0.55rem, 1.2cqw, 1rem);
   font-weight: 400;
   line-height: 1.7;
-  letter-spacing: 0.08rem;
+  letter-spacing: 0.08em;
 }
 
-.content-card {
-  min-height: 520px;
-  margin: 0;
-  padding: clamp(2rem, 6vw, 5rem);
-  border: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: none;
-}
-
-.num {
-  display: none;
-}
-
-.steps,
-.timeline {
-  display: grid;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-}
-
-.steps div,
-.timeline span {
-  padding: 1rem;
-  color: #00ff88;
-  text-align: center;
-  font-weight: 600;
-  border: 1px solid #00ff88;
-  background: rgba(0, 255, 136, 0.08);
-  box-shadow: inset 0 0 18px rgba(0, 255, 136, 0.14);
-}
-
-/* -------------- Mobile Responsive -------------- */
+/* Mobile */
 @media (max-width: 850px) {
-  .ram-page {
-    max-width: 100%;
-  }
-
-  .ram-hero {
-    min-height: 720px;
-  }
-
   .hero-switch {
-    width: 90%;
-    top: 24%;
+    width: 49%;
+    top: 17%;
   }
 
   .hook-text {
-    top: 12%;
-    left: 7%;
-    width: 70%;
+    width: 24%;
+    font-size: clamp(0.36rem, 1.36cqw, 0.62rem);
   }
 
-  .facts-text,
-  .discussion-points,
-  .discussion-label {
-    display: none;
+  .facts-text {
+    font-size: clamp(0.36rem, 1.36cqw, 0.62rem);
   }
 
-  .hero-title-block {
-    left: 7%;
-    bottom: 10%;
+  .discussion-points a {
+    font-size: clamp(0.36rem, 1.36cqw, 0.62rem);
   }
 
   .hero-title-block h1 {
-    font-size: clamp(2.5rem, 12vw, 4.2rem) !important;
+    font-size: clamp(1.7rem, 7cqw, 3.5rem) !important;
   }
 
-  .hud-top-corner {
-    width: min(55vw, 280px);
-  }
-
-  .hud-title-line,
-  .hud-point-line {
-    display: none;
-  }
-
-  .hud-arrows {
-    right: 6%;
-    bottom: 6%;
-    width: 70px;
-  }
-
-  .what-section {
-    min-height: 900px;
-    padding: 5rem 7%;
-    text-align: left;
-  }
-
-  .what-left {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: 100%;
-  }
-
-  .gameboy-image {
-    position: relative;
-    left: 50%;
-    top: auto;
-    width: min(70vw, 320px);
-    margin: 3rem 0;
-  }
-
-  .what-right {
-    position: relative;
-    right: auto;
-    top: auto;
-    width: 100%;
-  }
-
-  .what-callout,
-  .what-callout-line,
-  .pointer {
-    display: none;
-  }
-
-  .split-section {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: left;
-  }
-
-  .split-section,
-  .big-section,
-  .content-card {
-    min-height: 560px;
+  .hero-title-block p {
+    letter-spacing: 0.3em;
   }
 }
