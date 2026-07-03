@@ -9,30 +9,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 
-/* ------------- IMPORTANT: Override sir's layout ------------- */
-.content:has(.ram-stage) {
-  display: block !important;
-  padding-inline: 1.5rem !important;
+
+/* ------- VERY IMPORTANT: For the Table of Contents navigation ------- */
+.article > h2 {
+  height: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  border: 0 !important;
 }
 
-.content:has(.ram-stage) > .toc {
-  display: none !important;
+
+.article > h2:nth-of-type(1) {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
-.content:has(.ram-stage) > .content__block {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  flex: unset !important;
+.article > h2:nth-of-type(2) {
+  margin-top: 720px !important;
+  margin-bottom: -720px !important;
 }
 
-.content:has(.ram-stage) .content__titlemeta,
-.content:has(.ram-stage) .article {
-  width: 100% !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
+.article > h2:nth-of-type(3) {
+  margin-top: 1620px !important;
+  margin-bottom: -1620px !important;
 }
 
+.article > h2:nth-of-type(4) {
+  margin-top: 2350px !important;
+  margin-bottom: -2350px !important;
+}
+
+.article > h2:nth-of-type(5) {
+  margin-top: 3080px !important;
+  margin-bottom: -3080px !important;
+}
+
+.article > h2:nth-of-type(6) {
+  margin-top: 3810px !important;
+  margin-bottom: -3810px !important;
+}
+/* -------------------------------------------------------------------- */
+
+
+
+/* Make only the article card wrap the exhibit nicely */
 .article:has(.ram-stage) {
   padding: 0 !important;
   overflow: hidden !important;
@@ -41,15 +64,12 @@
   border-radius: var(--radius) !important;
   box-shadow: 5px 5px !important;
 }
-/* ------------------------------------------------------------ */
-
-
 
 /* Main wrapper */
 .ram-stage {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
   border-radius: var(--radius) !important;
   background: #020503;
@@ -58,6 +78,7 @@
 .ram-page {
   position: relative;
   width: 100%;
+  max-width: 980px;
   min-height: 100vh;
   overflow: hidden;
   color: white;
@@ -115,6 +136,8 @@
 
 /* Hero section */
 .ram-hero {
+  width: 100%;
+  max-width: 980px;
   min-height: clamp(620px, 64vw, 850px);
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
@@ -477,7 +500,6 @@
   user-select: none;
 }
 
-
 /* -------------- Other sections -------------- */
 .split-section {
   min-height: clamp(560px, 55vw, 730px);
@@ -590,10 +612,10 @@
   box-shadow: inset 0 0 18px rgba(0, 255, 136, 0.14);
 }
 
-/* -------------- Mobile Responsive (Di ko pa to tinest HHAAHAH) -------------- */
+/* -------------- Mobile Responsive -------------- */
 @media (max-width: 850px) {
-  .content:has(.ram-stage) {
-    padding-inline: 0.75rem !important;
+  .ram-page {
+    max-width: 100%;
   }
 
   .ram-hero {
@@ -670,7 +692,8 @@
   }
 
   .what-callout,
-  .what-callout-line {
+  .what-callout-line,
+  .pointer {
     display: none;
   }
 
