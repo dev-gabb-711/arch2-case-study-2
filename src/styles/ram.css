@@ -62,7 +62,7 @@
   background: #020503;
 }
 
-/* Continuous vertical grid lines */
+/* Continuous vertical grid lines across the whole page */
 .ram-page::before {
   content: "";
   position: absolute;
@@ -70,15 +70,46 @@
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, transparent 33.25%, rgba(255,255,255,0.22) 33.33%, transparent 33.45%),
-    linear-gradient(90deg, transparent 66.55%, rgba(255,255,255,0.22) 66.66%, transparent 66.8%);
+    linear-gradient(90deg, transparent 50%, rgba(255,255,255,0.22) 50.08%, transparent 50.18%),
+    linear-gradient(90deg, transparent 86.6%, rgba(255,255,255,0.22) 86.72%, transparent 86.84%);
+}
+
+/* Screen-like sci-fi filter across the whole page */
+.ram-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 136, 0.055) 0,
+      rgba(0, 255, 136, 0.055) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 255, 136, 0.08),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 255, 136, 0.08),
+      transparent 22%,
+      transparent 72%,
+      rgba(0, 255, 136, 0.08)
+    );
+  mix-blend-mode: screen;
+  opacity: 0.75;
 }
 
 .ram-page * {
   box-sizing: border-box;
 }
 
-.canva-hero,
+.ram-hero,
 .split-section,
 .big-section,
 .content-card {
@@ -104,7 +135,7 @@
 }
 
 /* Hero section */
-.canva-hero {
+.ram-hero {
   min-height: clamp(620px, 64vw, 850px);
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
@@ -116,23 +147,58 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: radial-gradient(
-    circle at 50% 43%,
-    rgba(0, 255, 136, 0.34),
-    rgba(0, 255, 136, 0.13) 18%,
-    transparent 42%
-  );
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(0, 255, 136, 0.72),
+      rgba(0, 255, 136, 0.34) 13%,
+      rgba(0, 255, 136, 0.14) 25%,
+      transparent 43%
+    );
+}
+
+/* Decorative HUD graphics */
+.hud-graphic {
+  position: absolute;
+  z-index: 18;
+  pointer-events: none;
+  user-select: none;
+  object-fit: contain;
+  filter: none;
+}
+
+.hud-top-corner {
+  top: 0;
+  left: 0;
+  width: min(27vw, 390px);
+}
+
+.hud-title-line {
+  left: 2.5%;
+  bottom: 1.8%;
+  width: min(40vw, 540px);
+}
+
+.hud-point-line {
+  right: 13.2%;
+  bottom: 30%;
+  width: min(27vw, 380px);
+}
+
+.hud-arrows {
+  right: 3.2%;
+  bottom: 9%;
+  width: min(6.2vw, 90px);
 }
 
 /* Nintendo Switch image */
-.canva-hero > img,
 .hero-switch {
   position: absolute;
-  width: min(58%, 760px);
-  top: 13%;
-  left: 51%;
+  width: min(50%, 700px);
+  top: 16%;
+  left: 49%;
   transform: translateX(-50%) rotate(-8deg);
-  z-index: 3;
+  z-index: 10;
   filter: none;
 }
 
@@ -142,7 +208,7 @@
   top: 30%;
   left: 7%;
   width: min(25%, 320px);
-  z-index: 4;
+  z-index: 20;
   color: white;
   font-size: clamp(0.65rem, 1vw, 0.9rem);
   font-weight: 500;
@@ -154,9 +220,9 @@
 .facts-text {
   position: absolute;
   top: 8%;
-  right: 40%;
+  right: 21%;
   width: min(25%, 320px);
-  z-index: 4;
+  z-index: 20;
   color: white;
   font-size: clamp(0.65rem, 1vw, 0.9rem);
   font-weight: 500;
@@ -173,17 +239,17 @@
 /* Discussion points */
 .discussion-points {
   position: absolute;
-  top: 34%;
-  right: 0;
-  width: 66.7%;
+  top: 32.5%;
+  left: 50.08%;
+  width: 36.64%;
   display: grid;
-  z-index: 2;
+  z-index: 6;
 }
 
 .discussion-points a {
   position: relative;
   display: block;
-  padding: 0.85rem 1rem 0.85rem 40%;
+  padding: 0.85rem 1rem 0.85rem 0;
   color: white;
   text-align: right;
   text-decoration: none;
@@ -196,11 +262,12 @@
 .discussion-points a::before {
   content: "";
   position: absolute;
-  left: 70px;
+  left: 0;
   right: 0;
   top: 0;
   height: 1px;
-  background: rgba(255,255,255,.22);
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.18);
 }
 
 .discussion-points a:hover {
@@ -246,34 +313,8 @@
   text-transform: uppercase;
 }
 
-/* Decorations */
-.corner-lines {
-  position: absolute;
-  top: 5%;
-  left: 0;
-  width: 24%;
-  height: 30%;
-  z-index: 4;
-  opacity: 0.9;
-  border-top: 4px solid white;
-  border-left: 4px solid white;
-}
-
 .scroll-mark {
-  position: absolute;
-  right: 5%;
-  bottom: 7%;
-  z-index: 20;
-  display: grid;
-  gap: 0.35rem;
-}
-
-.scroll-mark span {
-  width: clamp(52px, 5vw, 78px);
-  height: clamp(30px, 3vw, 44px);
-  border-left: 3px solid white;
-  border-bottom: 3px solid white;
-  transform: rotate(-45deg);
+  display: none;
 }
 
 /* Sections */
@@ -371,11 +412,10 @@
     padding-inline: 0.75rem !important;
   }
 
-  .canva-hero {
+  .ram-hero {
     min-height: 720px;
   }
 
-  .canva-hero > img,
   .hero-switch {
     width: 90%;
     top: 24%;
@@ -388,8 +428,7 @@
   }
 
   .facts-text,
-  .discussion-points,
-  .scroll-mark {
+  .discussion-points {
     display: none;
   }
 
@@ -400,6 +439,21 @@
 
   .hero-title-block h1 {
     font-size: clamp(2.5rem, 12vw, 4.2rem) !important;
+  }
+
+  .hud-top-corner {
+    width: min(55vw, 280px);
+  }
+
+  .hud-title-line,
+  .hud-point-line {
+    display: none;
+  }
+
+  .hud-arrows {
+    right: 6%;
+    bottom: 6%;
+    width: 70px;
   }
 
   .split-section {
