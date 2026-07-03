@@ -8,7 +8,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* VERY IMPORTANT: Override sir's layout for our RAM exhibit */
+
+/* ------------- IMPORTANT: Override sir's layout ------------- */
 .content:has(.ram-stage) {
   display: block !important;
   padding-inline: 1.5rem !important;
@@ -40,6 +41,9 @@
   border-radius: var(--radius) !important;
   box-shadow: 5px 5px !important;
 }
+/* ------------------------------------------------------------ */
+
+
 
 /* Main wrapper */
 .ram-stage {
@@ -57,12 +61,18 @@
   min-height: 100vh;
   overflow: hidden;
   color: white;
-  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
   box-sizing: border-box;
   background: #020503;
 }
 
-/* Continuous vertical grid lines across the whole page */
+.ram-page,
+.ram-page * {
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+}
+
+/* Vertical grid lines */
 .ram-page::before {
   content: "";
   position: absolute;
@@ -74,7 +84,7 @@
     linear-gradient(90deg, transparent 86.6%, rgba(255,255,255,0.22) 86.72%, transparent 86.84%);
 }
 
-/* Screen-like sci-fi filter across the whole page */
+/* Filter: Screen scanline overlay */
 .ram-page::after {
   content: "";
   position: absolute;
@@ -89,24 +99,10 @@
       transparent 1px,
       transparent 5px
     ),
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(0, 255, 136, 0.08),
-      transparent 55%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(0, 255, 136, 0.08),
-      transparent 22%,
-      transparent 72%,
-      rgba(0, 255, 136, 0.08)
-    );
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.08), transparent 55%),
+    linear-gradient(180deg, rgba(0, 255, 136, 0.08), transparent 22%, transparent 72%, rgba(0, 255, 136, 0.08));
   mix-blend-mode: screen;
   opacity: 0.75;
-}
-
-.ram-page * {
-  box-sizing: border-box;
 }
 
 .ram-hero,
@@ -117,23 +113,6 @@
   z-index: 2;
 }
 
-/* Shared glow for non-hero sections */
-.split-section::before,
-.big-section::before,
-.content-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(
-    circle at 50% 45%,
-    rgba(0, 255, 136, 0.34),
-    rgba(0, 255, 136, 0.13) 18%,
-    transparent 42%
-  );
-}
-
 /* Hero section */
 .ram-hero {
   min-height: clamp(620px, 64vw, 850px);
@@ -141,7 +120,6 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-/* Separate hero glow */
 .hero-circle-glow {
   position: absolute;
   inset: 0;
@@ -157,7 +135,7 @@
     );
 }
 
-/* Decorative HUD graphics */
+/* HUD graphics */
 .hud-graphic {
   position: absolute;
   z-index: 18;
@@ -168,8 +146,8 @@
 }
 
 .hud-top-corner {
-  top: 0;
-  left: 0;
+  top: 1%;
+  left: 0.5%;
   width: min(27vw, 390px);
 }
 
@@ -181,7 +159,7 @@
 
 .hud-point-line {
   right: 13.2%;
-  bottom: 30%;
+  bottom: 33%;
   width: min(27vw, 380px);
 }
 
@@ -191,22 +169,42 @@
   width: min(6.2vw, 90px);
 }
 
-/* Nintendo Switch image */
+/* Hero text */
+.discussion-label {
+  position: absolute;
+  right: 13.2%;
+  bottom: 28%;
+  width: min(27vw, 380px);
+  z-index: 19;
+  pointer-events: none;
+  color: white;
+  font-size: clamp(0.65rem, 1vw, 0.9rem);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+}
+
+.discussion-label .label-title {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
 .hero-switch {
   position: absolute;
   width: min(50%, 700px);
   top: 16%;
-  left: 49%;
+  left: 48%;
   transform: translateX(-50%) rotate(-8deg);
   z-index: 10;
   filter: none;
 }
 
-/* Hero text blocks */
 .hook-text {
   position: absolute;
-  top: 30%;
-  left: 7%;
+  top: 18%;
+  left: 6%;
   width: min(25%, 320px);
   z-index: 20;
   color: white;
@@ -215,6 +213,30 @@
   line-height: 1.55;
   letter-spacing: 0.18rem;
   text-transform: uppercase;
+  padding: 1.25rem;
+}
+
+.hook-text::before,
+.hook-text::after {
+  content: "";
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  pointer-events: none;
+}
+
+.hook-text::before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid rgba(255,255,255,.75);
+  border-left: 2px solid rgba(255,255,255,.75);
+}
+
+.hook-text::after {
+  right: 0;
+  bottom: 0;
+  border-right: 2px solid rgba(255,255,255,.75);
+  border-bottom: 2px solid rgba(255,255,255,.75);
 }
 
 .facts-text {
@@ -236,7 +258,7 @@
   margin: 0;
 }
 
-/* Discussion points */
+/* Discussion links */
 .discussion-points {
   position: absolute;
   top: 32.5%;
@@ -267,12 +289,20 @@
   top: 0;
   height: 1px;
   background: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 0 4px rgba(255, 255, 255, 0.18);
 }
 
 .discussion-points a:hover {
   color: #9cffcb;
   text-shadow: 0 0 12px rgba(0, 255, 136, 0.8);
+}
+
+/* Glowing titles only */
+.hero-title-block h1,
+.hero-title-block .hero-title,
+.glow-title,
+.what-right h2,
+.big-section h2 {
+  font-family: "RQND Pro", Arial, sans-serif !important;
 }
 
 /* Main title */
@@ -284,13 +314,12 @@
 }
 
 .hero-title-block h1,
-.ram-page .hero-title-block .hero-title {
+.hero-title-block .hero-title {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
   margin: 0 !important;
   color: #d9ffe9 !important;
-  font-family: "RQND Pro", Arial, sans-serif !important;
   font-size: clamp(3rem, 6.5vw, 5.8rem) !important;
   font-weight: 1000 !important;
   line-height: 0.9 !important;
@@ -305,19 +334,151 @@
 }
 
 .hero-title-block p {
+  display: block;
+  width: fit-content;
   margin-top: 1rem;
   color: white;
   font-size: clamp(0.75rem, 1.2vw, 1.1rem);
   font-weight: 500;
-  letter-spacing: clamp(0.2rem, 0.55vw, 0.45rem);
   text-transform: uppercase;
+  letter-spacing: 0.62rem;
 }
 
 .scroll-mark {
   display: none;
 }
 
-/* Sections */
+/* -------------- Section 1 -------------- */
+.what-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  background:
+    radial-gradient(
+      circle at 48% 55%,
+      rgba(0, 255, 136, 0.38),
+      rgba(0, 255, 136, 0.13) 23%,
+      transparent 54%
+    );
+}
+
+.what-left {
+  position: absolute;
+  left: 2.8%;
+  top: 35%;
+  width: 31%;
+  z-index: 4;
+  padding-right: 0;
+}
+
+.what-left h3 {
+  margin: 0 0 1.9rem !important;
+  padding: 0 !important;
+  color: white !important;
+  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+  font-size: clamp(0.85rem, 1.15vw, 1.2rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0.24rem !important;
+  text-transform: uppercase !important;
+  border: none !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
+.what-left h3::before,
+.what-left h3::after {
+  content: none !important;
+  display: none !important;
+}
+
+.what-left p {
+  margin: 0;
+  max-width: 430px;
+  color: white;
+  font-size: clamp(0.72rem, 0.9vw, 0.95rem);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.08rem;
+}
+
+.gameboy-image {
+  position: absolute;
+  left: 47%;
+  top: 35%;
+  width: min(23vw, 360px);
+  z-index: 5;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 24px 34px rgba(0, 0, 0, 0.65));
+}
+
+.what-right {
+  position: absolute;
+  right: 3%;
+  top: 9%;
+  width: 45%;
+  z-index: 8;
+  padding-top: 0;
+  text-align: right;
+}
+
+.what-right h2 {
+  margin: 0;
+  color: #d9ffe9 !important;
+  font-family: "RQND Pro", Arial, sans-serif !important;
+  font-size: clamp(2.6rem, 4.2vw, 4.6rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: none !important;
+  text-shadow:
+    0 0 8px #00ff88,
+    0 0 18px #00ff88,
+    0 0 38px rgba(0, 255, 136, 0.85);
+}
+
+.what-right > p {
+  margin-top: 1.2rem;
+  color: white;
+  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+  font-size: clamp(0.72rem, 1vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: 0.34rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.what-callout {
+  position: absolute;
+  top: 40vh;
+  right: 30%;
+  width: 260px;
+  z-index: 12;
+  color: white;
+  text-align: left;
+  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+  font-size: clamp(0.68rem, 0.82vw, 0.85rem);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.08rem;
+}
+
+.pointer {
+  position: absolute;
+  top: 34vh;
+  right: 33%;
+  width: min(28vw, 380px);
+  z-index: 11;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* -------------- Other sections -------------- */
 .split-section {
   min-height: clamp(560px, 55vw, 730px);
   display: grid;
@@ -336,17 +497,33 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.ram-page h2,
+.split-section::before,
+.big-section::before,
+.content-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(0, 255, 136, 0.34),
+    rgba(0, 255, 136, 0.13) 18%,
+    transparent 42%
+  );
+}
+
+.big-section h2,
 .split-section h2,
-.big-section h2 {
+.ram-page h2.glow-title {
   margin: 0;
   color: #d9ffe9 !important;
-  font-family: "RQND Pro", Arial, sans-serif !important;
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  border: none !important;
   border-bottom: none !important;
   text-shadow:
     0 0 8px #00ff88,
@@ -356,10 +533,18 @@
 
 .split-section h3 {
   color: white;
+  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
   font-size: clamp(0.9rem, 1.4vw, 1.2rem);
   font-weight: 600;
   letter-spacing: 0.2rem;
   text-transform: uppercase;
+  border: none !important;
+}
+
+.split-section h3::before,
+.split-section h3::after {
+  content: none !important;
+  display: none !important;
 }
 
 .split-section p,
@@ -373,7 +558,6 @@
   letter-spacing: 0.08rem;
 }
 
-/* Old content-card fallback */
 .content-card {
   min-height: 520px;
   margin: 0;
@@ -406,7 +590,7 @@
   box-shadow: inset 0 0 18px rgba(0, 255, 136, 0.14);
 }
 
-/* Mobile */
+/* -------------- Mobile Responsive (Di ko pa to tinest HHAAHAH) -------------- */
 @media (max-width: 850px) {
   .content:has(.ram-stage) {
     padding-inline: 0.75rem !important;
@@ -428,7 +612,8 @@
   }
 
   .facts-text,
-  .discussion-points {
+  .discussion-points,
+  .discussion-label {
     display: none;
   }
 
@@ -454,6 +639,39 @@
     right: 6%;
     bottom: 6%;
     width: 70px;
+  }
+
+  .what-section {
+    min-height: 900px;
+    padding: 5rem 7%;
+    text-align: left;
+  }
+
+  .what-left {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+  }
+
+  .gameboy-image {
+    position: relative;
+    left: 50%;
+    top: auto;
+    width: min(70vw, 320px);
+    margin: 3rem 0;
+  }
+
+  .what-right {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+  }
+
+  .what-callout,
+  .what-callout-line {
+    display: none;
   }
 
   .split-section {

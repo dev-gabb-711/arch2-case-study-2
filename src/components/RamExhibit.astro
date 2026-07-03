@@ -2,11 +2,13 @@
 import "../styles/ram.css";
 
 import switchPokemon from "../assets/switch-pokemon.png";
+import gameboy from "../assets/gameboy.png";
 
 import arrowsGraphic from "../assets/arrows.png";
 import pointLineGraphic from "../assets/point_line.png";
 import titleLineGraphic from "../assets/title_line.png";
 import topCornerGraphic from "../assets/top_corner.png";
+import pointerGraphic from "../assets/pointer.png";
 ---
 
 <section class="ram-stage">
@@ -15,10 +17,14 @@ import topCornerGraphic from "../assets/top_corner.png";
     <header class="ram-hero">
       <div class="hero-circle-glow"></div>
 
-      <!-- Decorative HUD graphics -->
       <img class="hud-graphic hud-top-corner" src={topCornerGraphic.src} alt="" aria-hidden="true" />
       <img class="hud-graphic hud-title-line" src={titleLineGraphic.src} alt="" aria-hidden="true" />
       <img class="hud-graphic hud-point-line" src={pointLineGraphic.src} alt="" aria-hidden="true" />
+
+      <div class="discussion-label">
+        <span class="label-title">DISCUSSION POINTS</span>
+      </div>
+
       <img class="hud-graphic hud-arrows" src={arrowsGraphic.src} alt="" aria-hidden="true" />
 
       <div class="hook-text">
@@ -39,47 +45,54 @@ import topCornerGraphic from "../assets/top_corner.png";
       </div>
 
       <div class="hero-title-block">
-        <h1>INSIDE RAM</h1>
+        <h1 class="glow-title">INSIDE RAM</h1>
         <p>COMPUTER MEMORY IN MOTION</p>
-      </div>
-
-      <div class="scroll-mark" aria-hidden="true">
-        <span></span>
-        <span></span>
       </div>
     </header>
 
-    <section id="what" class="split-section">
-      <div>
+    <section id="what" class="what-section">
+      <div class="what-left">
         <h3>TITLE OF SUB-TOPIC 1</h3>
         <p>
-          This section introduces RAM as temporary memory and explains why computers need it while programs are running.
+          This section is designed to provide a dynamic and interactive experience.
+          As users scroll, the graphic on the left may animate through effects such
+          as tilting, scaling, rotating, or changing to match the displayed content.
+          Information will be revealed progressively to improve readability and
+          maintain engagement.
         </p>
       </div>
 
-      <div>
-        <h2>WHAT IS RAM?</h2>
+      <img class="gameboy-image" src={gameboy.src} alt="Game Boy memory visual" />
+
+      <div class="what-right">
+        <h2 class="glow-title">WHAT IS RAM?</h2>
         <p>COMPUTER MEMORY IN MOTION</p>
+
+        <div class="what-callout">
+          Some point of interest that summarizes the whole explanation.
+        </div>
+
+        <img class="pointer" src={pointerGraphic.src} alt="" aria-hidden="true" />
       </div>
     </section>
 
     <section id="journey" class="big-section">
-      <h2>THE EVOLUTION OF RAM</h2>
+      <h2 class="glow-title">THE EVOLUTION OF RAM</h2>
       <p>COMPUTER MEMORY THROUGH TIME</p>
     </section>
 
     <section id="inside" class="big-section">
-      <h2>INSIDE THE RAM</h2>
+      <h2 class="glow-title">INSIDE THE RAM</h2>
       <p>THE INTERNAL DATA JOURNEY</p>
     </section>
 
     <section id="simulator" class="big-section">
-      <h2>MEMORY ACCESS SIMULATOR</h2>
+      <h2 class="glow-title">MEMORY ACCESS SIMULATOR</h2>
       <p>CPU TO RAM COMMUNICATION</p>
     </section>
 
     <section id="quiz" class="big-section">
-      <h2>CHALLENGE QUIZ</h2>
+      <h2 class="glow-title">CHALLENGE QUIZ</h2>
       <p>TEST YOUR KNOWLEDGE</p>
     </section>
 
