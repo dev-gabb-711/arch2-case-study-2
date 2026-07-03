@@ -475,8 +475,57 @@
 }
 
 /* SECTION 2: The Evolution of RAM*/
+#the-evolution-of-ram .glow-title,
+#the-evolution-of-ram .title-caption {
+  top: -75%;
+}
+
+#the-evolution-of-ram .title-caption {
+  top: -110%
+}
+
+.evolution-outer {
+  top: -30%;
+}
+
 .evolution-upper {
   display: flex;
+}
+
+.evolution-sides  {
+  border: 1px solid white;
+  width: 50%;
+  min-height: 40%
+}
+
+.big-section h2.evolution-name {
+  font-size: large;
+}
+
+.evolution-sides h3 {
+  color: darkgreen;
+}
+
+.big-section p.evolution-sides {
+  font-size: small;
+}
+
+.dram-image {
+  width: 70%;
+  height: 65%;
+}
+
+.evolution-sides p {
+  text-align: left;
+}
+
+.evolution-lower {
+  display: flex;
+}
+
+.evolution-button {
+  border: 1px solid white;
+  min-width: 8%;
 }
 
 /* Other sections */
