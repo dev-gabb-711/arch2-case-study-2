@@ -3,6 +3,7 @@ import "../styles/ram.css";
 
 import switchPokemon from "../assets/switch-pokemon.png";
 import gameboy from "../assets/gameboy.png";
+import dram from "../assets/DRAM.png";
 
 import arrowsGraphic from "../assets/arrows.png";
 import pointLineGraphic from "../assets/point_line.png";
@@ -28,7 +29,7 @@ import pointerGraphic from "../assets/pointer.png";
       <img class="hud-graphic hud-arrows" src={arrowsGraphic.src} alt="" aria-hidden="true" />
 
       <div class="hook-text">
-        OUR HOOK SENTENCE WILL BE HERE. TO GRAB AUDIENCE ATTENTION TO OUR TOPIC.
+        Did you know? The first iteration of the RAM is a huge drum?
       </div>
 
       <div class="discussion-points">
@@ -41,11 +42,11 @@ import pointerGraphic from "../assets/pointer.png";
       <img class="hero-switch" src={switchPokemon.src} alt="Game memory visual" />
 
       <div class="facts-text">
-        SOME OTHER INTERESTING FACTS ABOUT RAM.
+        ARE RAMS TODAY REALLY THAT IMPORTANT?
       </div>
 
       <div class="more-text">
-        SOME OTHER INTERESTING FACTS ABOUT RAM.
+        DO DATA REALLY PERSIST WHEN TURNED OFF?
       </div>
 
       <div class="hero-title-block">
@@ -56,14 +57,14 @@ import pointerGraphic from "../assets/pointer.png";
 
     <section id="what-is-ram" class="what-section">
       <div class="what-left">
-        <h3>TITLE OF SUB-TOPIC 1</h3>
-        <p>
-          This section is designed to provide a dynamic and interactive experience.
-          As users scroll, the graphic on the left may animate through effects such
-          as tilting, scaling, rotating, or changing to match the displayed content.
-          Information will be revealed progressively to improve readability and
-          maintain engagement.
-        </p>
+        <h3>Did you know?</h3>
+        <ul>
+          <li>The evolution of RAM has come a long way from being bulky to being small</li>
+          <li>One example of the RAM becoming small is with the handheld console Nintendo Game Boy
+          <li>Its processing is limited to only ~4.19 MHz, but enables the console to hide its internal parts and become portable</li>
+          <li>The Game Paks were also limited in memory size, being only 32 KB</li>
+          <li>Decades later, these limitations became obsolete, with the Nintendo Switch 2 having a custom processor from NVIDIA and a 256 GB storage</li>
+        </ul>
       </div>
 
       <img class="gameboy-image" src={gameboy.src} alt="Game Boy memory visual" />
@@ -73,7 +74,19 @@ import pointerGraphic from "../assets/pointer.png";
         <p>COMPUTER MEMORY IN MOTION</p>
 
         <div class="what-callout">
-          Some point of interest that summarizes the whole explanation.
+          <ul>
+            <li>Main memory: Sharp SM83</li>
+            <ul>
+              <li>Hybrid of Zilog Z80 and Intel 8080</li>
+              <li>Runs at ~4.19 MHz</li>
+            </ul>
+
+            <li>Game PAK</li>
+            <ul>
+              <li>32 KB ROM</li>
+              <li>Extra RAM for saving states</li>
+            </ul>
+          </ul>
         </div>
 
         <img class="pointer" src={pointerGraphic.src} alt="" aria-hidden="true" />
@@ -83,6 +96,24 @@ import pointerGraphic from "../assets/pointer.png";
     <section id="the-evolution-of-ram" class="big-section">
       <h2 class="glow-title">THE EVOLUTION OF RAM</h2>
       <p>COMPUTER MEMORY THROUGH TIME</p>
+
+      <div class="evolution-outer">
+        <div class="evolution-upper">
+          <div class="test-box">
+            hi
+          </div>
+          <div class="test-box">
+            hi
+          </div>
+          <div class="test-box">
+            hi
+          </div>
+        </div>
+
+        <div class="evolution-lower">
+          hello
+        </div>
+      </div>
     </section>
 
     <section id="inside-the-ram-the-internal-data-journey" class="big-section">

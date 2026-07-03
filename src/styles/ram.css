@@ -367,7 +367,7 @@
 .what-left {
   position: absolute;
   left: 3.5%;
-  top: 35%;
+  top: 25%;
   width: 35%;
   z-index: 14;
 }
@@ -391,7 +391,7 @@
   display: none !important;
 }
 
-.what-left p {
+.what-left p, ul {
   margin: 0;
   color: white;
   font-size: clamp(0.48rem, 1.05cqw, 0.86rem);
@@ -448,9 +448,9 @@
 
 .what-callout {
   position: absolute;
-  top: 180%;
-  right: 16%;
-  width: 50%;
+  top: 100%;
+  right: -20%;
+  width: 100%;
   z-index: 14;
   color: white;
   text-align: left;
@@ -460,9 +460,13 @@
   letter-spacing: 0.08em;
 }
 
+.what-callout ul {
+  width: 90%;
+}
+
 .pointer {
   position: absolute;
-  top: 235%;
+  top: 250%;
   right: 30%;
   width: 80%;
   z-index: 9;
@@ -470,7 +474,10 @@
   user-select: none;
 }
 
-
+/* SECTION 2: The Evolution of RAM*/
+.evolution-upper {
+  display: flex;
+}
 
 /* Other sections */
 .big-section {
