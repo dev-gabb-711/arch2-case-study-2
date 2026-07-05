@@ -475,57 +475,101 @@
 }
 
 /* SECTION 2: The Evolution of RAM*/
-#the-evolution-of-ram .glow-title,
-#the-evolution-of-ram .title-caption {
-  top: -75%;
+#the-evolution-of-ram.big-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  aspect-ratio: auto !important;
+  height: auto !important;
+  overflow: hidden;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+#the-evolution-of-ram .glow-title {
+  position: relative;
+  margin-top: -1.5rem;
+  margin-bottom: 0.5rem;
+  top: 0;
 }
 
 #the-evolution-of-ram .title-caption {
-  top: -110%
-}
-
-.evolution-outer {
-  top: -30%;
+  position: relative;
+  margin-top: -0.5rem;
+  top: 0;
+  color: white;
+  font-size: clamp(0.55rem, 1.2cqw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
 }
 
 .evolution-upper {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 2rem;
+  margin-bottom: 1rem;
 }
 
-.evolution-sides  {
-  border: 1px solid white;
-  width: 50%;
-  min-height: 40%
+.evolution-sides {
+  flex: 1;
+  padding: 1rem;
+  text-align: left;
 }
 
-.big-section h2.evolution-name {
-  font-size: large;
-}
-
-.evolution-sides h3 {
-  color: darkgreen;
-}
-
-.big-section p.evolution-sides {
-  font-size: small;
+.test-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dram-image {
-  width: 70%;
-  height: 65%;
-}
-
-.evolution-sides p {
-  text-align: left;
+  max-width: 100%;
+  height: auto;
 }
 
 .evolution-lower {
   display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.scroll-section {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex: 1;
+  padding: 0.5rem 0;
+  scroll-behavior: smooth;
+}
+
+.scroll-section::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll-section::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.4);
+  border-radius: 3px;
 }
 
 .evolution-button {
+  flex: 0 0 auto;
+  width: clamp(50px, 8cqw, 80px);
+  text-align: center;
   border: 1px solid white;
-  min-width: 8%;
+}
+
+.scroll-left,
+.scroll-right {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 /* Other sections */
