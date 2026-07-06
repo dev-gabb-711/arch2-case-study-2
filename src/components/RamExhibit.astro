@@ -15,6 +15,7 @@ import pointerGraphic from "../assets/pointer.png";
 import cubeQuestion from "../assets/cube.png";
 
 import EvolutionLogic from "../components/Evolution.jsx"
+import MemComEvolution from "../components/MemoryCommunication.jsx"
 ---
 
 <section class="ram-stage">
@@ -266,48 +267,7 @@ import EvolutionLogic from "../components/Evolution.jsx"
     </div>
 
     <!-- Bottom Section -->
-    <div class="memory-bottom">
-        <section class="memory-evolution">
-            <h3>MEMORY COMMUNICATION EVOLUTION</h3>
-            <div class="generation-list">
-                <div class="generation-card">
-                    <span>SDRAM</span>
-                    <small>1990s</small>
-                </div>
-                <div class="generation-card">
-                    <span>DDR</span>
-                    <small>2000</small>
-                </div>
-                <div class="generation-card">
-                    <span>DDR2</span>
-                    <small>2004</small>
-                </div>
-                <div class="generation-card">
-                    <span>DDR3</span>
-                    <small>2007</small>
-                </div>
-                <div class="generation-card active-generation">
-                    <span>DDR4</span>
-                    <small>2014</small>
-                </div>
-                <div class="generation-card">
-                    <span>DDR5</span>
-                    <small>2020</small>
-                </div>
-            </div>
-        </section>
-
-        <section class="memory-details">
-            <h3>MEMORY COMMUNICATION DETAILS</h3>
-            <h2>DDR4</h2>
-            <p>
-                DDR4 increased bandwidth while reducing operating voltage
-                compared to DDR3. It delivers higher transfer speeds, larger
-                capacities, and improved energy efficiency, making it the
-                dominant memory standard for modern desktops and servers.
-            </p>
-        </section>
-    </div>
+    <MemComEvolution client:load />
     </section>
 
     <section id="challenge-quiz" class="big-section quiz-section">
