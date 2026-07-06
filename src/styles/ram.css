@@ -661,8 +661,12 @@
   overflow: hidden;
   box-sizing: border-box;
   background:
-    radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.18), transparent 48%),
-    #060d13;
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(0, 255, 136, 0.34),
+      rgba(0, 255, 136, 0.13) 18%,
+      transparent 42%
+    );
   align-items: start;
 }
 
