@@ -22,3 +22,8 @@
   - Updated the typography and background styling for consistency with the rest of the exhibit.
   - Finished most of the layout required for the Challenge Quiz, will add the content after Mid-Milestone.
   - Finished the entirety of the layout and information needed for Memory Access Communication segment (Section 4)
+  - Started on the layout of the Inside the RAM segment (Section 3).
+  - Improved Section 3 layout and design.
+
+- **July 7**
+  - Finished the entirety of Section 3.
