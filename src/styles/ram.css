@@ -512,10 +512,23 @@
 }
 
 .evolution-sides h3 {
+  margin: 0;
+  padding: 0;
   color: darkgreen;
   font-size: small;
   border: none;
 }
+
+.evolution-features {
+  list-style-position: inside;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.evolution-features li {
+  padding-left: 0.25rem;
+}
+
 
 .evolution-upper {
   display: flex;
