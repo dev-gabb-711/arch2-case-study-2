@@ -10,6 +10,7 @@ import pointLineGraphic from "../assets/point_line.png";
 import titleLineGraphic from "../assets/title_line.png";
 import topCornerGraphic from "../assets/top_corner.png";
 import pointerGraphic from "../assets/pointer.png";
+import cubeQuestion from "../assets/cube-question.png";
 ---
 
 <section class="ram-stage">
@@ -307,10 +308,58 @@ import pointerGraphic from "../assets/pointer.png";
     </div>
     </section>
 
-    <section id="challenge-quiz" class="big-section">
+    <section id="challenge-quiz" class="big-section quiz-section">
       <h2 class="glow-title">CHALLENGE QUIZ</h2>
-      <p>TEST YOUR KNOWLEDGE</p>
+      <p class="title-caption">TEST YOUR KNOWLEDGE</p>
+
+      <div class="quiz-container">
+        <div class="quiz-left">
+          <h3 class="question-number">QUESTION 1</h3>
+          <p class="question-text">
+            This section will reinforce the viewer's learning by asking
+            questions about the information presented in the previous sections
+          </p>
+
+          <div class="cube-container">
+            <div class="cube-glow-bg"></div>
+            <img src={cubeQuestion.src} alt="Glowing Question Cube" class="quiz-cube" />
+          </div>
+        </div>
+
+        <div class="quiz-right">
+          <button class="quiz-option">
+            <span class="option-letter">A.</span>
+            <span class="option-text">The answer in sentence form</span>
+          </button>
+          <button class="quiz-option">
+            <span class="option-letter">B.</span>
+            <span class="option-text">The answer in sentence form</span>
+          </button>
+          <button class="quiz-option">
+            <span class="option-letter">C.</span>
+            <span class="option-text">The answer in sentence form</span>
+          </button>
+          <button class="quiz-option">
+            <span class="option-letter">D.</span>
+            <span class="option-text">The answer in sentence form</span>
+          </button>
+        </div>
+      </div>
     </section>
+
+    <script>
+      const quizOptions = document.querySelectorAll('.quiz-option')
+
+      quizOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          // Remove active class from all options
+          quizOptions.forEach(opt => opt.classList.remove('active'));
+
+          // Add active class to the clicked option
+          option.classList.add('active')
+        });
+      });
+    </script>
 
   </div>
 </section>
