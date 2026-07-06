@@ -641,253 +641,342 @@
   }
 }
 
-/* ---------------- CONTAINER ---------------- */
+
+/* ------------------------------------------------------- */
+/*                  MEMORY ACCESS SECTION                  */
+/* ------------------------------------------------------- */
+
 #memory-access-and-communication {
-    display: grid;
-    grid-template-columns: 22fr 56fr 22fr;
-    /* Explicitly use max-content for rows to eliminate dead vertical whitespace gaps */
-    grid-template-rows: max-content max-content max-content;
-    grid-template-areas:
-        "header header header"
-        "left center right"
-        "bottom bottom bottom";
-    gap: 1.25rem;
-    padding: 1.5rem 2.5%;
-    box-sizing: border-box;
-    width: 100%;
-    background: 
-        radial-gradient(circle at 50% 15%, rgba(0, 255, 136, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at center, rgba(0, 255, 136, 0.08), transparent 70%),
-        #060d13;
-    align-items: start;
+  display: grid;
+  grid-template-columns: 24% 48% 24%;
+  grid-template-rows: auto 45% 24%;
+  grid-template-areas:
+    "header header header"
+    "left center right"
+    "bottom bottom bottom";
+  gap: 0.45rem 0.45rem;
+  padding: 1rem 3.5% 0.9rem;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.18), transparent 48%),
+    #060d13;
+  align-items: start;
 }
 
-/* ---------------- HEADER ---------------- */
+/* HEADER */
 
 .memory-header {
-    grid-area: header;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 0.25rem;
+  grid-area: header;
+  text-align: center;
+  margin: 0 0 0.15rem;
+}
+
+.memory-header .glow-title {
+  font-size: clamp(2.25rem, 5.2cqw, 4.4rem) !important;
+  line-height: 0.85;
+  white-space: nowrap;
 }
 
 .memory-subtitle {
-    margin: 0;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 0.35rem;
-    font-size: clamp(0.75rem, 1.2cqw, 1.1rem);
-    text-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
-    display: block;
-    text-align: center;
-    width: 100%;
+  margin: 0.45rem auto 0;
+
+  color: white;
+  text-transform: uppercase;
+
+  font-size: clamp(1rem, 1.7cqw, 1.4rem);
+  font-weight: 600;
+
+  letter-spacing: 1rem;
+
+  text-align: center;
+  white-space: nowrap;
 }
 
-.memory-description {
-    width: 65%;
-    margin: 0.4rem auto 0;
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: clamp(0.65rem, 0.85cqw, 0.9rem);
-}
-
-/* ---------------- MAIN STRUCTURAL LAYOUT ---------------- */
+/* MAIN LAYOUT */
 
 .memory-main {
-    display: contents; 
+  display: contents;
 }
 
-/* ---------------- LEFT + RIGHT PANELS ---------------- */
+.memory-left,
+.memory-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+  align-self: start;
+}
 
 .memory-left {
-    grid-area: left;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
+  grid-area: left;
+  margin-top: -0.8rem;
 }
 
 .memory-right {
-    grid-area: right;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
+  grid-area: right;
+  margin-top: -0.8rem;
+}
+
+/* CARDS */
+
+.memory-card,
+.memory-center,
+.memory-evolution,
+.memory-details {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.07),
+    rgba(255, 255, 255, 0.015)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 24px rgba(0, 255, 136, 0.055);
 }
 
 .memory-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    border-left: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 20px;
-    padding: 1rem 1.25rem;
-    backdrop-filter: blur(16px) saturate(140%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 20px rgba(0, 255, 136, 0.02),
-        0 8px 32px rgba(0, 0, 0, 0.4),
-        0 0 20px rgba(0, 255, 136, 0.04);
+  padding: 0.5rem 0.85rem;
+  overflow: hidden;
 }
 
 .memory-card h3 {
-    margin: 0 0 0.5rem;
-    color: #00ff88;
-    font-size: clamp(0.7rem, 0.9cqw, 0.95rem);
-    letter-spacing: 0.14rem;
-    text-transform: uppercase;
-    text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+  margin: 0 0 0.35rem;
+  padding: 0;
+  color: #00ff88;
+  font-size: clamp(0.46rem, 0.56cqw, 0.58rem);
+  letter-spacing: 0.1rem;
+  line-height: 1.25;
+  text-transform: uppercase;
+  border-bottom: none;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.65);
 }
 
 .memory-card h4 {
-    margin: 0.5rem 0 0.25rem;
-    color: #9affd4;
-    font-size: clamp(0.6rem, 0.75cqw, 0.8rem);
-    letter-spacing: 0.08rem;
+  margin: 0.38rem 0 0.16rem;
+  padding: 0;
+  color: #9affd4;
+  font-size: clamp(0.48rem, 0.6cqw, 0.6rem);
+  letter-spacing: 0.1rem;
+  border-bottom: none;
+  text-align: left;
 }
 
 .memory-card p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.45;
-    font-size: clamp(0.55rem, 0.7cqw, 0.75rem);
+  margin: 0;
+  max-width: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(0.46rem, 0.58cqw, 0.58rem);
+  line-height: 1.22;
+  letter-spacing: 0.025rem;
+  text-align: left;
 }
 
-/* ---------------- CPU REQUEST LISTS ---------------- */
+/* CPU REQUEST */
 
 .request-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.35rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    color: rgba(255, 255, 255, 0.9);
-    font-size: clamp(0.55rem, 0.75cqw, 0.78rem);
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+  color: white;
+  font-size: clamp(0.46rem, 0.58cqw, 0.58rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .request-item:last-child {
-    border: none;
+  border-bottom: none;
 }
 
 .request-item strong {
-    color: #00ff88;
-    text-shadow: 0 0 6px rgba(0, 255, 136, 0.3);
+  color: #00ff88;
 }
 
-/* ---------------- CENTER GRAPH MATRIX ---------------- */
+/* CENTER MATRIX */
 
 .memory-center {
-    grid-area: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 20px;
-    padding: 1.25rem 1.5rem;
-    backdrop-filter: blur(16px) saturate(140%);
-    box-shadow: 
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        0 8px 32px rgba(0, 0, 0, 0.4);
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
+  align-self: stretch; 
+  height: 100%;
+  min-height: 11rem;
+  grid-area: center;
+  padding: 0.65rem 0.8rem 0.55rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+  margin-top: -0.8rem;
 }
 
 .memory-grid-header {
-    display: grid;
-    /* Uses viewport scaling columns to stay dynamic without pushing sections */
-    grid-template-columns: 30px repeat(12, minmax(14px, 1.5vw));
-    column-gap: 4px;
-    margin-bottom: 6px;
-    color: #00ff88;
-    text-align: center;
-    font-size: clamp(0.5rem, 0.65cqw, 0.7rem);
-    font-weight: 600;
-    text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
-    width: 100%;
-    max-width: fit-content;
+  display: grid;
+  grid-template-columns: 1.25rem repeat(12, 1fr);
+  gap: 0.23rem;
+  width: 100%;
+  margin-bottom: 0.25rem;
+  color: #00ff88;
+  font-size: clamp(0.42rem, 0.55cqw, 0.55rem);
+  font-weight: 700;
+  text-align: center;
 }
 
 .memory-grid {
-    display: grid;
-    grid-template-columns: 30px repeat(12, minmax(14px, 1.5vw));
-    grid-template-rows: repeat(5, minmax(14px, 1.5vw));
-    gap: 4px;
-    width: 100%;
-    max-width: fit-content;
+  display: grid;
+  grid-template-columns: 1.25rem repeat(12, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0.23rem;
+  width: 100%;
 }
 
 .row-label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #00ff88;
-    font-size: clamp(0.5rem, 0.65cqw, 0.7rem);
-    font-weight: 600;
-    text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ff88;
+  font-size: clamp(0.42rem, 0.55cqw, 0.55rem);
+  font-weight: 700;
 }
 
 .memory-cell {
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.015);
-    aspect-ratio: 1 / 1;
-    border-radius: 3px;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .active-row {
-    background: rgba(0, 255, 136, 0.06);
-    border-color: rgba(0, 255, 136, 0.2);
+  background: rgba(0, 255, 136, 0.08);
+  border-color: rgba(0, 255, 136, 0.45);
 }
 
 .active-column {
-    background: rgba(0, 255, 136, 0.1);
-    border-color: rgba(0, 255, 136, 0.25);
+  background: rgba(0, 255, 136, 0.12);
+  border-color: rgba(0, 255, 136, 0.45);
 }
 
 .selected-cell {
-    background: linear-gradient(135deg, #72ff9f 0%, #00ff88 100%);
-    border-color: #ffffff;
-    box-shadow:
-        0 0 10px #00ff88,
-        0 0 20px rgba(0, 255, 136, 0.8),
-        inset 0 1px 2px rgba(255, 255, 255, 0.6);
-    transform: scale(1.05);
-    z-index: 2;
+  background: #73ff72;
+  border-color: white;
+  box-shadow:
+    0 0 14px #73ff72,
+    0 0 32px rgba(115, 255, 114, 0.9),
+    0 0 70px rgba(115, 255, 114, 0.55);
+  transform: scale(1.08);
 }
 
 .memory-step {
-    margin-top: 1rem;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: clamp(0.55rem, 0.75cqw, 0.8rem);
-    letter-spacing: 0.05rem;
+  margin-top: 0.4rem;
+  color: white;
+  font-size: clamp(0.46rem, 0.58cqw, 0.58rem);
+  line-height: 1.2;
+  letter-spacing: 0.025rem;
+  text-align: left;
 }
 
-/* ---------------- BOTTOM TIMELINE BLOCK ---------------- */
+/* RIGHT SIDE */
+
+.memory-right .memory-card:first-child {
+  text-align: center;
+}
+
+.memory-right .memory-card:first-child h3 {
+  white-space: nowrap;
+}
+
+.memory-right .memory-card:first-child p {
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+/* BOTTOM SECTION */
 
 .memory-bottom {
-    grid-area: bottom;
-    display: grid;
-    grid-template-columns: 63% 35%;
-    column-gap: 2%;
-    width: 100%;
-    margin-top: 0.5rem;
+  grid-area: bottom;
+  display: grid;
+  grid-template-columns: 53% 47%;
+  gap: 0.45rem;
+  margin-top: 0;
+  min-height: 0;
+  align-self: start;
 }
 
 .memory-evolution,
 .memory-details {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    padding: 1rem 1.5rem;
-    backdrop-filter: blur(16px) saturate(140%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        0 8px 32px rgba(0, 0, 0, 0.4);
+  padding: 0.45rem 0.75rem;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.memory-evolution h3,
+.memory-details h3 {
+  margin: 0 0 0.32rem;
+  color: #00ff88;
+  font-size: clamp(0.48rem, 0.6cqw, 0.6rem);
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.generation-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.3rem;
+}
+
+.generation-card {
+  min-height: 2.75rem;
+  padding: 0.3rem 0.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  font-size: clamp(0.44rem, 0.56cqw, 0.56rem);
+  font-weight: 700;
+  text-align: center;
+}
+
+.generation-card small {
+  color: white;
+  font-size: clamp(0.4rem, 0.5cqw, 0.5rem);
+}
+
+.active-generation {
+  border-color: #00ff88;
+  box-shadow: 0 0 18px rgba(0, 255, 136, 0.35);
+}
+
+.memory-details {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 0.65rem;
+  align-items: center;
+}
+
+.memory-details h3 {
+  grid-column: 1 / -1;
+}
+
+.memory-details h2 {
+  margin: 0;
+  color: #00ff88 !important;
+  font-size: clamp(0.9rem, 1.45cqw, 1.25rem) !important;
+  text-align: left;
+}
+
+.memory-details p {
+  margin: 0;
+  max-width: none;
+  font-size: clamp(0.42rem, 0.54cqw, 0.54rem);
+  line-height: 1.25;
+  text-align: left;
 }
 
 /* -------------------------------------------- */
@@ -1055,4 +1144,36 @@
   .question-text {
     max-width: 100%;
   }
+}
+
+
+
+/* Force memory subtitle styling */
+#memory-access-and-communication .memory-subtitle {
+  display: block !important;
+  margin: 0.35rem auto 0 !important;
+
+  font-size: clamp(0.65rem, 0.85cqw, 0.8rem) !important;
+
+  letter-spacing: 0.65rem !important;
+
+  line-height: 1.1 !important;
+
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+/* Remove bottom box header lines */
+#memory-access-and-communication .memory-evolution h3,
+#memory-access-and-communication .memory-details h3 {
+  border: none !important;
+  border-bottom: none !important;
+}
+
+#memory-access-and-communication .memory-evolution h3::before,
+#memory-access-and-communication .memory-evolution h3::after,
+#memory-access-and-communication .memory-details h3::before,
+#memory-access-and-communication .memory-details h3::after {
+  content: none !important;
+  display: none !important;
 }

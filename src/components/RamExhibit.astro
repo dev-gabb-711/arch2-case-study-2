@@ -158,12 +158,6 @@ import cubeQuestion from "../assets/cube.png";
         <p class="memory-subtitle">
             CPU TO RAM COMMUNICATION
         </p>
-        <p class="memory-description">
-            This simulator demonstrates how the CPU communicates with DRAM during
-            a memory request. Follow how a physical memory address is decoded into
-            row and column selections, how RAS and CAS coordinate memory access,
-            and how the requested data is returned to the processor.
-        </p>
     </div>
     <!-- Main Content -->
     <div class="memory-main">
@@ -187,12 +181,9 @@ import cubeQuestion from "../assets/cube.png";
 
             <div class="memory-card how-it-works">
                 <h3>HOW IT WORKS</h3>
-                <h4>STEP 1</h4>
                 <p>
                     The memory controller receives the CPU request and presents
-                    the row address to DRAM. The Row Address Strobe (RAS)
-                    latches the row address into memory before the column can
-                    be accessed.
+                    the row address to DRAM. The memory controller receives the CPU 
                 </p>
             </div>
         </aside>
@@ -243,8 +234,7 @@ import cubeQuestion from "../assets/cube.png";
         <aside class="memory-right">
             <div class="memory-card">
                 <h3>CURRENT SELECTION</h3>
-                <p><strong>Row:</strong> R2</p>
-                <p><strong>Column:</strong> C4</p>
+                <p><strong>Row:     Column:</strong> C4</p>
                 <p><strong>Payload:</strong> Pikachu</p>
             </div>
             <div class="memory-card">
