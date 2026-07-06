@@ -185,7 +185,7 @@ import EvolutionLogic from "../components/Evolution.jsx"
                 </div>
                 <div class="request-item">
                     <span>Address</span>
-                    <strong>0x2B4</strong>
+                    <strong>0x2B40</strong>
                 </div>
                 <div class="request-item">
                     <span>Data</span>
@@ -196,8 +196,7 @@ import EvolutionLogic from "../components/Evolution.jsx"
             <div class="memory-card how-it-works">
                 <h3>HOW IT WORKS</h3>
                 <p>
-                    The memory controller receives the CPU request and presents
-                    the row address to DRAM. The memory controller receives the CPU 
+                    The controller sends a row address (RAS) to open the memory line, then a column address (CAS) to read and transfer the data.
                 </p>
             </div>
         </aside>
@@ -239,8 +238,7 @@ import EvolutionLogic from "../components/Evolution.jsx"
                 }
             </div>
             <div class="memory-step">
-                <strong>STEP 1:</strong>
-                Receive request from the CPU and decode the memory address.
+                Click any cell to see how RAS (row) and CAS (column) addresses split to target data in the matrix. Watch the lines animate and highlight the exact intersection being transferred.
             </div>
         </section>
 
@@ -248,7 +246,7 @@ import EvolutionLogic from "../components/Evolution.jsx"
         <aside class="memory-right">
             <div class="memory-card">
                 <h3>CURRENT SELECTION</h3>
-                <p><strong>Row: R2  Column:</strong> C4</p>
+                <p><strong>Row: </strong> R2 <strong> Column:</strong> C4</p>
                 <p><strong>Payload:</strong> Pikachu</p>
             </div>
             <div class="memory-card">
