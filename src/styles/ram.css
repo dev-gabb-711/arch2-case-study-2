@@ -983,7 +983,51 @@
   text-align: left;
 }
 
+
 /* -------------------------------------------- */
+/* INSIDE THE RAM                     */
+/* -------------------------------------------- */
+
+.switch-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: -6rem auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  
+  /* to make the nintendo appear bigger */
+  transform: scale(1.2); 
+}
+
+.nintendo-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.6)); 
+}
+
+#inside-the-ram-the-internal-data-journey .glow-title {
+  margin-top: -2rem !important; 
+}
+
+.switch-screen-content {
+  position: absolute;
+  top: 11.5%;
+  bottom: 11.5%;
+  left: 15.2%;
+  right: 15.2%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  border: 1px dashed rgba(0, 255, 136, 0.5);
+}
+
+/*------------------------------------------- */
 /* CHALLENGE QUIZ SECTION                       */
 /* -------------------------------------------- */
 
@@ -1181,3 +1225,4 @@
   content: none !important;
   display: none !important;
 }
+
