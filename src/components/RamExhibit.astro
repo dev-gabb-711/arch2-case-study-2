@@ -4,12 +4,14 @@ import "../styles/ram.css";
 import switchPokemon from "../assets/switch-pokemon.png";
 import gameboy from "../assets/gameboy.png";
 import dram from "../assets/DRAM.png";
+import nintendoSwitch from "../assets/ir-nintendo.png";
 
 import arrowsGraphic from "../assets/arrows.png";
 import pointLineGraphic from "../assets/point_line.png";
 import titleLineGraphic from "../assets/title_line.png";
 import topCornerGraphic from "../assets/top_corner.png";
 import pointerGraphic from "../assets/pointer.png";
+import cubeQuestion from "../assets/cube.png";
 ---
 
 <section class="ram-stage">
@@ -145,9 +147,16 @@ import pointerGraphic from "../assets/pointer.png";
       </div>
     </section>
 
-    <section id="inside-the-ram-the-internal-data-journey" class="big-section">
-      <h2 class="glow-title">INSIDE THE RAM</h2>
-      <p>THE INTERNAL DATA JOURNEY</p>
+   <section id="inside-the-ram-the-internal-data-journey" class="big-section">
+      <h2 class="glow-title title-absolute">INSIDE THE RAM</h2>
+      <p class="title-caption caption-absolute">THE INTERNAL DATA JOURNEY</p>
+      
+      <div class="switch-container">
+        <img class="nintendo-image" src={nintendoSwitch.src} alt="Nintendo Switch" />
+        
+        <div class="switch-screen-content">
+           </div>
+      </div>
     </section>
 
     <section id="memory-access-and-communication" class="big-section">
@@ -156,12 +165,6 @@ import pointerGraphic from "../assets/pointer.png";
         <h2 class="glow-title">MEMORY ACCESS SIMULATOR</h2>
         <p class="memory-subtitle">
             CPU TO RAM COMMUNICATION
-        </p>
-        <p class="memory-description">
-            This simulator demonstrates how the CPU communicates with DRAM during
-            a memory request. Follow how a physical memory address is decoded into
-            row and column selections, how RAS and CAS coordinate memory access,
-            and how the requested data is returned to the processor.
         </p>
     </div>
     <!-- Main Content -->
@@ -186,12 +189,9 @@ import pointerGraphic from "../assets/pointer.png";
 
             <div class="memory-card how-it-works">
                 <h3>HOW IT WORKS</h3>
-                <h4>STEP 1</h4>
                 <p>
                     The memory controller receives the CPU request and presents
-                    the row address to DRAM. The Row Address Strobe (RAS)
-                    latches the row address into memory before the column can
-                    be accessed.
+                    the row address to DRAM. The memory controller receives the CPU 
                 </p>
             </div>
         </aside>
@@ -242,8 +242,7 @@ import pointerGraphic from "../assets/pointer.png";
         <aside class="memory-right">
             <div class="memory-card">
                 <h3>CURRENT SELECTION</h3>
-                <p><strong>Row:</strong> R2</p>
-                <p><strong>Column:</strong> C4</p>
+                <p><strong>Row:     Column:</strong> C4</p>
                 <p><strong>Payload:</strong> Pikachu</p>
             </div>
             <div class="memory-card">
@@ -307,10 +306,58 @@ import pointerGraphic from "../assets/pointer.png";
     </div>
     </section>
 
-    <section id="challenge-quiz" class="big-section">
+    <section id="challenge-quiz" class="big-section quiz-section">
       <h2 class="glow-title">CHALLENGE QUIZ</h2>
-      <p>TEST YOUR KNOWLEDGE</p>
+      <p class="title-caption">TEST YOUR KNOWLEDGE</p>
+
+      <div class="quiz-container">
+        <div class="quiz-left">
+          <h3 class="question-number">QUESTION 1</h3>
+          <p class="question-text">
+            This section will reinforce the viewer's learning by asking
+            questions about the information presented in the previous sections
+          </p>
+
+          <div class="cube-container">
+            <div class="cube-glow-bg"></div>
+            <img src={cubeQuestion.src} alt="Glowing Question Cube" class="quiz-cube" />
+          </div>
+        </div>
+
+        <div class="quiz-right">
+          <button class="quiz-option">
+            <span class="option-letter">A.</span>
+            <span class="option-text">The answer in sentence form</span>
+          </button>
+          <button class="quiz-option">
+            <span class="option-letter">B.</span>
+            <span class="option-text">The answer in sentence form</span>
+          </button>
+          <button class="quiz-option">
+            <span class="option-letter">C.</span>
+            <span class="option-text">The answer in sentence form</span>
+          </button>
+          <button class="quiz-option">
+            <span class="option-letter">D.</span>
+            <span class="option-text">The answer in sentence form</span>
+          </button>
+        </div>
+      </div>
     </section>
+
+    <script>
+      const quizOptions = document.querySelectorAll('.quiz-option')
+
+      quizOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          // Remove active class from all options
+          quizOptions.forEach(opt => opt.classList.remove('active'));
+
+          // Add active class to the clicked option
+          option.classList.add('active')
+        });
+      });
+    </script>
 
   </div>
 </section>

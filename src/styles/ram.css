@@ -658,3 +658,589 @@
     letter-spacing: 0.3em;
   }
 }
+
+
+/* ------------------------------------------------------- */
+/*                  MEMORY ACCESS SECTION                  */
+/* ------------------------------------------------------- */
+
+#memory-access-and-communication {
+  display: grid;
+  grid-template-columns: 24% 48% 24%;
+  grid-template-rows: auto 45% 24%;
+  grid-template-areas:
+    "header header header"
+    "left center right"
+    "bottom bottom bottom";
+  gap: 0.45rem 0.45rem;
+  padding: 1rem 3.5% 0.9rem;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  box-sizing: border-box;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(0, 255, 136, 0.34),
+      rgba(0, 255, 136, 0.13) 18%,
+      transparent 42%
+    );
+  align-items: start;
+}
+
+/* HEADER */
+
+.memory-header {
+  grid-area: header;
+  text-align: center;
+  margin: 0 0 0.15rem;
+}
+
+.memory-header .glow-title {
+  font-size: clamp(2.25rem, 5.2cqw, 4.4rem) !important;
+  line-height: 0.85;
+  white-space: nowrap;
+}
+
+.memory-subtitle {
+  margin: 0.45rem auto 0;
+
+  color: white;
+  text-transform: uppercase;
+
+  font-size: clamp(1rem, 1.7cqw, 1.4rem);
+  font-weight: 600;
+
+  letter-spacing: 1rem;
+
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* MAIN LAYOUT */
+
+.memory-main {
+  display: contents;
+}
+
+.memory-left,
+.memory-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+  align-self: start;
+}
+
+.memory-left {
+  grid-area: left;
+  margin-top: -0.8rem;
+}
+
+.memory-right {
+  grid-area: right;
+  margin-top: -0.8rem;
+}
+
+/* CARDS */
+
+.memory-card,
+.memory-center,
+.memory-evolution,
+.memory-details {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.07),
+    rgba(255, 255, 255, 0.015)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 24px rgba(0, 255, 136, 0.055);
+}
+
+.memory-card {
+  padding: 0.5rem 0.85rem;
+  overflow: hidden;
+}
+
+.memory-card h3 {
+  margin: 0 0 0.35rem;
+  padding: 0;
+  color: #00ff88;
+  font-size: clamp(0.46rem, 0.56cqw, 0.58rem);
+  letter-spacing: 0.1rem;
+  line-height: 1.25;
+  text-transform: uppercase;
+  border-bottom: none;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.65);
+}
+
+.memory-card h4 {
+  margin: 0.38rem 0 0.16rem;
+  padding: 0;
+  color: #9affd4;
+  font-size: clamp(0.48rem, 0.6cqw, 0.6rem);
+  letter-spacing: 0.1rem;
+  border-bottom: none;
+  text-align: left;
+}
+
+.memory-card p {
+  margin: 0;
+  max-width: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(0.46rem, 0.58cqw, 0.58rem);
+  line-height: 1.22;
+  letter-spacing: 0.025rem;
+  text-align: left;
+}
+
+/* CPU REQUEST */
+
+.request-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+  color: white;
+  font-size: clamp(0.46rem, 0.58cqw, 0.58rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.request-item:last-child {
+  border-bottom: none;
+}
+
+.request-item strong {
+  color: #00ff88;
+}
+
+/* CENTER MATRIX */
+
+.memory-center {
+  align-self: stretch; 
+  height: 100%;
+  min-height: 11rem;
+  grid-area: center;
+  padding: 0.65rem 0.8rem 0.55rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+  margin-top: -0.8rem;
+}
+
+.memory-grid-header {
+  display: grid;
+  grid-template-columns: 1.25rem repeat(12, 1fr);
+  gap: 0.23rem;
+  width: 100%;
+  margin-bottom: 0.25rem;
+  color: #00ff88;
+  font-size: clamp(0.42rem, 0.55cqw, 0.55rem);
+  font-weight: 700;
+  text-align: center;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: 1.25rem repeat(12, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0.23rem;
+  width: 100%;
+}
+
+.row-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ff88;
+  font-size: clamp(0.42rem, 0.55cqw, 0.55rem);
+  font-weight: 700;
+}
+
+.memory-cell {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.active-row {
+  background: rgba(0, 255, 136, 0.08);
+  border-color: rgba(0, 255, 136, 0.45);
+}
+
+.active-column {
+  background: rgba(0, 255, 136, 0.12);
+  border-color: rgba(0, 255, 136, 0.45);
+}
+
+.selected-cell {
+  background: #73ff72;
+  border-color: white;
+  box-shadow:
+    0 0 14px #73ff72,
+    0 0 32px rgba(115, 255, 114, 0.9),
+    0 0 70px rgba(115, 255, 114, 0.55);
+  transform: scale(1.08);
+}
+
+.memory-step {
+  margin-top: 0.4rem;
+  color: white;
+  font-size: clamp(0.46rem, 0.58cqw, 0.58rem);
+  line-height: 1.2;
+  letter-spacing: 0.025rem;
+  text-align: left;
+}
+
+/* RIGHT SIDE */
+
+.memory-right .memory-card:first-child {
+  text-align: center;
+}
+
+.memory-right .memory-card:first-child h3 {
+  white-space: nowrap;
+}
+
+.memory-right .memory-card:first-child p {
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+/* BOTTOM SECTION */
+
+.memory-bottom {
+  grid-area: bottom;
+  display: grid;
+  grid-template-columns: 53% 47%;
+  gap: 0.45rem;
+  margin-top: 0;
+  min-height: 0;
+  align-self: start;
+}
+
+.memory-evolution,
+.memory-details {
+  padding: 0.45rem 0.75rem;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.memory-evolution h3,
+.memory-details h3 {
+  margin: 0 0 0.32rem;
+  color: #00ff88;
+  font-size: clamp(0.48rem, 0.6cqw, 0.6rem);
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.generation-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.3rem;
+}
+
+.generation-card {
+  min-height: 2.75rem;
+  padding: 0.3rem 0.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  font-size: clamp(0.44rem, 0.56cqw, 0.56rem);
+  font-weight: 700;
+  text-align: center;
+}
+
+.generation-card small {
+  color: white;
+  font-size: clamp(0.4rem, 0.5cqw, 0.5rem);
+}
+
+.active-generation {
+  border-color: #00ff88;
+  box-shadow: 0 0 18px rgba(0, 255, 136, 0.35);
+}
+
+.memory-details {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 0.65rem;
+  align-items: center;
+}
+
+.memory-details h3 {
+  grid-column: 1 / -1;
+}
+
+.memory-details h2 {
+  margin: 0;
+  color: #00ff88 !important;
+  font-size: clamp(0.9rem, 1.45cqw, 1.25rem) !important;
+  text-align: left;
+}
+
+.memory-details p {
+  margin: 0;
+  max-width: none;
+  font-size: clamp(0.42rem, 0.54cqw, 0.54rem);
+  line-height: 1.25;
+  text-align: left;
+}
+
+
+/* -------------------------------------------- */
+/* INSIDE THE RAM                     */
+/* -------------------------------------------- */
+
+.switch-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: -6rem auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  
+  /* to make the nintendo appear bigger */
+  transform: scale(1.2); 
+}
+
+.nintendo-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.6)); 
+}
+
+#inside-the-ram-the-internal-data-journey .glow-title {
+  margin-top: -2rem !important; 
+}
+
+.switch-screen-content {
+  position: absolute;
+  top: 11.5%;
+  bottom: 11.5%;
+  left: 15.2%;
+  right: 15.2%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  border: 1px dashed rgba(0, 255, 136, 0.5);
+}
+
+/*------------------------------------------- */
+/* CHALLENGE QUIZ SECTION                       */
+/* -------------------------------------------- */
+
+.quiz-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 3% 5%; 
+  box-sizing: border-box;
+}
+
+.quiz-section .glow-title {
+  margin-top: 0;
+}
+
+.quiz-section .title-caption {
+  margin-top: 0.25rem;
+  margin-bottom: 4%; /* Scaled down gap */
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(0.55rem, 1cqw, 0.8rem);
+}
+
+.quiz-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8%;
+  width: 90%;
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+}
+
+/* Left Panel */
+.quiz-left {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(0.65rem, 0.9cqw, 0.85rem);
+  line-height: 1.5;
+  margin: 0; 
+  max-width: 95%;
+}
+
+.question-number {
+  color: #00ff88;
+  font-size: clamp(0.75rem, 1cqw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.3); /* Green divider line */
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+}
+
+.cube-container {
+  position: relative;
+  width: 100%;
+  height: 15cqw;
+  max-height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+
+/* remove the image-only glowing circle */
+.cube-glow-bg {
+  display: none;
+}
+
+.quiz-cube {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  /* helps the black image background disappear into the section */
+  mix-blend-mode: screen;
+  opacity: 0.8;
+}
+
+/* Right Panel - Options */
+.quiz-right {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5cqw, 1rem); /* Scaled gap */
+  justify-content: center;
+}
+
+.quiz-option {
+  background: rgba(0, 255, 136, 0.03);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 4px;
+  padding: clamp(0.75rem, 1.5cqw, 1.15rem) clamp(1rem, 2cqw, 1.5rem);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-align: left;
+  outline: none;
+}
+
+.quiz-option:hover {
+  background: rgba(0, 255, 136, 0.08);
+  border-color: rgba(0, 255, 136, 0.6);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.15);
+  transform: translateX(4px);
+}
+
+.quiz-option.active {
+  background: rgba(0, 255, 136, 0.15);
+  border-color: #00ff88;
+  box-shadow: 
+      inset 0 0 10px rgba(0, 255, 136, 0.1),
+      0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.option-letter {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.2cqw, 1rem);
+}
+
+.option-text {
+  color: rgba(255, 255, 255, 0.85);
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(0.75rem, 1cqw, 0.9rem);
+  font-weight: 400;
+}
+
+.quiz-option.active .option-text {
+  color: #ffffff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 850px) {
+  .quiz-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 95%;
+  }
+  
+  .quiz-left {
+    text-align: center;
+    padding-top: 0;
+  }
+
+  .question-number {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .question-text {
+    max-width: 100%;
+  }
+}
+
+
+
+/* Force memory subtitle styling */
+#memory-access-and-communication .memory-subtitle {
+  display: block !important;
+  margin: 0.35rem auto 0 !important;
+
+  font-size: clamp(0.65rem, 0.85cqw, 0.8rem) !important;
+
+  letter-spacing: 0.65rem !important;
+
+  line-height: 1.1 !important;
+
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+/* Remove bottom box header lines */
+#memory-access-and-communication .memory-evolution h3,
+#memory-access-and-communication .memory-details h3 {
+  border: none !important;
+  border-bottom: none !important;
+}
+
+#memory-access-and-communication .memory-evolution h3::before,
+#memory-access-and-communication .memory-evolution h3::after,
+#memory-access-and-communication .memory-details h3::before,
+#memory-access-and-communication .memory-details h3::after {
+  content: none !important;
+  display: none !important;
+}
+
