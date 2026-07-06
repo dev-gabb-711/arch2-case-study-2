@@ -1,35 +1,38 @@
 import { useState } from 'react';
+import cpuImg from '../assets/InsideRAM/cpuImg.png';
+import monitor from '../assets/InsideRAM/monitor.png';
+import pokeball from '../assets/InsideRAM/pokeball.png';
 
 export default function RamJourney() {
   const stepsData = [
     {
       title: "CPU REQUEST",
-      desc: "The CPU executes an instruction that would need a display, so it determines that it needs assets or data not currently available. The CPU’s integrated memory controller generates a read command accompanied by a specific physical memory address.",
+      desc: "The CPU needs Pikachu's data! The CPU executes an instruction that would need a display, so it determines that it needs assets or data not currently available. The CPU’s integrated memory controller generates a read command accompanied by a specific physical memory address.",
       hint: "CPU sends a raw data request with a physical address."
     },
     {
       title: "SYSTEM RAM FETCH",
-      desc: "The read command travels to the System RAM. The address is split into RAS and CAS signals. The row decoder activates the target wordline in the memory matrix. The column decoder selects the specific data bits, transferring them to the data buffer.",
+      desc: "The read command travels to the System RAM to fetch Pikachu's data. The address is split into RAS and CAS signals. The row decoder activates the target wordline, and the column decoder selects the exact bits — Pikachu’s HP, Attack, and Speed — transferring them to the buffer.",
       hint: "RAM isolates, amplifies, and buffers the requested data bits."
     },
     {
       title: "CPU PROCESSING",
-      desc: "The CPU receives the raw data from the System RAM, processes it according to the running application logic, and determines the changes required for the display. It translates these into a standardized graphics API command stream.",
+      desc: "The CPU receives Pikachu’s raw stats from RAM. It processes the data according to the running application logic, like calculating Pikachu’s Thunderbolt damage, and translates it into standardized graphics API commands for rendering.",
       hint: "CPU translates raw RAM data into standard graphics API commands."
     },
     {
       title: "PCI EXPRESS TRANSPORT",
-      desc: "The CPU triggers a DMA transfer or uses Memory-Mapped I/O (MMIO) to send the command buffer and necessary vertex/texture data across the PCI Express (PCIe) directly to the dedicated GPU's Video RAM.",
+      desc: "The CPU sends Pikachu’s battle-ready data through PCIe lanes. Using DMA or MMIO, the command buffer and texture data (like Pikachu’s sprite) are delivered directly into the GPU’s VRAM.",
       hint: "Data travels through PCIe lanes directly into VRAM."
     },
     {
       title: "GPU EXECUTION",
-      desc: "The GPU’s command processor fetches the instructions from VRAM and distributes the workload across its parallel computing pipelines to begin rendering the frame.",
+      desc: "The GPU’s command processor fetches the instructions from VRAM and distributes the workload across its parallel computing pipelines, like Pikachu unleashing sparks in multiple directions, to begin rendering the frame.",
       hint: "GPU's parallel pipelines actively process instructions from VRAM."
     },
     {
       title: "PAGE FLIPPING",
-      desc: "Once the entire frame is fully rendered in the Back Buffer, the system prepares to display it. The GPU waits for a sync signal, and a page flip occurs, making the Back Buffer the active Front Buffer.",
+      desc: "Once Pikachu’s frame is fully rendered in the Back Buffer, the system prepares to display it. The GPU waits for a sync signal, and a page flip occurs, making the Back Buffer the active Front Buffer. Pikachu’s sprite is now ready to appear on screen!",
       hint: "Back Buffer becomes the active Front Buffer via a fast page flip."
     },
     {
@@ -39,7 +42,7 @@ export default function RamJourney() {
     },
     {
       title: "SCREEN DISPLAY",
-      desc: "The serialized digital stream arrives at the monitor's input interface. The screen decodes these signals, lighting up individual pixels to visually reveal the final rendered output to the player.",
+      desc: "The serialized digital stream arrives at the monitor's input interface. Just as Pikachu’s Thunderbolt lights up the battlefield, the screen decodes these signals and illuminates pixels to reveal Pikachu’s sprite and stats to the player!",
       hint: "The monitor decodes signals to draw the final game frames on screen."
     }
   ];
@@ -50,7 +53,9 @@ export default function RamJourney() {
     <div className="ram-journey-hud">
       {/* Header Tracker */}
       <div className="ram-journey-header">
-        <div className="ram-journey-mission">MEMORY FETCH</div>
+        <div className="ram-journey-mission">
+          <img src={pokeball.src} alt="" className="pokeball-icon" />MISSION: LOAD PIKACHU DATA
+        </div>
         <div className="ram-journey-counter">
           STEP {currentStep + 1} / {stepsData.length}
         </div>
@@ -93,21 +98,24 @@ export default function RamJourney() {
         <div className="ram-journey-visual">
           <div className="ram-journey-visual-labels">
             <span>CPU</span>
-            <span>RAM</span>
+            <span>RAM MODULE</span>
             <span>SCREEN</span>
           </div>
 
           <div className="ram-journey-track">
-            <div className="ram-journey-cpu">CPU</div>
-            <div className="ram-journey-chips">
-              <div className={`ram-journey-chip ${currentStep >= 1 ? 'active' : ''}`}></div>
-              <div className={`ram-journey-chip ${currentStep >= 3 ? 'active' : ''}`}></div>
-              <div className={`ram-journey-chip ${currentStep >= 4 ? 'active' : ''}`}></div>
-              <div className={`ram-journey-chip ${currentStep >= 6 ? 'active' : ''}`}></div>
+            <div className="ram-journey-cpu">
+              <img src={cpuImg.src} alt="CPU" className="cpu-pika" />
             </div>
-            <div className="ram-journey-screen">
-              {currentStep === 7 ? "🎮✨" : "🎮"} 
-              {/* //Placeholder muna yan delete this kapag babaguhin na */}
+            <div className="ram-journey-chips">
+              {stepsData.map((_, index) => (
+                <div
+                key={index}
+                className={`ram-journey-chip ${currentStep >= index ? 'active' : ''}`}>
+                </div>
+              ))}
+            </div>
+            <div className={`ram-journey-screen ${currentStep === 7 ? 'loaded' : ''}`}>
+              <img src={monitor.src} alt="Screen" className="cpu-pika" />
             </div>
             <div className="ram-journey-packet show"></div>
           </div>
@@ -115,6 +123,23 @@ export default function RamJourney() {
           <div className="ram-journey-hint">
             {stepsData[currentStep].hint}
           </div>
+
+          <div className="ram-journey-controls">
+            <button
+            onClick={() => setCurrentStep((s) => Math.max(0, s - 1))}
+            disabled={currentStep === 0}
+            >
+              <span className="key">◀</span> BACK
+              </button>
+              <button
+              className="primary"
+              onClick={() => setCurrentStep((s) => Math.min(stepsData.length - 1, s + 1))}
+              disabled={currentStep === stepsData.length - 1}
+              >
+                NEXT <span className="key">▶</span>
+                </button>
+                </div>
+
         </div>
 
       </div>
