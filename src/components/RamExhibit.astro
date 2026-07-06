@@ -1,6 +1,8 @@
 ---
 import "../styles/ram.css";
 
+import RamJourney from "./RamJourney.jsx";
+
 import switchPokemon from "../assets/switch-pokemon.png";
 import gameboy from "../assets/gameboy.png";
 import dram from "../assets/DRAM.png";
@@ -147,7 +149,7 @@ import cubeQuestion from "../assets/cube.png";
       </div>
     </section>
 
-   <section id="inside-the-ram-the-internal-data-journey" class="big-section">
+ <section id="inside-the-ram-the-internal-data-journey" class="big-section">
       <h2 class="glow-title title-absolute">INSIDE THE RAM</h2>
       <p class="title-caption caption-absolute">THE INTERNAL DATA JOURNEY</p>
       
@@ -155,7 +157,8 @@ import cubeQuestion from "../assets/cube.png";
         <img class="nintendo-image" src={nintendoSwitch.src} alt="Nintendo Switch" />
         
         <div class="switch-screen-content">
-           </div>
+          <RamJourney client:load />
+        </div>
       </div>
     </section>
 
@@ -357,7 +360,9 @@ import cubeQuestion from "../assets/cube.png";
           option.classList.add('active')
         });
       });
+
     </script>
 
   </div>
 </section>
+
