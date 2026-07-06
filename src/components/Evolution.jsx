@@ -10,7 +10,6 @@ export default function EvolutionLogic() {
         if (!scrollSection || !leftBtn || !rightBtn || !buttons) return;
 
         let currentIndex = 0;
-        const scrollAmount = 200;
 
         const updateHighlight = () => {
             buttons.forEach((btn, i) => {
