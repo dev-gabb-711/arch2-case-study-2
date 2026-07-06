@@ -479,8 +479,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  aspect-ratio: auto !important;
-  height: auto !important;
+  aspect-ratio: 16 / 9;
+  height: auto;
   overflow: hidden;
   padding: 2rem 1rem;
   text-align: center;
@@ -503,6 +503,20 @@
   letter-spacing: 0.08em;
 }
 
+.big-section h2.evolution-name {
+  font-size: large;
+}
+
+.big-section p.evolution-sides {
+  font-size: small;
+}
+
+.evolution-sides h3 {
+  color: darkgreen;
+  font-size: small;
+  border: none;
+}
+
 .evolution-upper {
   display: flex;
   justify-content: space-between;
@@ -514,8 +528,11 @@
 
 .evolution-sides {
   flex: 1;
-  padding: 1rem;
+  padding: 0.5rem;
   text-align: left;
+  border: 1px solid white;
+  border-radius: 5px;
+  height: 180px;
 }
 
 .test-box {
@@ -545,6 +562,7 @@
   flex: 1;
   padding: 0.5rem 0;
   scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
 .scroll-section::-webkit-scrollbar {
