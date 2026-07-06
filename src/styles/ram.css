@@ -1013,12 +1013,41 @@
   margin-top: -2rem !important; 
 }
 
+/* -------------------------------------------- */
+/* INSIDE THE RAM                     */
+/* -------------------------------------------- */
+
+.switch-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: -6rem auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  
+  /* to make the nintendo appear bigger */
+  transform: scale(1.2); 
+}
+
+.nintendo-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.6)); 
+}
+
+#inside-the-ram-the-internal-data-journey .glow-title {
+  margin-top: -2rem !important; 
+}
+
 .switch-screen-content {
   position: absolute;
-  top: 11.5%;
-  bottom: 11.5%;
-  left: 15.2%;
-  right: 15.2%;
+  top: 23%;
+  bottom: 21%;
+  left: 18%;
+  right: 18%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1026,6 +1055,360 @@
   align-items: center; 
   border: 1px dashed rgba(0, 255, 136, 0.5);
 }
+
+
+.ram-journey-hud {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 3cqw 3.2cqw 2cqw;
+  box-sizing: border-box;
+  color: white;
+}
+
+.ram-journey-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  font-size: clamp(0.4rem, 1cqw, 0.7rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ram-journey-mission {
+  color: #d9ffe9;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.55);
+}
+
+.ram-journey-mission .pokeball {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  border-radius: 50%;
+  background: linear-gradient(#ff4d4d 50%, #fff 50%);
+  border: 1px solid #111;
+  margin-right: 0.45em;
+  vertical-align: -0.05em;
+}
+
+.ram-journey-counter {
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 600;
+}
+
+.ram-journey-tracker{
+  display: flex;
+  justify-content: space-between;
+  margin: 2.4cqw 0;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.ram-journey-tracker::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 4%;
+  right: 4%;
+  height: 1px;
+  background: rgba(0, 255, 136, 0.18);
+  z-index: 0;
+}
+
+.ram-journey-step{
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ram-journey-step .number{
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.36rem, 0.85cqw, 0.6rem);
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.45);
+  transition: all 0.25s ease;
+}
+
+.ram-journey-step.active .number {
+  border-color: #00ff88;
+  color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.55);
+}
+
+.ram-journey-step.completed .number {
+  border-color: rgba(0, 255, 136, 0.5);
+  background: rgba(0, 255, 136, 0.12);
+  color: #9affd4;
+}
+
+.ram-journey-body{
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 40% 58%;
+  gap: 2cqw;
+  min-height: 0;
+}
+
+.ram-journey-info{
+    width: 110%;
+
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+    min-width:0;
+    padding-right: 2cqw;
+}
+
+.ram-journey-info .step-badge{
+  color: #00ff88;
+  font-weight: 700;
+  font-size: clamp(0.4rem, 1cqw, 0.7rem);
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+}
+
+.ram-journey-info .status-label{
+  color: rgba(154, 255, 212, 0.8);
+  font-size: clamp(0.34rem, 0.8cqw, 0.56rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ram-journey-info .status-value {
+  color: white;
+  font-weight: 700;
+  font-size: clamp(0.42rem, 1cqw, 0.72rem);
+  margin-top: 0.3em;
+}
+
+.ram-journey-info .desc {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(0.36rem, 0.85cqw, 0.6rem);
+  line-height: 1.5;
+}
+
+.ram-journey-info .learn-more {
+  display: none;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(0.34rem, 0.8cqw, 0.56rem);
+  line-height: 1.55;
+  border-top: 1px dashed rgba(0, 255, 136, 0.3);
+  padding-top: 3cqw;
+}
+
+.ram-journey-info .learn-more.open {
+  display: block;
+}
+
+.ram-journey-info .learn-more ul {
+  margin: 0.4em 0 0;
+  padding-left: 1.1em;
+}
+
+.ram-journey-info .learn-more li {
+  margin-bottom: 0.4em;
+}
+
+.ram-journey-info .learn-more strong {
+  color: #9affd4;
+}
+
+.ram-journey-visual {
+  width: 90%;
+  max-width: none;
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 24px rgba(0,255,136,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: fit-content; 
+  align-self: flex-start;
+  gap: 1cqw;           
+  padding: 1.2cqw;
+  position: relative;
+  transform: translate(-5px, -15px);    
+}
+
+.ram-journey-visual-labels {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: clamp(0.32rem, 0.75cqw, 0.5rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ram-journey-track {
+  flex: 0 0 auto;
+  min-height: 90px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3%;
+  position: relative;
+}
+
+.ram-journey-cpu,
+.ram-journey-screen {
+  width: 13%;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 255, 136, 0.45);
+  background: rgba(0, 255, 136, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(0, 255, 136, 0.6);
+  font-size: clamp(0.3rem, 0.7cqw, 0.5rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding: 4%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+
+.ram-journey-screen.loaded {
+  border-color: #00ff88;
+  box-shadow: 0 0 14px rgba(0, 255, 136, 0.5);
+}
+
+.ram-journey-screen .pika {
+  font-size: 1.7em;
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
+}
+
+.ram-journey-screen.loaded .pika {
+  opacity: 1;
+}
+
+.ram-journey-chips {
+   flex: 0 0 auto;
+  width: 45%;
+  display: flex;
+  gap: 3%;
+  justify-content: center;
+  padding: 3% 2%;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 255, 136, 0.35);
+  position: relative;
+  z-index: 2;
+}
+
+.ram-journey-chip {
+  flex: 1;
+  max-width: 14%;
+  aspect-ratio: 1 / 3;
+  border-radius: 3px;
+  background: rgba(0, 255, 136, 0.06);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  transition: all 0.25s ease;
+}
+
+.ram-journey-chip.active {
+  background: rgba(0, 255, 136, 0.28);
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.55);
+}
+
+.ram-journey-packet {
+  position: absolute;
+  width: 12px;        
+  height: 12px;       
+  border-radius: 2px;
+  background: #00ff88;
+  box-shadow: 0 0 10px #00ff88, 0 0 4px #00ff88;
+  top: 50%;
+  left: 18%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: left 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity: 0;
+  z-index: 1;
+}
+
+.ram-journey-packet.show {
+  opacity: 1;
+}
+
+.ram-journey-hint {
+  flex: 0 0 auto;
+  margin-top: -3cqw;
+  border: 1px solid rgba(0, 255, 136, 0.35);
+  background: rgba(0, 255, 136, 0.06);
+  border-radius: 6px;
+  color: #9affd4;
+  padding: 1.6cqw 2.4cqw;
+  font-size: clamp(0.32rem, 0.78cqw, 0.54rem);
+  letter-spacing: 0.03em;
+}
+
+.ram-journey-controls {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 4cqw;
+  margin-top: 1.8cqw;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: clamp(0.32rem, 0.78cqw, 0.54rem);
+}
+
+.ram-journey-controls button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.ram-journey-controls .key {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85em;
+}
+
+.ram-journey-controls button.primary .key {
+  background: #00ff88;
+  color: #020503;
+  border-color: #00ff88;
+}
+
+.ram-journey-controls button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
 
 /*------------------------------------------- */
 /* CHALLENGE QUIZ SECTION                       */
