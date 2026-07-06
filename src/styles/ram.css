@@ -590,6 +590,12 @@
   cursor: pointer;
 }
 
+.evolution-button.active {
+  background: #00ff88;
+  color: black;
+  border-color: #00ff88;
+}
+
 /* Other sections */
 .big-section {
   display: grid;
