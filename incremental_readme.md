@@ -21,3 +21,4 @@
   - Fixed the panel sizing, spacing, alignment, and positioning to better match the approved style guide.
   - Updated the typography and background styling for consistency with the rest of the exhibit.
   - Finished most of the layout required for the Challenge Quiz, will add the content after Mid-Milestone.
+  - Finished the entirety of the layout and information needed for Memory Access Communication segment (Section 4)
