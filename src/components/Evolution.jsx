@@ -4,6 +4,13 @@ import drum from "../assets/EvolutionRAM/Drum.png"
 import magnetic from "../assets/EvolutionRAM/MagneticCore.png"
 import matrix from "../assets/EvolutionRAM/MatrixCore.png"
 import dram from "../assets/EvolutionRAM/DRAM.png"
+import mos from "../assets/EvolutionRAM/mos-dram-epron.jpg"
+import sdram from "../assets/EvolutionRAM/sdram.png"
+import edo from "../assets/EvolutionRAM/edo.png"
+import drdram from "../assets/EvolutionRAM/drdram.png"
+import ddr1 from "../assets/EvolutionRAM/ddr1.png"
+import ddr2 from "../assets/EvolutionRAM/ddr2.png"
+import ddr3 from "../assets/EvolutionRAM/ddr3.png"
 
 const ramData = [
     {
@@ -66,10 +73,88 @@ const ramData = [
             "Reduced manufacturing costs while increasing memory capacity",
             "Introduced programmable firmware storage through EPROM"
         ],
-        description: [
+        description: [ "This era marked the transition to practical semiconductor memory, replacing magnetic cores with MOS integrated circuits. This fabrication breakthrough birthed two complementary branches: high-density DRAM for temporary working memory, and EPROM for permanent, reusable firmware storage."
             
         ],
-        image: dram.src
+        image: mos.src
+    },
+    {
+        name: "SDRAM",
+        year: "1993",
+        features: [
+            "Aligned all operations with the system clock for precise coordination.",
+            "Enabled high-performance features like burst transfers and pipelining.",
+            "Eliminated unpredictable waiting times to accelerate data speeds."
+        ],
+        description: [ "SDRAM was a major milestone that abandoned the old asynchronous model to sync directly with the computer's system clock. This perfect harmony allowed the CPU and memory to coordinate seamlessly, drastically reducing delays and boosting data bandwidth."
+            
+        ],
+        image: sdram.src
+    },
+    {
+        name: "Extended Data Out DRAM (EDO DRAM)",
+        year: "1994",
+        features: [
+            "Prepared the next memory access while the previous data was still transferring.",
+            "Shortened waiting times between consecutive memory operations.",
+            "Boosted system performance without requiring major hardware overhauls."
+        ],
+        description: [ "Developed in the early 1990s, EDO DRAM was an evolutionary upgrade designed to bridge the growing performance gap between fast processors and slower memory. It served as a vital transitional technology that boosted efficiency without requiring major architectural changes."
+            
+        ],
+        image: edo.src
+    },
+    {
+        name: "DRDRAM and PSRAM",
+        year: "Late 1990s",
+        features: [
+            "DRDRAM used a narrow, ultra-fast channel for high-speed computing.",
+            "PSRAM matched DRAM density with a simplified, auto-refreshing SRAM interface.",
+            "Optimized specifically for power-sensitive mobile and embedded devices."
+        ],
+        description: [ "As performance demands spiked, the industry experimented with alternative designs to bypass traditional memory limits. This led to high-bandwidth DRDRAM for high-performance systems, and energy-efficient PSRAM for the booming portable and embedded electronics market."
+            
+        ],
+        image: drdram.src
+    },
+    {
+        name: "DDR SDRAM",
+        year: "2000",
+        features: [
+            "Transferred data on both the rising and falling edges of the cycle.",
+            "Doubled performance without needing higher clock frequencies.",
+            "Maintained core synchronous principles to keep production costs low."
+        ],
+        description: [ "Arriving at the turn of the millennium, DDR revolutionized memory by transferring data on both the rising and falling edges of the clock cycle. This clever design effectively doubled performance and bandwidth without requiring expensive increases to the clock speed itself."
+            
+        ],
+        image: ddr1.src
+    },
+    {
+        name: "DDR2 SDRAM",
+        year: "2003",
+        features: [
+            "Used wider internal buffers and higher frequencies for faster transfer rates.",
+            "Cut down on electrical consumption and system heat generation.",
+            "Supported larger capacities to handle demanding multitasking workloads."
+        ],
+        description: [ "Built to handle the multi-core processors of the mid-2000s, DDR2 scaled up memory performance while aggressively targeting power consumption. By introducing larger buffers and lower operating voltages, it delivered higher capacities with less heat."
+            
+        ],
+        image: ddr2.src
+    },
+    {
+        name: "DDR3 SDRAM",
+        year: "2007",
+        features: [
+            "Delivered much higher transfer rates and module capacities than DDR2.",
+            "Dropped voltages further to extend laptop battery life.",
+            "Engineered specifically to handle intensive, multi-core computer workloads."
+        ],
+        description: [ "DDR3 arrived to support the modern era of high-definition multimedia, virtualization, and heavy multitasking. By further optimizing transfer speeds and lowering power limits, it became a highly reliable, long-lasting standard for both desktops and laptops."
+            
+        ],
+        image: ddr3.src
     },
 ];
 

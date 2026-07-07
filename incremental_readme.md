@@ -27,3 +27,4 @@
 
 - **July 7**
   - Finished the entirety of Section 3.
+  - Finished the timeline on the RAM Evolution segment of Section 2.
