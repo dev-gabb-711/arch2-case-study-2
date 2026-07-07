@@ -29,3 +29,8 @@
   - Finished the entirety of Section 3.
   - Finished the timeline on the RAM Evolution segment of Section 2.
   - Added additional required info in the What is RAM segment of Section 1.
+  - Finished formatting and added references and AI disclosure
+
+- **TO BE DONE FOR THE FINAL SUBMISSION**
+  - Fully Implement the interactive elements of Section 3 (Internal Data Flow of Memory and Information), Section 4 (Memory Access and Communication Grid Selection and Display), and Section 5 (Challenge Quiz)
+  - Improve UI that fits properly with the theme of the virtual exhibit
