@@ -367,7 +367,7 @@
 .what-left {
   position: absolute;
   left: 3.5%;
-  top: 25%;
+  top: 10%;
   width: 35%;
   z-index: 14;
 }
@@ -448,7 +448,8 @@
 
 .what-callout {
   position: absolute;
-  top: 100%;
+  top: 122%;
+  left: 20%;
   right: -20%;
   width: 100%;
   z-index: 14;
@@ -464,14 +465,31 @@
   width: 90%;
 }
 
-.pointer {
+.what-left .pointer {
+  display: block;
   position: absolute;
-  top: 250%;
-  right: 30%;
-  width: 80%;
-  z-index: 9;
-  pointer-events: none;
-  user-select: none;
+  top: 105%; 
+  left: 20%;
+  width: 75%; 
+  height: auto;
+  z-index: 1;
+}
+
+.ram-fundamentals {
+  max-width: 250px;
+  margin-left: auto;
+}
+
+.ram-fundamentals ul {
+  list-style-type: disc !important; 
+  padding-left: 20px !important;    
+  text-align: left !important;      
+}
+
+.ram-fundamentals li {
+  text-align: left !important; 
+  margin-bottom: 8px;
+  font-size: 8px !important;
 }
 
 /* SECTION 2: The Evolution of RAM*/

@@ -71,13 +71,6 @@ import MemComEvolution from "../components/MemoryCommunication.jsx"
           <li>The Game Paks were also limited in memory size, being only 32 KB</li>
           <li>Decades later, these limitations became obsolete, with the Nintendo Switch 2 having a custom processor from NVIDIA and a 256 GB storage</li>
         </ul>
-      </div>
-
-      <img class="gameboy-image" src={gameboy.src} alt="Game Boy memory visual" />
-
-      <div class="what-right">
-        <h2 class="glow-title">WHAT IS RAM?</h2>
-        <p>COMPUTER MEMORY IN MOTION</p>
 
         <div class="what-callout">
           <ul>
@@ -86,7 +79,6 @@ import MemComEvolution from "../components/MemoryCommunication.jsx"
               <li>Hybrid of Zilog Z80 and Intel 8080</li>
               <li>Runs at ~4.19 MHz</li>
             </ul>
-
             <li>Game PAK</li>
             <ul>
               <li>32 KB ROM</li>
@@ -96,6 +88,23 @@ import MemComEvolution from "../components/MemoryCommunication.jsx"
         </div>
 
         <img class="pointer" src={pointerGraphic.src} alt="" aria-hidden="true" />
+      </div>
+
+      <img class="gameboy-image" src={gameboy.src} alt="Game Boy memory visual" />
+
+      <div class="what-right">
+        <h2 class="glow-title">WHAT IS RAM?</h2>
+        <p>COMPUTER MEMORY IN MOTION</p>
+
+        <div class="ram-fundamentals">
+          <ul>
+            <li><strong>Working Memory:</strong> High-speed workspace used by the CPU to store actively running programs and temporary binary data. It allows the processor to fetch data near-instantly.</li>
+            <li><strong>Random Access:</strong> Unlike sequential storage, the CPU uses explicit memory addresses to access any cell directly and instantly. This keeps retrieval times identical across the entire board.</li>
+            <li><strong>Volatility:</strong> RAM requires constant power; its entire payload vanishes instantly when the system is turned off. It serves strictly as a live, temporary canvas.</li>
+            <li><strong>RAM vs. ROM:</strong> RAM is dynamic (Read/Write) for active data, while ROM is permanent (Read-Only) for unchangeable boot firmware. ROM retains critical code safely even without power.</li>
+            <li><strong>Bus Communication:</strong> CPU interacts with memory via Address (location), Data (payload), and Control (read/write signals) buses. These physical paths move data smoothly on every cycle.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
