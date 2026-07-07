@@ -15,6 +15,9 @@
 ### Topic Title
 - Title: Inside RAM - Computer Memory in Motion
 
+### Website Deployment Link
+https://dev-gabb-711.github.io/arch2-case-study-2/
+
 ### Section 1: What is RAM?
 **Overview Implementation**: This introductory section aims to establish the foundational concepts necessary for understanding the inner workings of RAM. Visitors will be introduced to the purpose of computer memory, the role RAM plays in system performance, and how it interacts with the CPU during normal computer operations. Through visual aids, examples, and simplified diagrams, this section will provide the background knowledge needed to understand the more technical concepts presented in later sections.
 
