@@ -95,7 +95,7 @@
 .big-section {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 11;
   height: auto;
   min-height: unset;
   overflow: hidden;
@@ -712,7 +712,7 @@
   gap: 0.45rem 0.45rem;
   padding: 1rem 3.5% 0.9rem;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 11;
   overflow: hidden;
   box-sizing: border-box;
   background:
