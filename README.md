@@ -179,8 +179,7 @@ https://dev-gabb-711.github.io/arch2-case-study-2/
   - document your development (things done) in the readme (aha moments, things learned, challenges, creative development, etc) as well as things to be done on the final submission.  Those documents should be part of the incremental readme (new document on top of the previous proposal document). **Note**: Put this at the top of the README
   - DDR4/5 discussion missing
   - Comparison chart among memory will be helpful
-
-Keep improving the web contents and interactive elements of your web apps.
+  - Keep improving the web contents and interactive elements of your web apps.
 
 - **July 13**
   - Added information re: DDR4 and DDR5 for Section 2's RAM Evolution
