@@ -175,6 +175,17 @@ https://dev-gabb-711.github.io/arch2-case-study-2/
   - Fully Implement the interactive elements of Section 3 (Internal Data Flow of Memory and Information), Section 4 (Memory Access and Communication Grid Selection and Display), and Section 5 (Challenge Quiz)
   - Improve UI that fits properly with the theme of the virtual exhibit
 
+- **TO BE DONE (REVISIONS)**
+  - document your development (things done) in the readme (aha moments, things learned, challenges, creative development, etc) as well as things to be done on the final submission.  Those documents should be part of the incremental readme (new document on top of the previous proposal document). **Note**: Put this at the top of the README
+  - DDR4/5 discussion missing
+  - Comparison chart among memory will be helpful
+
+Keep improving the web contents and interactive elements of your web apps.
+
+- **July 13**
+  - Added information re: DDR4 and DDR5 for Section 2's RAM Evolution
+  - Fixed bottom tab moving by setting it at the bottom of the page by setting the top margin to auto
+
 ## Reference Citations
 
 - Patterson, D. A., & Hennessy, J. L. (2021). Computer organization and design RISC-V edition: The hardware/software interface (2nd ed.). Morgan Kaufmann.
