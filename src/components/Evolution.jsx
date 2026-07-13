@@ -11,6 +11,8 @@ import drdram from "../assets/EvolutionRAM/drdram.png"
 import ddr1 from "../assets/EvolutionRAM/ddr1.png"
 import ddr2 from "../assets/EvolutionRAM/ddr2.png"
 import ddr3 from "../assets/EvolutionRAM/ddr3.png"
+import ddr4 from "../assets/EvolutionRAM/ddr4.png"
+import ddr5 from "../assets/EvolutionRAM/ddr5.png"
 
 const ramData = [
     {
@@ -156,6 +158,32 @@ const ramData = [
         ],
         image: ddr3.src
     },
+    {
+        name: "DDR4 SDRAM",
+        year: "2014",
+        features: [
+            "Introduced Bank Groups to enable faster burst access and higher efficiency.",
+            "Reduced operating voltage to 1.2V, significantly lowering power consumption.",
+            "Greatly increased data transfer rates and overall module densities."
+        ],
+        description: [
+            "DDR4 brought substantial improvements in performance and efficiency to power high-density servers and modern consumer PCs. By shifting to lower voltages and implementing unique architectural bank groups, it allowed systems to manage memory-intensive workloads with much better thermal and power efficiency."
+        ],
+        image: ddr4.src
+    },
+    {
+        name: "DDR5 SDRAM",
+        year: "2020",
+        features: [
+            "Split each module into two independent 32-bit subchannels for better channel efficiency.",
+            "Moved power management (PMIC) directly onto the DIMM for cleaner, more reliable power delivery.",
+            "Introduced on-die ECC to automatically correct internal bit errors at incredibly high clock speeds."
+        ],
+        description: [
+            "Designed to meet the exploding performance demands of next-gen multi-core processors, cloud computing, and AI workloads, DDR5 represents a massive architectural leap. It pushes data speeds to unprecedented levels while fundamentally changing how power management and data reliability are handled directly on the hardware module."
+        ],
+        image: ddr5.src
+    }
 ];
 
 export default function EvolutionLogic() {
