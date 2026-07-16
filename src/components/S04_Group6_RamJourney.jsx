@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import cpuImg from '../assets/InsideRAM/cpuImg.png';
-import monitor from '../assets/InsideRAM/monitor.png';
-import pokeball from '../assets/InsideRAM/pokeball.png';
+import cpuImg from '../assets/S04_Group6_InsideRAMImg/cpuImg.png';
+import monitor from '../assets/S04_Group6_InsideRAMImg/monitor.png';
+import pokeball from '../assets/S04_Group6_InsideRAMImg/pokeball.png';
 
 export default function RamJourney() {
   const stepsData = [

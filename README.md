@@ -185,6 +185,10 @@ https://dev-gabb-711.github.io/arch2-case-study-2/
   - Added information re: DDR4 and DDR5 for Section 2's RAM Evolution
   - Fixed bottom tab moving by setting it at the bottom of the page by setting the top margin to auto
 
+- **July 16**
+  - Edited the filenames of all group-made files (components, styles, assets, etc.)
+  - Fixed the layout of the bottom part of Section 4 (Memory Access Communication)
+
 ## Reference Citations
 
 - Patterson, D. A., & Hennessy, J. L. (2021). Computer organization and design RISC-V edition: The hardware/software interface (2nd ed.). Morgan Kaufmann.

@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 
-import drum from "../assets/EvolutionRAM/Drum.png"
-import magnetic from "../assets/EvolutionRAM/MagneticCore.png"
-import matrix from "../assets/EvolutionRAM/MatrixCore.png"
-import dram from "../assets/EvolutionRAM/DRAM.png"
-import mos from "../assets/EvolutionRAM/mos-dram-epron.jpg"
-import sdram from "../assets/EvolutionRAM/sdram.png"
-import edo from "../assets/EvolutionRAM/edo.png"
-import drdram from "../assets/EvolutionRAM/drdram.png"
-import ddr1 from "../assets/EvolutionRAM/ddr1.png"
-import ddr2 from "../assets/EvolutionRAM/ddr2.png"
-import ddr3 from "../assets/EvolutionRAM/ddr3.png"
-import ddr4 from "../assets/EvolutionRAM/ddr4.png"
-import ddr5 from "../assets/EvolutionRAM/ddr5.png"
+import drum from "../assets/S04_Group6_EvolutionRAMImg/Drum.png"
+import magnetic from "../assets/S04_Group6_EvolutionRAMImg/MagneticCore.png"
+import matrix from "../assets/S04_Group6_EvolutionRAMImg/MatrixCore.png"
+import dram from "../assets/S04_Group6_EvolutionRAMImg/DRAM.png"
+import mos from "../assets/S04_Group6_EvolutionRAMImg/mos-dram-epron.jpg"
+import sdram from "../assets/S04_Group6_EvolutionRAMImg/sdram.png"
+import edo from "../assets/S04_Group6_EvolutionRAMImg/edo.png"
+import drdram from "../assets/S04_Group6_EvolutionRAMImg/drdram.png"
+import ddr1 from "../assets/S04_Group6_EvolutionRAMImg/ddr1.png"
+import ddr2 from "../assets/S04_Group6_EvolutionRAMImg/ddr2.png"
+import ddr3 from "../assets/S04_Group6_EvolutionRAMImg/ddr3.png"
+import ddr4 from "../assets/S04_Group6_EvolutionRAMImg/ddr4.png"
+import ddr5 from "../assets/S04_Group6_EvolutionRAMImg/ddr5.png"
 
 const ramData = [
     {

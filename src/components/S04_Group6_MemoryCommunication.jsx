@@ -1,4 +1,3 @@
-// src/components/MemoryEvolution.jsx
 import React, { useState } from 'react';
 
 const generationsData = {
