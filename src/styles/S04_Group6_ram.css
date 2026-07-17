@@ -1,12 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 @font-face {
   font-family: "RQND Pro";
-  src: url("../assets/S04_Group6_fonts/TT_RQNDPro_Beta-Medium.8753bf813acd68368.da5b5541321909cc4f5a5192c78df49e.woff2") format("woff2");
+  src: url("../assets/S04_Group6_fonts/TT_RQNDPro_Beta-Medium.8753bf813acd68368.da5b5541321909cc4f5a5192c78df49e.woff2")
+    format("woff2");
   font-weight: 400 900;
   font-style: normal;
   font-display: swap;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* ------- Table of Contents navigation ------- */
 .article > h2 {
@@ -55,7 +56,7 @@
 /* Article card */
 .article:has(.ram-stage) {
   padding: 0 !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   background: var(--bg2) !important;
   border: 1px solid var(--border) !important;
   border-radius: var(--radius) !important;
@@ -67,7 +68,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
   border-radius: var(--radius) !important;
   background: #020503;
 }
@@ -77,7 +78,7 @@
   container-type: inline-size;
   width: 100%;
   max-width: 1120px;
-  overflow: hidden;
+  overflow: visible;
   color: white;
   background: #020503;
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
@@ -95,7 +96,7 @@
 .big-section {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 16 / 14;
   height: auto;
   min-height: unset;
   overflow: hidden;
@@ -353,143 +354,1074 @@
 }
 
 
-/* SECTION 1: What is RAM?*/
-.what-section {
+/* =========================================================
+   SECTION 1 — UNDERSTANDING RAM
+   ========================================================= */
+
+.what-scroll-section {
+  
+  position: relative;
+  width: 100%;
+  min-height: calc(var(--what-chapter-height) * 8);
+  overflow: visible;
+  color: #ffffff;
   background:
+    linear-gradient(
+      rgba(64, 255, 109, 0.025) 1px,
+      transparent 1px
+    ),
     radial-gradient(
-      circle at 50% 48%,
-      rgba(0, 255, 136, 0.34),
-      rgba(0, 255, 136, 0.13) 24%,
-      transparent 55%
+      circle at 50% 38%,
+      rgba(60, 255, 104, 0.1),
+      transparent 34%
+    ),
+    #020703;
+  background-size:
+    100% 7px,
+    auto,
+    auto;
+  border-bottom: 1px solid rgba(111, 255, 133, 0.25);
+}
+
+/* ---------------------------------------------------------
+   Sticky section heading
+   --------------------------------------------------------- */
+
+.what-scroll-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  width: 100%;
+  min-height: 8.7rem;
+  padding: 0.85rem clamp(1.5rem, 5cqw, 4rem) 1.05rem;
+  text-align: center;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(2, 7, 3, 1) 0%,
+      rgba(2, 7, 3, 0.98) 74%,
+      rgba(2, 7, 3, 0.9) 88%,
+      transparent 100%
     );
 }
 
-.what-left {
-  position: absolute;
-  left: 3.5%;
-  top: 10%;
-  width: 35%;
-  z-index: 14;
+.what-scroll-header-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 94%;
+  margin: 0 auto 0.6rem;
 }
 
-.what-left h3 {
-  margin: 0 0 5% !important;
+.what-scroll-header-line::before,
+.what-scroll-header-line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(109, 255, 129, 0.65)
+    );
+}
+
+.what-scroll-header-line::after {
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      rgba(109, 255, 129, 0.65)
+    );
+}
+
+.what-scroll-section-number {
+  padding-inline: 1.5rem;
+  color: #74ff8a;
+  font-size: clamp(0.55rem, 0.75cqw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.45em;
+  white-space: nowrap;
+}
+
+.what-scroll-header h2 {
+  margin: 0 !important;
   padding: 0 !important;
-  color: white !important;
-  font-size: clamp(0.55rem, 1.25cqw, 1rem) !important;
+  color: #abff9f !important;
+  font-family: "RQND Pro", Arial, sans-serif !important;
+  font-size: clamp(2.4rem, 5.3cqw, 4.8rem) !important;
   font-weight: 700 !important;
-  line-height: 1.25 !important;
-  letter-spacing: 0.26em !important;
-  text-transform: uppercase !important;
+  line-height: 0.86 !important;
+  letter-spacing: 0.025em !important;
+  text-transform: uppercase;
   border: none !important;
   background: none !important;
+  text-shadow:
+    0 0 8px rgba(100, 255, 122, 0.95),
+    0 0 24px rgba(61, 255, 97, 0.42) !important;
 }
 
-.what-left h3::before,
-.what-left h3::after {
+.what-scroll-header h2::before,
+.what-scroll-header h2::after {
   content: none !important;
   display: none !important;
 }
 
-.what-left p, ul {
-  margin: 0;
-  color: white;
-  font-size: clamp(0.48rem, 1.05cqw, 0.86rem);
+/* Active chapter beneath the permanent title */
+
+.what-scroll-active-chapter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 0.65rem;
+}
+
+.what-scroll-active-chapter span {
+  padding-right: 0.85rem;
+  color: rgba(116, 255, 138, 0.72);
+  font-size: clamp(0.48rem, 0.62cqw, 0.65rem);
   font-weight: 600;
-  line-height: 1.45;
+  letter-spacing: 0.18em;
+  border-right: 1px solid rgba(116, 255, 138, 0.35);
+}
+
+.what-scroll-active-chapter p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "RQND Pro", Arial, sans-serif !important;
+  font-size: clamp(0.72rem, 1.15cqw, 1.05rem);
+  font-weight: 600;
+  line-height: 1;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.gameboy-image {
+/* ---------------------------------------------------------
+   Three-column lecture layout
+   --------------------------------------------------------- */
+
+.what-scroll-content {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1.12fr)
+    minmax(0, 1fr);
+  gap: clamp(1.25rem, 3.5cqw, 3rem);
+  width: calc(100% - clamp(2rem, 7cqw, 6rem));
+  margin: -0.3rem auto 0;
+}
+
+.what-scroll-left,
+.what-scroll-center,
+.what-scroll-right {
+  position: relative;
+  min-width: 0;
+}
+
+/* ---------------------------------------------------------
+   Left lecture chapters
+   --------------------------------------------------------- */
+
+.what-scroll-step {
+  display: flex;
+  min-height: 60vh;
+  align-items: center;
+  padding-block: 2rem;
+  opacity: 0.14;
+  filter: blur(2px);
+  transform: translateY(4rem);
+  transition:
+    opacity 500ms ease,
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 500ms ease;
+}
+
+.what-scroll-step.is-active {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+.what-scroll-step-copy {
+  width: 100%;
+  padding: 1.35rem 0 1.5rem;
+  border-bottom: 1px solid rgba(116, 255, 137, 0.17);
+}
+
+/* Remove the top divider only from the first chapter */
+
+.what-scroll-step:not(:first-child) .what-scroll-step-copy {
+  border-top: 1px solid rgba(116, 255, 137, 0.27);
+}
+
+/* Prevent a doubled divider between chapters */
+
+.what-scroll-step:not(:first-child) {
+  margin-top: -1px;
+}
+
+.what-scroll-chapter-label {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: rgba(117, 255, 139, 0.72);
+  font-size: clamp(0.48rem, 0.62cqw, 0.65rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.what-scroll-step-copy h3 {
+  margin: 0 0 0.8rem !important;
+  padding: 0 !important;
+  color: #91ff98 !important;
+  font-family: "RQND Pro", Arial, sans-serif !important;
+  font-size: clamp(1rem, 1.8cqw, 1.65rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.08 !important;
+  letter-spacing: 0.025em !important;
+  border: none !important;
+  background: none !important;
+}
+
+.what-scroll-step-copy h3::before,
+.what-scroll-step-copy h3::after {
+  content: none !important;
+  display: none !important;
+}
+
+.what-scroll-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.what-scroll-paragraphs p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(0.58rem, 0.84cqw, 0.82rem);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.025em;
+}
+
+.what-scroll-takeaway {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 1.1rem;
+  padding: 0.8rem 0.9rem;
+  border-left: 2px solid #76ff89;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(69, 255, 102, 0.1),
+      transparent
+    );
+}
+
+.what-scroll-takeaway span {
+  color: rgba(116, 255, 138, 0.68);
+  font-size: clamp(0.43rem, 0.54cqw, 0.56rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.what-scroll-takeaway strong {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(0.54rem, 0.74cqw, 0.76rem);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   Sticky center visual
+   --------------------------------------------------------- */
+
+.what-scroll-center-sticky {
+  position: sticky;
+  top: 8.7rem;
+  display: flex;
+  height: calc(100vh - 9rem);
+  min-height: 30rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.what-scroll-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: min(68vh, 43rem);
+  min-height: 28rem;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(62, 255, 96, 0.035)
+    );
+}
+
+/* Removes the green vertical borders */
+
+.what-scroll-visual {
+  border-left: none;
+  border-right: none;
+}
+
+.what-scroll-image-glow {
   position: absolute;
+  top: 43%;
   left: 50%;
-  top: 25%;
-  width: 30%;
-  z-index: 10;
-  transform: translateX(-50%);
-  filter: drop-shadow(0 24px 34px rgba(0, 0, 0, 0.65));
+  width: 68%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(59, 255, 95, 0.2);
+  filter: blur(4rem);
+  transform: translate(-50%, -50%);
 }
 
-.what-right {
+.what-scroll-gameboy {
+  position: relative;
+  z-index: 4;
+  display: block;
+  width: min(72%, 23rem);
+  max-height: 75%;
+  margin: 0;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 18px rgba(62, 255, 96, 0.22))
+    drop-shadow(0 1.5rem 2rem rgba(0, 0, 0, 0.55));
+  transition:
+    transform 850ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 600ms ease;
+  animation:
+    what-image-enter 650ms
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes what-image-enter {
+  from {
+    opacity: 0.3;
+    filter: blur(7px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.what-scroll-gameboy.view-full {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.what-scroll-gameboy.view-screen {
+  transform: translate3d(0, 8%, 0) scale(1.35);
+}
+
+.what-scroll-gameboy.view-power {
+  transform: translate3d(-7%, -3%, 0) scale(1.16);
+}
+
+.what-scroll-gameboy.view-cartridge {
+  transform: translate3d(0, 18%, 0) scale(1.45);
+}
+
+.what-scroll-gameboy.view-controls {
+  transform: translate3d(0, -13%, 0) scale(1.3);
+}
+
+/* Scanning rings */
+
+.what-scroll-scan-ring {
   position: absolute;
-  right: 3.5%;
-  top: 10.5%;
-  width: 42%;
-  z-index: 14;
+  z-index: 2;
+  bottom: 7%;
+  left: 50%;
+  border: 1px solid rgba(91, 255, 118, 0.62);
+  border-radius: 50%;
+  transform: translateX(-50%) rotateX(68deg);
+  animation: what-ring-pulse 2.8s ease-in-out infinite;
+}
+
+.what-scroll-scan-ring.ring-one {
+  width: 70%;
+  height: 22%;
+}
+
+.what-scroll-scan-ring.ring-two {
+  width: 54%;
+  height: 17%;
+  animation-delay: 0.45s;
+}
+
+.what-scroll-scan-ring.ring-three {
+  width: 38%;
+  height: 12%;
+  animation-delay: 0.9s;
+}
+
+@keyframes what-ring-pulse {
+  0%,
+  100% {
+    opacity: 0.24;
+    box-shadow: 0 0 0 rgba(79, 255, 108, 0);
+  }
+
+  50% {
+    opacity: 0.95;
+    box-shadow: 0 0 1.5rem rgba(79, 255, 108, 0.24);
+  }
+}
+
+/* Perspective grid beneath the image */
+
+.what-scroll-floor-grid {
+  position: absolute;
+  z-index: 1;
+  bottom: -16%;
+  left: 50%;
+  width: 150%;
+  height: 48%;
+  opacity: 0.35;
+  background:
+    linear-gradient(
+      rgba(87, 255, 112, 0.25) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(87, 255, 112, 0.25) 1px,
+      transparent 1px
+    );
+  background-size: 2.5rem 2.5rem;
+  transform:
+    translateX(-50%)
+    perspective(20rem)
+    rotateX(62deg);
+  transform-origin: center bottom;
+  mask-image: linear-gradient(to top, #000, transparent);
+}
+
+.what-scroll-image-caption {
+  position: absolute;
+  z-index: 6;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  max-width: 88%;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.what-scroll-image-caption span {
+  color: rgba(120, 255, 139, 0.72);
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+}
+
+.what-scroll-image-caption strong {
+  display: block;
+  color: rgba(255, 255, 255, 0.86);
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: clamp(0.52rem, 0.68cqw, 0.7rem);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+/* ---------------------------------------------------------
+   Sticky right supporting information
+   --------------------------------------------------------- */
+
+.what-scroll-right-sticky {
+  position: sticky;
+  top: 8.7rem;
+  display: flex;
+  min-height: calc(100vh - 9rem);
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+.what-topic-panel {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 0;
+  animation: what-panel-enter 500ms ease;
+}
+
+@keyframes what-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.what-topic-panel-header {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(116, 255, 138, 0.25);
+}
+
+.what-topic-panel-header span {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: rgba(116, 255, 138, 0.65);
+  font-size: clamp(0.43rem, 0.55cqw, 0.58rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.what-topic-panel-header h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #91ff9b !important;
+  font-family: "RQND Pro", Arial, sans-serif !important;
+  font-size: clamp(0.82rem, 1.22cqw, 1.15rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.05em !important;
+  border: none !important;
+  background: none !important;
+}
+
+.what-topic-panel-header h3::before,
+.what-topic-panel-header h3::after {
+  content: none !important;
+  display: none !important;
+}
+
+.what-topic-panel-intro {
+  margin: 0.75rem 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(0.5rem, 0.66cqw, 0.68rem);
+  line-height: 1.55;
+  letter-spacing: 0.015em;
+}
+
+/* Game Boy specifications */
+
+.what-specs-box {
+  position: relative;
+  margin-top: 0.9rem;
+  padding: 0.85rem;
+  overflow: hidden;
+  border: 1px solid rgba(116, 255, 138, 0.42);
+  border-radius: 0.7rem;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(81, 255, 110, 0.1),
+      rgba(255, 255, 255, 0.018)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 1.4rem rgba(52, 255, 88, 0.08);
+}
+
+.what-specs-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-top: 1px solid #76ff89;
+  border-left: 1px solid #76ff89;
+}
+
+.what-specs-box::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-right: 1px solid #76ff89;
+  border-bottom: 1px solid #76ff89;
+}
+
+.what-specs-box-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(116, 255, 138, 0.24);
+}
+
+.what-specs-box-heading span {
+  color: #7fff91;
+  font-size: clamp(0.4rem, 0.5cqw, 0.52rem);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.what-specs-box-heading strong {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: clamp(0.4rem, 0.5cqw, 0.52rem);
+  letter-spacing: 0.12em;
+}
+
+.what-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+}
+
+.what-spec-row {
+  display: grid;
+  grid-template-columns: 42% minmax(0, 1fr);
+  gap: 0.65rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.what-spec-row:last-child {
+  border-bottom: none;
+}
+
+.what-spec-row dt,
+.what-spec-row dd {
+  margin: 0;
+  font-size: clamp(0.44rem, 0.58cqw, 0.6rem);
+  line-height: 1.35;
+}
+
+.what-spec-row dt {
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.what-spec-row dd {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
   text-align: right;
 }
 
-.what-right h2 {
-  margin: 0;
-  color: #d9ffe9 !important;
-  font-size: clamp(1.7rem, 4.6cqw, 4rem);
-  font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  border: none !important;
-  text-shadow:
-    0 0 8px #00ff88,
-    0 0 18px #00ff88,
-    0 0 38px rgba(0, 255, 136, 0.85);
+/* Supporting bullet points */
+
+.what-topic-points {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.what-right > p {
-  margin-top: 4%;
-  color: white;
-  font-size: clamp(0.52rem, 1.35cqw, 1rem);
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  white-space: nowrap;
+.what-topic-points li {
+  position: relative;
+  padding: 0.55rem 0.65rem 0.55rem 1.55rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(0.48rem, 0.64cqw, 0.66rem);
+  line-height: 1.4;
+  border-left: 1px solid rgba(116, 255, 138, 0.28);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(69, 255, 102, 0.06),
+      transparent
+    );
 }
 
-.what-callout {
+.what-topic-points li::before {
+  content: "";
   position: absolute;
-  top: 122%;
-  left: 20%;
-  right: -20%;
-  width: 100%;
-  z-index: 14;
-  color: white;
-  text-align: left;
-  font-size: clamp(0.48rem, 1.02cqw, 0.86rem);
+  top: 50%;
+  left: 0.65rem;
+  width: 0.36rem;
+  height: 0.36rem;
+  border: 1px solid #76ff89;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 0.5rem rgba(82, 255, 109, 0.45);
+}
+
+/* Comparison cards */
+
+.what-topic-comparisons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.what-topic-comparison {
+  display: grid;
+  grid-template-columns: 42% minmax(0, 1fr);
+  gap: 0.7rem;
+  padding: 0.65rem 0.7rem;
+  border: 1px solid rgba(116, 255, 138, 0.18);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.what-topic-comparison span {
+  color: #7fff91;
+  font-size: clamp(0.46rem, 0.6cqw, 0.62rem);
   font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: 0.08em;
 }
 
-.what-callout ul {
-  width: 90%;
+.what-topic-comparison strong {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(0.46rem, 0.6cqw, 0.62rem);
+  font-weight: 500;
+  text-align: right;
 }
 
-.what-left .pointer {
+/* Memory address table */
+
+.what-memory-table {
+  margin-top: 0.9rem;
+  overflow: hidden;
+  border: 1px solid rgba(116, 255, 138, 0.25);
+  border-radius: 0.45rem;
+}
+
+.what-memory-table-header,
+.what-memory-row {
+  display: grid;
+  grid-template-columns: 35% minmax(0, 1fr);
+}
+
+.what-memory-table-header {
+  padding: 0.5rem 0.65rem;
+  color: #7fff91;
+  font-size: clamp(0.42rem, 0.52cqw, 0.54rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  background: rgba(74, 255, 104, 0.08);
+}
+
+.what-memory-row {
+  padding: 0.55rem 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.what-memory-row code {
+  color: #7fff91;
+  font-size: clamp(0.47rem, 0.61cqw, 0.63rem);
+}
+
+.what-memory-row span {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(0.47rem, 0.61cqw, 0.63rem);
+}
+
+/* Fetch–Decode–Execute */
+
+.what-sequence {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.what-sequence-step {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: start;
+}
+
+.what-sequence-step > span {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  color: #7fff91;
+  font-size: 0.52rem;
+  border: 1px solid rgba(116, 255, 138, 0.5);
+  border-radius: 50%;
+}
+
+.what-sequence-step strong {
   display: block;
-  position: absolute;
-  top: 105%; 
-  left: 20%;
-  width: 75%; 
-  height: auto;
-  z-index: 1;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(0.5rem, 0.66cqw, 0.68rem);
 }
 
-.ram-fundamentals {
-  max-width: 250px;
-  margin-left: auto;
+.what-sequence-step p {
+  margin: 0.15rem 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: clamp(0.44rem, 0.57cqw, 0.59rem);
+  line-height: 1.4;
 }
 
-.ram-fundamentals ul {
-  list-style-type: disc !important; 
-  padding-left: 20px !important;    
-  text-align: left !important;      
+/* RAM versus ROM table */
+
+.what-comparison-table {
+  margin-top: 0.9rem;
+  overflow: hidden;
+  border: 1px solid rgba(116, 255, 138, 0.25);
+  border-radius: 0.45rem;
 }
 
-.ram-fundamentals li {
-  text-align: left !important; 
-  margin-bottom: 8px;
-  font-size: 8px !important;
+.what-comparison-header,
+.what-comparison-row {
+  display: grid;
+  grid-template-columns: 28% 36% 36%;
+}
+
+.what-comparison-header {
+  padding: 0.5rem;
+  color: #7fff91;
+  font-size: clamp(0.4rem, 0.5cqw, 0.52rem);
+  letter-spacing: 0.08em;
+  background: rgba(74, 255, 104, 0.08);
+}
+
+.what-comparison-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.what-comparison-row > * {
+  margin: 0;
+  padding: 0.52rem 0.45rem;
+  font-size: clamp(0.42rem, 0.54cqw, 0.56rem);
+  line-height: 1.35;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.what-comparison-row > *:last-child {
+  border-right: none;
+}
+
+.what-comparison-row > span {
+  color: #7fff91;
+  font-weight: 600;
+}
+
+.what-comparison-row p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ---------------------------------------------------------
+   Chapter progress
+   --------------------------------------------------------- */
+
+.what-scroll-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  color: rgba(121, 255, 141, 0.78);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+}
+
+.what-scroll-progress-track {
+  flex: 1;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.what-scroll-progress-fill {
+  height: 100%;
+  background: #76ff89;
+  box-shadow: 0 0 0.8rem rgba(87, 255, 112, 0.7);
+  transition:
+    width 650ms
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------------------------------------------------------
+   Explicitly remove old unused styles
+   --------------------------------------------------------- */
+
+.what-scroll-left-heading,
+.what-scroll-right-heading,
+.what-scroll-heading-line,
+.what-scroll-center-label,
+.what-scroll-step-number,
+.what-scroll-characteristics,
+.what-characteristic,
+.what-characteristic-icon,
+.what-characteristic-copy {
+  display: none !important;
+}
+
+/* Remove any inherited vertical chapter grid lines */
+
+.what-scroll-section::before,
+.what-scroll-section::after,
+.what-scroll-content::before,
+.what-scroll-content::after,
+.what-scroll-left::before,
+.what-scroll-left::after,
+.what-scroll-center::before,
+.what-scroll-center::after,
+.what-scroll-right::before,
+.what-scroll-right::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* ---------------------------------------------------------
+   Tablet layout
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .what-scroll-section {
+    min-height: 620vh;
+  }
+
+  .what-scroll-content {
+    grid-template-columns:
+      minmax(0, 0.95fr)
+      minmax(0, 1.05fr);
+    width: calc(100% - 2rem);
+  }
+
+  .what-scroll-right {
+    grid-column: 1 / -1;
+  }
+
+  .what-scroll-right-sticky {
+    position: relative;
+    top: auto;
+    min-height: auto;
+    padding-block: 2rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   Mobile layout
+   --------------------------------------------------------- */
+
+@media (max-width: 650px) {
+  .what-scroll-section {
+    min-height: auto;
+  }
+
+  .what-scroll-header {
+    min-height: 7.3rem;
+    padding-inline: 1rem;
+  }
+
+  .what-scroll-active-chapter {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .what-scroll-active-chapter span {
+    padding-right: 0;
+    border-right: none;
+  }
+
+  .what-scroll-content {
+    display: flex;
+    width: 100%;
+    margin-top: 0;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .what-scroll-center {
+    order: 1;
+    position: sticky;
+    top: 7rem;
+    z-index: 10;
+    padding-inline: 1rem;
+    background:
+      linear-gradient(
+        to bottom,
+        #020703 88%,
+        transparent
+      );
+  }
+
+  .what-scroll-center-sticky {
+    position: relative;
+    top: auto;
+    height: 42vh;
+    min-height: 19rem;
+  }
+
+  .what-scroll-visual {
+    height: 34vh;
+    min-height: 15rem;
+  }
+
+  .what-scroll-gameboy {
+    width: min(52%, 13rem);
+  }
+
+  .what-scroll-left {
+    order: 2;
+    padding-inline: 1.2rem;
+  }
+
+  .what-scroll-step {
+    min-height: 72vh;
+    align-items: flex-end;
+    padding-bottom: 5rem;
+  }
+
+  .what-scroll-step-copy {
+    padding: 1rem;
+    border: 1px solid rgba(113, 255, 134, 0.22);
+    background: rgba(2, 7, 3, 0.9);
+    backdrop-filter: blur(0.8rem);
+  }
+
+  .what-scroll-step:first-child .what-scroll-step-copy {
+    border-top: 1px solid rgba(113, 255, 134, 0.22);
+  }
+
+  .what-scroll-right {
+    order: 3;
+    padding: 2rem 1.2rem 5rem;
+  }
+
+  .what-scroll-floor-grid {
+    display: none;
+  }
+
+  .what-spec-row,
+  .what-topic-comparison {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .what-spec-row dd,
+  .what-topic-comparison strong {
+    text-align: left;
+  }
+
+  .what-comparison-header,
+  .what-comparison-row {
+    grid-template-columns: 1fr;
+  }
+
+  .what-comparison-header {
+    display: none;
+  }
+}
+
+/* Respect reduced-motion settings */
+
+@media (prefers-reduced-motion: reduce) {
+  .what-scroll-step,
+  .what-scroll-gameboy,
+  .what-scroll-progress-fill,
+  .what-scroll-scan-ring {
+    animation: none;
+    transition: none;
+  }
 }
 
 /* SECTION 2: The Evolution of RAM*/

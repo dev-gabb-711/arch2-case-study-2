@@ -1,21 +1,19 @@
 ---
 import "../styles/S04_Group6_ram.css";
 
+import WhatIsRam from "./S04_Group6_WhatIsRam.jsx";
 import RamJourney from "./S04_Group6_RamJourney.jsx";
+import EvolutionLogic from "./S04_Group6_Evolution.jsx";
+import MemComEvolution from "./S04_Group6_MemoryCommunication.jsx";
 
 import switchPokemon from "../assets/S04_Group6_switch-pokemon.png";
-import gameboy from "../assets/S04_Group6_gameboy.png";
 import nintendoSwitch from "../assets/S04_Group6_ir-nintendo.png";
 
 import arrowsGraphic from "../assets/S04_Group6_arrows.png";
 import pointLineGraphic from "../assets/S04_Group6_point_line.png";
 import titleLineGraphic from "../assets/S04_Group6_title_line.png";
 import topCornerGraphic from "../assets/S04_Group6_top_corner.png";
-import pointerGraphic from "../assets/S04_Group6_pointer.png";
 import cubeQuestion from "../assets/S04_Group6_cube.png";
-
-import EvolutionLogic from "./S04_Group6_Evolution.jsx"
-import MemComEvolution from "./S04_Group6_MemoryCommunication.jsx"
 ---
 
 <section class="ram-stage">
@@ -24,28 +22,56 @@ import MemComEvolution from "./S04_Group6_MemoryCommunication.jsx"
     <header id="title" class="ram-hero">
       <div class="hero-circle-glow"></div>
 
-      <img class="hud-graphic hud-top-corner" src={topCornerGraphic.src} alt="" aria-hidden="true" />
-      <img class="hud-graphic hud-title-line" src={titleLineGraphic.src} alt="" aria-hidden="true" />
-      <img class="hud-graphic hud-point-line" src={pointLineGraphic.src} alt="" aria-hidden="true" />
+      <img
+        class="hud-graphic hud-top-corner"
+        src={topCornerGraphic.src}
+        alt=""
+        aria-hidden="true"
+      />
+
+      <img
+        class="hud-graphic hud-title-line"
+        src={titleLineGraphic.src}
+        alt=""
+        aria-hidden="true"
+      />
+
+      <img
+        class="hud-graphic hud-point-line"
+        src={pointLineGraphic.src}
+        alt=""
+        aria-hidden="true"
+      />
 
       <div class="discussion-label">
         <span class="label-title">DISCUSSION POINTS</span>
       </div>
 
-      <img class="hud-graphic hud-arrows" src={arrowsGraphic.src} alt="" aria-hidden="true" />
+      <img
+        class="hud-graphic hud-arrows"
+        src={arrowsGraphic.src}
+        alt=""
+        aria-hidden="true"
+      />
 
       <div class="hook-text">
-        Did you know? The first iteration of the RAM is a huge drum?
+        Did you know? The first iteration of RAM was a huge drum?
       </div>
 
       <div class="discussion-points">
         <a href="#what-is-ram">What is RAM?</a>
         <a href="#the-evolution-of-ram">The Evolution of RAM</a>
         <a href="#inside-the-ram-the-internal-data-journey">Inside RAM</a>
-        <a href="#memory-access-and-communication">Memory Access and Communication</a>
+        <a href="#memory-access-and-communication">
+          Memory Access and Communication
+        </a>
       </div>
 
-      <img class="hero-switch" src={switchPokemon.src} alt="Game memory visual" />
+      <img
+        class="hero-switch"
+        src={switchPokemon.src}
+        alt="Game memory visual"
+      />
 
       <div class="facts-text">
         ARE RAMS TODAY REALLY THAT IMPORTANT?
@@ -61,52 +87,7 @@ import MemComEvolution from "./S04_Group6_MemoryCommunication.jsx"
       </div>
     </header>
 
-    <section id="what-is-ram" class="what-section">
-      <div class="what-left">
-        <h3>Did you know?</h3>
-        <ul>
-          <li>The evolution of RAM has come a long way from being bulky to being small</li>
-          <li>One example of the RAM becoming small is with the handheld console Nintendo Game Boy
-          <li>Its processing is limited to only ~4.19 MHz, but enables the console to hide its internal parts and become portable</li>
-          <li>The Game Paks were also limited in memory size, being only 32 KB</li>
-          <li>Decades later, these limitations became obsolete, with the Nintendo Switch 2 having a custom processor from NVIDIA and a 256 GB storage</li>
-        </ul>
-
-        <div class="what-callout">
-          <ul>
-            <li>Main memory: Sharp SM83</li>
-            <ul>
-              <li>Hybrid of Zilog Z80 and Intel 8080</li>
-              <li>Runs at ~4.19 MHz</li>
-            </ul>
-            <li>Game PAK</li>
-            <ul>
-              <li>32 KB ROM</li>
-              <li>Extra RAM for saving states</li>
-            </ul>
-          </ul>
-        </div>
-
-        <img class="pointer" src={pointerGraphic.src} alt="" aria-hidden="true" />
-      </div>
-
-      <img class="gameboy-image" src={gameboy.src} alt="Game Boy memory visual" />
-
-      <div class="what-right">
-        <h2 class="glow-title">WHAT IS RAM?</h2>
-        <p>COMPUTER MEMORY IN MOTION</p>
-
-        <div class="ram-fundamentals">
-          <ul>
-            <li><strong>Working Memory:</strong> High-speed workspace used by the CPU to store actively running programs and temporary binary data. It allows the processor to fetch data near-instantly.</li>
-            <li><strong>Random Access:</strong> Unlike sequential storage, the CPU uses explicit memory addresses to access any cell directly and instantly. This keeps retrieval times identical across the entire board.</li>
-            <li><strong>Volatility:</strong> RAM requires constant power; its entire payload vanishes instantly when the system is turned off. It serves strictly as a live, temporary canvas.</li>
-            <li><strong>RAM vs. ROM:</strong> RAM is dynamic (Read/Write) for active data, while ROM is permanent (Read-Only) for unchangeable boot firmware. ROM retains critical code safely even without power.</li>
-            <li><strong>Bus Communication:</strong> CPU interacts with memory via Address (location), Data (payload), and Control (read/write signals) buses. These physical paths move data smoothly on every cycle.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <WhatIsRam client:load />
 
     <section id="the-evolution-of-ram" class="big-section">
       <h2 class="glow-title">THE EVOLUTION OF RAM</h2>
@@ -129,211 +110,287 @@ import MemComEvolution from "./S04_Group6_MemoryCommunication.jsx"
             </li>
           </ul>
         </div>
+
         <div class="test-box">
-          <img class="dram-image" alt="DRAM visual"/>
+          <img class="dram-image" alt="DRAM visual" />
         </div>
+
         <div class="evolution-sides">
           <h3>Description</h3>
 
-          <p>lorep ipsum bla bla scoobydoodoo i just hit the jackpot</p>
-          <p>lorep ipsum bla bla scoobydoodoo i just hit the jackpot</p>
+          <p>
+            lorep ipsum bla bla scoobydoodoo i just hit the jackpot
+          </p>
+
+          <p>
+            lorep ipsum bla bla scoobydoodoo i just hit the jackpot
+          </p>
         </div>
       </div>
 
       <div class="evolution-lower">
-        <button class="scroll-left">◀</button>
-          <div class="scroll-section">
-            <div class="evolution-button">1</div>
-            <div class="evolution-button">2</div>
-            <div class="evolution-button">3</div>
-            <div class="evolution-button">4</div>
-            <div class="evolution-button">5</div>
-            <div class="evolution-button">6</div>
-            <div class="evolution-button">7</div>
-            <div class="evolution-button">8</div>
-            <div class="evolution-button">9</div>
-            <div class="evolution-button">10</div>
-            <div class="evolution-button">11</div>            
-            <div class="evolution-button">12</div>            
-            <div class="evolution-button">13</div>            
-          </div>
-        <button class="scroll-right">▶</button>
+        <button
+          class="scroll-left"
+          aria-label="Previous RAM generation"
+        >
+          ◀
+        </button>
+
+        <div class="scroll-section">
+          <div class="evolution-button">1</div>
+          <div class="evolution-button">2</div>
+          <div class="evolution-button">3</div>
+          <div class="evolution-button">4</div>
+          <div class="evolution-button">5</div>
+          <div class="evolution-button">6</div>
+          <div class="evolution-button">7</div>
+          <div class="evolution-button">8</div>
+          <div class="evolution-button">9</div>
+          <div class="evolution-button">10</div>
+          <div class="evolution-button">11</div>
+          <div class="evolution-button">12</div>
+          <div class="evolution-button">13</div>
+        </div>
+
+        <button
+          class="scroll-right"
+          aria-label="Next RAM generation"
+        >
+          ▶
+        </button>
       </div>
 
       <EvolutionLogic client:load />
     </section>
 
- <section id="inside-the-ram-the-internal-data-journey" class="big-section">
+    <section
+      id="inside-the-ram-the-internal-data-journey"
+      class="big-section"
+    >
       <h2 class="glow-title title-absolute">INSIDE THE RAM</h2>
-      <p class="title-caption caption-absolute">THE INTERNAL DATA JOURNEY</p>
-      
+
+      <p class="title-caption caption-absolute">
+        THE INTERNAL DATA JOURNEY
+      </p>
+
       <div class="switch-container">
-        <img class="nintendo-image" src={nintendoSwitch.src} alt="Nintendo Switch" />
-        
+        <img
+          class="nintendo-image"
+          src={nintendoSwitch.src}
+          alt="Nintendo Switch"
+        />
+
         <div class="switch-screen-content">
           <RamJourney client:load />
         </div>
       </div>
     </section>
 
-    <section id="memory-access-and-communication" class="big-section">
-      <!-- Header -->
-    <div class="memory-header">
+    <section
+      id="memory-access-and-communication"
+      class="big-section"
+    >
+      <div class="memory-header">
         <h2 class="glow-title">MEMORY ACCESS SIMULATOR</h2>
+
         <p class="memory-subtitle">
-            CPU TO RAM COMMUNICATION
+          CPU TO RAM COMMUNICATION
         </p>
-    </div>
-    <!-- Main Content -->
-    <div class="memory-main">
-        <!-- LEFT PANEL -->
+      </div>
+
+      <div class="memory-main">
+
         <aside class="memory-left">
-            <div class="memory-card cpu-request">
-                <h3>CPU REQUEST</h3>
-                <div class="request-item">
-                    <span>Operation</span>
-                    <strong>READ</strong>
-                </div>
-                <div class="request-item">
-                    <span>Address</span>
-                    <strong>0x2B40</strong>
-                </div>
-                <div class="request-item">
-                    <span>Data</span>
-                    <strong>Pikachu</strong>
-                </div>
+          <div class="memory-card cpu-request">
+            <h3>CPU REQUEST</h3>
+
+            <div class="request-item">
+              <span>Operation</span>
+              <strong>READ</strong>
             </div>
 
-            <div class="memory-card how-it-works">
-                <h3>HOW IT WORKS</h3>
-                <p>
-                    The controller sends a row address (RAS) to open the memory line, then a column address (CAS) to read and transfer the data.
-                </p>
+            <div class="request-item">
+              <span>Address</span>
+              <strong>0x2B40</strong>
             </div>
+
+            <div class="request-item">
+              <span>Data</span>
+              <strong>Pikachu</strong>
+            </div>
+          </div>
+
+          <div class="memory-card how-it-works">
+            <h3>HOW IT WORKS</h3>
+
+            <p>
+              The controller sends a row address (RAS) to open the
+              memory line, then a column address (CAS) to read and
+              transfer the data.
+            </p>
+          </div>
         </aside>
 
-        <!-- CENTER PANEL -->
         <section class="memory-center">
-            <div class="memory-grid-header">
-                <span></span>
-                {
+          <div class="memory-grid-header">
+            <span></span>
+
+            {
+              Array.from({ length: 12 }).map((_, col) => (
+                <span>C{col}</span>
+              ))
+            }
+          </div>
+
+          <div class="memory-grid">
+            {
+              Array.from({ length: 5 }).map((_, row) => (
+                <>
+                  <span class="row-label">
+                    R{row}
+                  </span>
+
+                  {
                     Array.from({ length: 12 }).map((_, col) => (
-                        <span>C{col}</span>
+                      <div
+                        class={`memory-cell
+                          ${row === 2 ? "active-row" : ""}
+                          ${col === 4 ? "active-column" : ""}
+                          ${
+                            row === 2 && col === 4
+                              ? "selected-cell"
+                              : ""
+                          }`}
+                      >
+                      </div>
                     ))
-                }
-            </div>
-            <div class="memory-grid">
-                {
-                    Array.from({ length: 5 }).map((_, row) => (
-                        <>
-                            <span class="row-label">
-                                R{row}
-                            </span>
-                            {
-                                Array.from({ length: 12 }).map((_, col) => (
-                                    <div
-                                        class={`memory-cell
-                                            ${row === 2 ? "active-row" : ""}
-                                            ${col === 4 ? "active-column" : ""}
-                                            ${
-                                                row === 2 && col === 4
-                                                    ? "selected-cell"
-                                                    : ""
-                                            }`}
-                                    >
-                                    </div>
-                                ))
-                            }
-                        </>
-                    ))
-                }
-            </div>
-            <div class="memory-step">
-                Click any cell to see how RAS (row) and CAS (column) addresses split to target data in the matrix. Watch the lines animate and highlight the exact intersection being transferred.
-            </div>
+                  }
+                </>
+              ))
+            }
+          </div>
+
+          <div class="memory-step">
+            Click any cell to see how RAS (row) and CAS (column)
+            addresses split to target data in the matrix. Watch the
+            lines animate and highlight the exact intersection being
+            transferred.
+          </div>
         </section>
 
-        <!-- RIGHT PANEL -->
         <aside class="memory-right">
-            <div class="memory-card">
-                <h3>CURRENT SELECTION</h3>
-                <p><strong>Row: </strong> R2 <strong> Column:</strong> C4</p>
-                <p><strong>Payload:</strong> Pikachu</p>
-            </div>
-            <div class="memory-card">
-                <h3>SIGNAL ANALYZER</h3>
-                <h4>RAS</h4>
-                <p>
-                    RAS latches the row address into DRAM before memory access
-                    continues.
-                </p>
-                <h4>CAS</h4>
-                <p>
-                    CAS selects the target column from the active row so the
-                    requested data can be transferred.
-                </p>
-            </div>
-        </aside>
-    </div>
+          <div class="memory-card">
+            <h3>CURRENT SELECTION</h3>
 
-    <!-- Bottom Section -->
-    <MemComEvolution client:load />
+            <p>
+              <strong>Row:</strong> R2
+              <strong> Column:</strong> C4
+            </p>
+
+            <p>
+              <strong>Payload:</strong> Pikachu
+            </p>
+          </div>
+
+          <div class="memory-card">
+            <h3>SIGNAL ANALYZER</h3>
+
+            <h4>RAS</h4>
+
+            <p>
+              RAS latches the row address into DRAM before memory
+              access continues.
+            </p>
+
+            <h4>CAS</h4>
+
+            <p>
+              CAS selects the target column from the active row so
+              the requested data can be transferred.
+            </p>
+          </div>
+        </aside>
+
+      </div>
+
+      <MemComEvolution client:load />
     </section>
 
-    <section id="challenge-quiz" class="big-section quiz-section">
+    <section
+      id="challenge-quiz"
+      class="big-section quiz-section"
+    >
       <h2 class="glow-title">CHALLENGE QUIZ</h2>
       <p class="title-caption">TEST YOUR KNOWLEDGE</p>
 
       <div class="quiz-container">
+
         <div class="quiz-left">
           <h3 class="question-number">QUESTION 1</h3>
+
           <p class="question-text">
-            This section will reinforce the viewer's learning by asking
-            questions about the information presented in the previous sections
+            This section will reinforce the viewer's learning by
+            asking questions about the information presented in the
+            previous sections.
           </p>
 
           <div class="cube-container">
             <div class="cube-glow-bg"></div>
-            <img src={cubeQuestion.src} alt="Glowing Question Cube" class="quiz-cube" />
+
+            <img
+              src={cubeQuestion.src}
+              alt="Glowing question cube"
+              class="quiz-cube"
+            />
           </div>
         </div>
 
         <div class="quiz-right">
           <button class="quiz-option">
             <span class="option-letter">A.</span>
-            <span class="option-text">The answer in sentence form</span>
+            <span class="option-text">
+              The answer in sentence form
+            </span>
           </button>
+
           <button class="quiz-option">
             <span class="option-letter">B.</span>
-            <span class="option-text">The answer in sentence form</span>
+            <span class="option-text">
+              The answer in sentence form
+            </span>
           </button>
+
           <button class="quiz-option">
             <span class="option-letter">C.</span>
-            <span class="option-text">The answer in sentence form</span>
+            <span class="option-text">
+              The answer in sentence form
+            </span>
           </button>
+
           <button class="quiz-option">
             <span class="option-letter">D.</span>
-            <span class="option-text">The answer in sentence form</span>
+            <span class="option-text">
+              The answer in sentence form
+            </span>
           </button>
         </div>
+
       </div>
     </section>
 
     <script>
-      const quizOptions = document.querySelectorAll('.quiz-option')
+      const quizOptions = document.querySelectorAll(".quiz-option");
 
-      quizOptions.forEach(option => {
-        option.addEventListener('click', () => {
-          // Remove active class from all options
-          quizOptions.forEach(opt => opt.classList.remove('active'));
+      quizOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          quizOptions.forEach((otherOption) => {
+            otherOption.classList.remove("active");
+          });
 
-          // Add active class to the clicked option
-          option.classList.add('active')
+          option.classList.add("active");
         });
       });
-
     </script>
 
   </div>
 </section>
-
