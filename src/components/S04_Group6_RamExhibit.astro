@@ -198,40 +198,8 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
         </p>
       </div>
 
-      <div class="memory-main">
-
-        <aside class="memory-left">
-          <div class="memory-card cpu-request">
-            <h3>CPU REQUEST</h3>
-
-            <div class="request-item">
-              <span>Operation</span>
-              <strong>READ</strong>
-            </div>
-
-            <div class="request-item">
-              <span>Address</span>
-              <strong>0x2B40</strong>
-            </div>
-
-            <div class="request-item">
-              <span>Data</span>
-              <strong>Pikachu</strong>
-            </div>
-          </div>
-
-          <div class="memory-card how-it-works">
-            <h3>HOW IT WORKS</h3>
-
-            <p>
-              The controller sends a row address (RAS) to open the
-              memory line, then a column address (CAS) to read and
-              transfer the data.
-            </p>
-          </div>
-        </aside>
-
-        <section class="memory-center">
+      <div class="memory-middle">
+        <div class="memory-grid-area">
           <div class="memory-grid-header">
             <span></span>
 
@@ -272,45 +240,73 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
 
           <div class="memory-step">
             Click any cell to see how RAS (row) and CAS (column)
-            addresses split to target data in the matrix. Watch the
-            lines animate and highlight the exact intersection being
-            transferred.
+            addresses split to target data in the matrix.
           </div>
-        </section>
+        </div>
 
-        <aside class="memory-right">
+        <div class="memory-output">
+          <div class="memory-card cpu-request">
+            <h3>CPU REQUEST</h3>
+
+            <div class="request-item">
+              <span>Operation</span>
+              <strong>READ</strong>
+            </div>
+
+            <div class="request-item">
+              <span>Address</span>
+              <strong>0x2B40</strong>
+            </div>
+
+            <div class="request-item">
+              <span>Data</span>
+              <strong>Pikachu</strong>
+            </div>
+          </div>
+
           <div class="memory-card">
             <h3>CURRENT SELECTION</h3>
 
             <p>
               <strong>Row:</strong> R2
-              <strong> Column:</strong> C4
+              <strong> Col:</strong> C4
             </p>
 
             <p>
               <strong>Payload:</strong> Pikachu
             </p>
           </div>
+        </div>
+      </div>
 
-          <div class="memory-card">
-            <h3>SIGNAL ANALYZER</h3>
+      <div class="memory-info">
+        <div class="memory-card">
+          <h3>HOW IT WORKS</h3>
 
-            <h4>RAS</h4>
+          <p>
+            The controller sends a row address (RAS) to open the
+            memory line, then a column address (CAS) to read and
+            transfer the data.
+          </p>
 
-            <p>
-              RAS latches the row address into DRAM before memory
-              access continues.
-            </p>
+          <div class="info-split">
+            <div class="info-split-item">
+              <h4>RAS</h4>
+              <p>
+                RAS latches the row address into DRAM before memory
+                access continues.
+              </p>
+            </div>
 
-            <h4>CAS</h4>
-
-            <p>
-              CAS selects the target column from the active row so
-              the requested data can be transferred.
-            </p>
+            <div class="info-split-item">
+              <h4>CAS</h4>
+              <p>
+                CAS selects the target column from the active row so
+                the requested data can be transferred.
+              </p>
+            </div>
           </div>
-        </aside>
-
+        </div>
       </div>
 
       <MemComEvolution client:load />

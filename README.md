@@ -189,6 +189,10 @@ https://dev-gabb-711.github.io/arch2-case-study-2/
   - Edited the filenames of all group-made files (components, styles, assets, etc.)
   - Fixed the layout of the bottom part of Section 4 (Memory Access Communication)
 
+- **July 19**
+  - Fixed the format and layout of Memory Access Communication segment so that it fits better
+  - Had an "Aha!" moment where I realized that our old format for section 4 simply does not work because of the size of the virtual exhibit format. Therefore it was changed to a more lenient style
+
 ## Reference Citations
 
 - Patterson, D. A., & Hennessy, J. L. (2021). Computer organization and design RISC-V edition: The hardware/software interface (2nd ed.). Morgan Kaufmann.
