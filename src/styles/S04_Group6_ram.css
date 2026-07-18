@@ -2336,7 +2336,7 @@
   aspect-ratio: 1 / 3;
   border-radius: 3px;
   background: rgba(0, 255, 136, 0.06);
-  border: 1px solid rgba(0, 255, 136, 0.2);
+  border: 1px solid rgba(0, 255, 136, 0.2);c
   transition: all 0.25s ease;
 }
 
@@ -2348,19 +2348,30 @@
 
 .ram-journey-packet {
   position: absolute;
-  width: 12px;        
-  height: 12px;       
-  border-radius: 2px;
-  background: #00ff88;
-  box-shadow: 0 0 10px #00ff88, 0 0 4px #00ff88;
   top: 50%;
   left: 18%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  transition: left 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-  opacity: 0;
-  z-index: 1;
+
+  width: 20px;
+  height: 20px;
+
+  transform: translate(-50%, -50%);
+  transition:
+    left 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease;
+ pointer-events: none;
+  opacity: 1;
+  z-index: 10;
 }
 
+.ram-journey-packet img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 0 6px rgba(255,255,255,0.5))
+    drop-shadow(0 0 8px rgba(255,0,0,0.4));
+}
 .ram-journey-packet.show {
   opacity: 1;
 }
@@ -2440,7 +2451,60 @@
   filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.8));
 }
 
+@keyframes missionPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(0,255,136,0.5);
+  }
 
+  50% {
+    transform: scale(1.08);
+    box-shadow:
+      0 0 20px rgba(0,255,136,0.9),
+      0 0 40px rgba(0,255,136,0.5);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(0,255,136,0.5);
+  }
+}
+
+.mission-target {
+  cursor: pointer;
+  animation: missionPulse 1.2s infinite;
+}
+
+.packet-cpu {
+  left: 18%;
+}
+
+.packet-ram {
+  left: 50%;
+}
+
+.packet-screen {
+  left: 82%;
+}
+
+@keyframes packetFloat {
+  0% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateY(-3px);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+}
+
+.ram-journey-packet.show {
+  opacity: 1;
+  animation: packetFloat 1.2s ease-in-out infinite;
+}
 /*------------------------------------------- */
 /* CHALLENGE QUIZ SECTION                       */
 /* -------------------------------------------- */
