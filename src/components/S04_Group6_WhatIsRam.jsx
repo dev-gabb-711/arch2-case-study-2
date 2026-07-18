@@ -1,17 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 
-import gameboy from "../assets/S04_Group6_gameboy.png";
+import chapter1 from "../assets/S04_Group6_gameboy.png";
+import chapter2 from "../assets/S04_Group6_Chapter2.png";
+import chapter3 from "../assets/S04_Group6_Chapter3.png";
+import chapter4 from "../assets/S04_Group6_Chapter4.png";
+import chapter5 from "../assets/S04_Group6_Chapter5.png";
+import chapter6 from "../assets/S04_Group6_Chapter6.png";
+import chapter7 from "../assets/S04_Group6_Chapter7.png";
+import chapter8 from "../assets/S04_Group6_Chapter8.png";
 
-/*
- * SECTION 1 — RAM FUNDAMENTALS
- *
- * Each object represents one chapter of the lecture.
- *
- * Later, when the chapter illustrations are finalized:
- * 1. Import the new images above.
- * 2. Replace image: gameboy.src with the correct image.
- * 3. Update imageAlt and imageCaption.
- */
+
 const ramTopics = [
   {
     id: "what-is-ram",
@@ -61,7 +59,7 @@ const ramTopics = [
       },
     ],
 
-    image: gameboy.src,
+    image: chapter1.src,
     imageAlt:
       "Nintendo Game Boy used as an example of a compact computer system",
     imageCaption: "NINTENDO GAME BOY",
@@ -96,11 +94,11 @@ const ramTopics = [
       "Earlier memory values do not need to be checked first.",
     ],
 
-    image: gameboy.src,
+    image: chapter2.src,
     imageAlt:
       "Placeholder illustration for direct memory access and memory addresses",
     imageCaption: "MEMORY ADDRESSING",
-    imageClass: "view-screen",
+    imageClass: "view-controls",
   },
 
   {
@@ -139,7 +137,7 @@ const ramTopics = [
       },
     ],
 
-    image: gameboy.src,
+    image: chapter3.src,
     imageAlt:
       "Placeholder illustration for RAM as a temporary computer workspace",
     imageCaption: "ACTIVE WORKSPACE",
@@ -175,7 +173,7 @@ const ramTopics = [
       "Intermediate calculation results",
     ],
 
-    image: gameboy.src,
+    image: chapter4.src,
     imageAlt:
       "Placeholder illustration explaining volatile memory and power loss",
     imageCaption: "VOLATILE MEMORY",
@@ -218,7 +216,7 @@ const ramTopics = [
       },
     ],
 
-    image: gameboy.src,
+    image: chapter5.src,
     imageAlt:
       "Placeholder illustration for bits, bytes, variables, and memory addresses",
     imageCaption: "MEMORY ORGANIZATION",
@@ -261,7 +259,7 @@ const ramTopics = [
       },
     ],
 
-    image: gameboy.src,
+    image: chapter6.src,
     imageAlt:
       "Placeholder illustration for communication between the CPU and RAM",
     imageCaption: "CPU ↔ RAM COMMUNICATION",
@@ -312,11 +310,11 @@ const ramTopics = [
       },
     ],
 
-    image: gameboy.src,
+    image: chapter7.src,
     imageAlt:
       "Placeholder illustration for the Von Neumann Architecture and CPU cycle",
     imageCaption: "FETCH–DECODE–EXECUTE",
-    imageClass: "view-full",
+    imageClass: "view-controls",
   },
 
   {
@@ -363,11 +361,11 @@ const ramTopics = [
       },
     ],
 
-    image: gameboy.src,
+    image: chapter8.src,
     imageAlt:
       "Placeholder illustration comparing RAM and ROM",
     imageCaption: "RAM VS. ROM",
-    imageClass: "view-cartridge",
+    imageClass: "view-full",
   },
 ];
 
