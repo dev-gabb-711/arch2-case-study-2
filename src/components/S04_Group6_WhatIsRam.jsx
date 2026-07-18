@@ -98,7 +98,7 @@ const ramTopics = [
     imageAlt:
       "Placeholder illustration for direct memory access and memory addresses",
     imageCaption: "MEMORY ADDRESSING",
-    imageClass: "view-full",
+    imageClass: "view-controls",
   },
 
   {
@@ -314,7 +314,7 @@ const ramTopics = [
     imageAlt:
       "Placeholder illustration for the Von Neumann Architecture and CPU cycle",
     imageCaption: "FETCH–DECODE–EXECUTE",
-    imageClass: "view-full",
+    imageClass: "view-controls",
   },
 
   {
@@ -365,7 +365,7 @@ const ramTopics = [
     imageAlt:
       "Placeholder illustration comparing RAM and ROM",
     imageCaption: "RAM VS. ROM",
-    imageClass: "view-cartridge",
+    imageClass: "view-full",
   },
 ];
 

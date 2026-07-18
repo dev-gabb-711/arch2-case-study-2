@@ -769,19 +769,19 @@
 }
 
 .what-scroll-gameboy.view-screen {
-  transform: translate3d(0, 8%, 0) scale(1.5);
+  transform: translate3d(0, 8%, 0) scale(1.18);
 }
 
 .what-scroll-gameboy.view-power {
-  transform: translate3d(-7%, -3%, 0) scale(1.4);
+  transform: translate3d(-5%, -3%, 0) scale(1.12);
 }
 
 .what-scroll-gameboy.view-cartridge {
-  transform: translate3d(0, 18%, 0) scale(1.5);
+  transform: translate3d(0, 10%, 0) scale(1.18);
 }
 
 .what-scroll-gameboy.view-controls {
-  transform: translate3d(0, -13%, 0) scale(1.45);
+  transform: translate3d(0, -8%, 0) scale(1.15);
 }
 
 /* ---------------------------------------------------------
