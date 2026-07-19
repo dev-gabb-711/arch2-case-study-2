@@ -1,3 +1,86 @@
+## Incremental README
+
+- **July 2**
+  - Created the `.mdx` page together with the Astro component and CSS file for the **Inside RAM - Computer Memory in Motion** exhibit.
+  - Started the basic layout for the Title Page and Section 1.
+  - Matched the page ratio and overall structure to the approved style guide.
+
+- **July 3**
+  - Finalized the layout of the Title Page and Section 1 to closely match the style guide.
+  - Adjusted the sizing, spacing, positioning, and responsiveness of all the added UI elements.
+  - Added info for Title and Section 1, Preparation for Layouting Section 2.
+
+- **July 4**
+  - Started basic structure of the Memory Access Communication Segment of the Component.
+
+- **July 5**
+  - Finished half of the CCS for the Memory Access Communication Segment having trouble fitting the grid into the page, Overhauled Section 2 layout to have two individual parts instead.
+
+- **July 6**
+  - Refined the layout of the Memory Access Communication segment (Section 4).
+  - Fixed the panel sizing, spacing, alignment, and positioning to better match the approved style guide.
+  - Updated the typography and background styling for consistency with the rest of the exhibit.
+  - Finished most of the layout required for the Challenge Quiz, will add the content after Mid-Milestone.
+  - Finished the entirety of the layout and information needed for Memory Access Communication segment (Section 4)
+  - Started on the layout of the Inside the RAM segment (Section 3).
+  - Improved Section 3 layout and design.
+
+- **July 7**
+  - Finished the entirety of Section 3.
+  - Finished the timeline on the RAM Evolution segment of Section 2.
+  - Added additional required info in the What is RAM segment of Section 1.
+  - Finished formatting and added references and AI disclosure
+
+- **TO BE DONE FOR THE FINAL SUBMISSION**
+  - Fully Implement the interactive elements of Section 3 (Internal Data Flow of Memory and Information), Section 4 (Memory Access and Communication Grid Selection and Display), and Section 5 (Challenge Quiz)
+  - Improve UI that fits properly with the theme of the virtual exhibit
+
+- **TO BE DONE (REVISIONS)**
+  - document your development (things done) in the readme (aha moments, things learned, challenges, creative development, etc) as well as things to be done on the final submission.  Those documents should be part of the incremental readme (new document on top of the previous proposal document). **Note**: Put this at the top of the README
+  - DDR4/5 discussion missing
+  - Comparison chart among memory will be helpful
+  - Keep improving the web contents and interactive elements of your web apps.
+
+- **July 13**
+  - Added information re: DDR4 and DDR5 for Section 2's RAM Evolution
+  - Fixed bottom tab moving by setting it at the bottom of the page by setting the top margin to auto
+
+- **July 16**
+  - Edited the filenames of all group-made files (components, styles, assets, etc.)
+  - Fixed the layout of the bottom part of Section 4 (Memory Access Communication)
+
+- **July 19**
+  - Fixed the format and layout of Memory Access Communication segment so that it fits better
+  - Had an "Aha!" moment where I realized that our old format for section 4 simply does not work because of the size of the virtual exhibit format. Therefore it was changed to a more lenient style
+
+## Reference Citations
+
+- Patterson, D. A., & Hennessy, J. L. (2021). Computer organization and design RISC-V edition: The hardware/software interface (2nd ed.). Morgan Kaufmann.
+- Stallings, W. (2022). Computer organization and architecture: Designing for performance (11th ed.). Pearson.
+- Tanenbaum, A. S., & Austin, T. (2016). Structured computer organization (6th ed.). Pearson.
+- Dennard, R. H. (1968). Field-effect transistor memory. IBM Journal of Research and Development, 12(5), 321–326. 
+- JEDEC Solid State Technology Association. (n.d.). DDR SDRAM standards. https://www.jedec.org/standards-documents
+- Micron Technology. (n.d.). DRAM technology. https://www.micron.com/
+- Intel. (n.d.). What is RAM? https://www.intel.com/content/www/us/en/gaming/resources/what-is-ram.html
+- IBM. (n.d.). Computer memory. https://www.ibm.com/think/topics/computer-memory
+- Rambus Inc. (n.d.). History of Rambus Memory Technology. https://www.rambus.com/
+- Computer History Museum. (n.d.). Timeline of computer history. https://www.computerhistory.org/timeline/
+- Computer History Museum. (n.d.). Babbage's Analytical Engine. https://www.computerhistory.org/babbage/
+- Encyclopaedia Britannica. (n.d.). Analytical Engine. https://www.britannica.com/technology/Analytical-Engine
+- Kingsun PCB. (n.d.). What is a RAM PCB? Basics and functions explained. https://www.kingsunpcb.com/what-is-a-ram-pcb-basics-and-functions-explained/
+- MicrochipUSA. (n.d.). Memory chips 101: Everything you need to know. https://www.microchipusa.com/electrical-components/memory-chips-101-everything-you-need-to-know
+- RS Components. (n.d.). Different types of memory chips explained: RAM, ROM, and more. https://hken.rs-online.com/web/content/discovery/ideas-and-advice/different-types-of-memory-chips-explained-ram-rom-and-more
+- Micro Center. (2019, December 1). Anatomy of RAM for desktop computers. https://www.microcenter.com/tech_center/article/11167/anatomy-of-ram-for-desktop-computers
+- Toolhouse. (2023, April 17). What is the SPD-EEPROM information. https://www.toolhouse.de/en/support/knowledgebase/what-are-spd-eeprom-informations/
+- Open IP Hub. (2025, January 10). SPD reader for UberDDR3 – Post #11. https://www.openiphub.com/post/spd-reader-for-uberddr3-post-11
+- JLCPCB. (n.d.). What is a power management IC (PMIC): Functions and applications. https://jlcpcb.com/blog/what-is-a-power-management-ic
+- Logical Increments. (2019, September 8). RAM channels guide: The what, and the how. https://blog.logicalincrements.com/ram-channels-explanation-guide/
+- Crucial. (2026, January 27). What is a memory rank. https://eu.crucial.com/support/articles-faq-memory/what-is-a-memory-rank
+
+## Disclosure on the use of AI/LLM
+
+The group declares that this assignment is entirely of our own work and thought. No AI tools or LLMs were used in its making.
+
 # Case Study Project 2 Proposal
 ## CSARCH2 - S04
 ### Group 6
@@ -137,86 +220,3 @@ https://dev-gabb-711.github.io/arch2-case-study-2/
 ### Tentative Style Guide Snapshot
 
 ![page1-tsg](revised.png)
-
-## Incremental README
-
-- **July 2**
-  - Created the `.mdx` page together with the Astro component and CSS file for the **Inside RAM - Computer Memory in Motion** exhibit.
-  - Started the basic layout for the Title Page and Section 1.
-  - Matched the page ratio and overall structure to the approved style guide.
-
-- **July 3**
-  - Finalized the layout of the Title Page and Section 1 to closely match the style guide.
-  - Adjusted the sizing, spacing, positioning, and responsiveness of all the added UI elements.
-  - Added info for Title and Section 1, Preparation for Layouting Section 2.
-
-- **July 4**
-  - Started basic structure of the Memory Access Communication Segment of the Component.
-
-- **July 5**
-  - Finished half of the CCS for the Memory Access Communication Segment having trouble fitting the grid into the page, Overhauled Section 2 layout to have two individual parts instead.
-
-- **July 6**
-  - Refined the layout of the Memory Access Communication segment (Section 4).
-  - Fixed the panel sizing, spacing, alignment, and positioning to better match the approved style guide.
-  - Updated the typography and background styling for consistency with the rest of the exhibit.
-  - Finished most of the layout required for the Challenge Quiz, will add the content after Mid-Milestone.
-  - Finished the entirety of the layout and information needed for Memory Access Communication segment (Section 4)
-  - Started on the layout of the Inside the RAM segment (Section 3).
-  - Improved Section 3 layout and design.
-
-- **July 7**
-  - Finished the entirety of Section 3.
-  - Finished the timeline on the RAM Evolution segment of Section 2.
-  - Added additional required info in the What is RAM segment of Section 1.
-  - Finished formatting and added references and AI disclosure
-
-- **TO BE DONE FOR THE FINAL SUBMISSION**
-  - Fully Implement the interactive elements of Section 3 (Internal Data Flow of Memory and Information), Section 4 (Memory Access and Communication Grid Selection and Display), and Section 5 (Challenge Quiz)
-  - Improve UI that fits properly with the theme of the virtual exhibit
-
-- **TO BE DONE (REVISIONS)**
-  - document your development (things done) in the readme (aha moments, things learned, challenges, creative development, etc) as well as things to be done on the final submission.  Those documents should be part of the incremental readme (new document on top of the previous proposal document). **Note**: Put this at the top of the README
-  - DDR4/5 discussion missing
-  - Comparison chart among memory will be helpful
-  - Keep improving the web contents and interactive elements of your web apps.
-
-- **July 13**
-  - Added information re: DDR4 and DDR5 for Section 2's RAM Evolution
-  - Fixed bottom tab moving by setting it at the bottom of the page by setting the top margin to auto
-
-- **July 16**
-  - Edited the filenames of all group-made files (components, styles, assets, etc.)
-  - Fixed the layout of the bottom part of Section 4 (Memory Access Communication)
-
-- **July 19**
-  - Fixed the format and layout of Memory Access Communication segment so that it fits better
-  - Had an "Aha!" moment where I realized that our old format for section 4 simply does not work because of the size of the virtual exhibit format. Therefore it was changed to a more lenient style
-
-## Reference Citations
-
-- Patterson, D. A., & Hennessy, J. L. (2021). Computer organization and design RISC-V edition: The hardware/software interface (2nd ed.). Morgan Kaufmann.
-- Stallings, W. (2022). Computer organization and architecture: Designing for performance (11th ed.). Pearson.
-- Tanenbaum, A. S., & Austin, T. (2016). Structured computer organization (6th ed.). Pearson.
-- Dennard, R. H. (1968). Field-effect transistor memory. IBM Journal of Research and Development, 12(5), 321–326. 
-- JEDEC Solid State Technology Association. (n.d.). DDR SDRAM standards. https://www.jedec.org/standards-documents
-- Micron Technology. (n.d.). DRAM technology. https://www.micron.com/
-- Intel. (n.d.). What is RAM? https://www.intel.com/content/www/us/en/gaming/resources/what-is-ram.html
-- IBM. (n.d.). Computer memory. https://www.ibm.com/think/topics/computer-memory
-- Rambus Inc. (n.d.). History of Rambus Memory Technology. https://www.rambus.com/
-- Computer History Museum. (n.d.). Timeline of computer history. https://www.computerhistory.org/timeline/
-- Computer History Museum. (n.d.). Babbage's Analytical Engine. https://www.computerhistory.org/babbage/
-- Encyclopaedia Britannica. (n.d.). Analytical Engine. https://www.britannica.com/technology/Analytical-Engine
-- Kingsun PCB. (n.d.). What is a RAM PCB? Basics and functions explained. https://www.kingsunpcb.com/what-is-a-ram-pcb-basics-and-functions-explained/
-- MicrochipUSA. (n.d.). Memory chips 101: Everything you need to know. https://www.microchipusa.com/electrical-components/memory-chips-101-everything-you-need-to-know
-- RS Components. (n.d.). Different types of memory chips explained: RAM, ROM, and more. https://hken.rs-online.com/web/content/discovery/ideas-and-advice/different-types-of-memory-chips-explained-ram-rom-and-more
-- Micro Center. (2019, December 1). Anatomy of RAM for desktop computers. https://www.microcenter.com/tech_center/article/11167/anatomy-of-ram-for-desktop-computers
-- Toolhouse. (2023, April 17). What is the SPD-EEPROM information. https://www.toolhouse.de/en/support/knowledgebase/what-are-spd-eeprom-informations/
-- Open IP Hub. (2025, January 10). SPD reader for UberDDR3 – Post #11. https://www.openiphub.com/post/spd-reader-for-uberddr3-post-11
-- JLCPCB. (n.d.). What is a power management IC (PMIC): Functions and applications. https://jlcpcb.com/blog/what-is-a-power-management-ic
-- Logical Increments. (2019, September 8). RAM channels guide: The what, and the how. https://blog.logicalincrements.com/ram-channels-explanation-guide/
-- Crucial. (2026, January 27). What is a memory rank. https://eu.crucial.com/support/articles-faq-memory/what-is-a-memory-rank
-
-## Disclosure on the use of AI/LLM
-
-The group declares that this assignment is entirely of our own work and thought. No AI tools or LLMs were used in its making.
