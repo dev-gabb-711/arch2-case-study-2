@@ -163,28 +163,36 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
       <EvolutionLogic client:load />
     </section>
 
-    <section
-      id="inside-the-ram-the-internal-data-journey"
-      class="big-section"
-    >
-      <h2 class="glow-title title-absolute">INSIDE THE RAM</h2>
+  <section
+  id="inside-the-ram-the-internal-data-journey"
+  class="big-section"
+>
 
-      <p class="title-caption caption-absolute">
-        THE INTERNAL DATA JOURNEY
-      </p>
+  <h2 class="journey-title">
+    INSIDE THE RAM
+  </h2>
 
-      <div class="switch-container">
-        <img
-          class="nintendo-image"
-          src={nintendoSwitch.src}
-          alt="Nintendo Switch"
-        />
+  <p class="journey-subtitle">
+    THE INTERNAL DATA JOURNEY
+  </p>
 
-        <div class="switch-screen-content">
-          <RamJourney client:load />
-        </div>
-      </div>
-    </section>
+ <div id="switch-container" class="switch-container">
+
+  <div class="nintendo-wrapper">
+    <img
+      class="nintendo-image"
+      src={nintendoSwitch.src}
+      alt="Nintendo Switch"
+    />
+  </div>
+
+  <div class="switch-screen-content">
+    <RamJourney client:load />
+  </div>
+
+</div>
+
+</section>
 
     <section
       id="memory-access-and-communication"
