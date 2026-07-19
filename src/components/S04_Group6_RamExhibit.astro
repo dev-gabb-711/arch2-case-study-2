@@ -5,6 +5,7 @@ import WhatIsRam from "./S04_Group6_WhatIsRam.jsx";
 import RamJourney from "./S04_Group6_RamJourney.jsx";
 import EvolutionLogic from "./S04_Group6_Evolution.jsx";
 import MemComEvolution from "./S04_Group6_MemoryCommunication.jsx";
+import QuizLogic from "./S04_Group6_ChallengeQuiz.jsx";
 
 import switchPokemon from "../assets/S04_Group6_switch-pokemon.png";
 import nintendoSwitch from "../assets/S04_Group6_ir-nintendo.png";
@@ -657,25 +658,18 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
             </span>
           </button>
 
+          <button id="next-btn" class="quiz-option">
+            <span class="option-text" style="font-weight: bold;">Next Question →</span>
+          </button>
+
         </div>
 
       </div>
+
+      <QuizLogic client:load />
     </section>
 
-    <script>
-      const quizOptions =
-        document.querySelectorAll<HTMLButtonElement>(".quiz-option");
 
-      quizOptions.forEach((option) => {
-        option.addEventListener("click", () => {
-          quizOptions.forEach((otherOption) => {
-            otherOption.classList.remove("active");
-          });
-
-          option.classList.add("active");
-        });
-      });
-    </script>
 
   </div>
 </section>

@@ -5078,6 +5078,23 @@
   color: #ffffff;
 }
 
+.quiz-option.correct {
+    background-color: #d1fae5;
+    border-color: #10b981;
+    color: #065f46;
+}
+
+.quiz-option.incorrect {
+    background-color: #fee2e2;
+    border-color: #ef4444;
+    color: #991b1b;
+}
+
+.quiz-option.correct,
+.quiz-option.incorrect {
+    pointer-events: none;
+}
+
 /* Responsive adjustments */
 @media (max-width: 850px) {
   .quiz-container {
