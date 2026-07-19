@@ -496,12 +496,12 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
 
             <div class="request-item">
               <span>Address</span>
-              <strong>0x2B40</strong>
+              <strong>[UNINITIALIZED]</strong>
             </div>
 
             <div class="request-item">
               <span>Data</span>
-              <strong>Pikachu</strong>
+              <strong>[UNIDENTIFIED]</strong>
             </div>
           </div>
 
@@ -511,12 +511,12 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
             </h3>
 
             <p>
-              <strong>Row:</strong> R2
-              <strong> Col:</strong> C4
+              <strong>Row:</strong> R
+              <strong> Col:</strong> C
             </p>
 
             <p>
-              <strong>Payload:</strong> Pikachu
+              <strong>Payload:</strong> [DATA]
             </p>
           </div>
 
@@ -529,36 +529,46 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
         <div class="memory-card">
 
           <h3>
-            HOW IT WORKS
+            HOW MEMORY ACCESS WORKS
           </h3>
 
           <p>
-            The controller sends a row address (RAS) to open the
-            memory line, then a column address (CAS) to read and
-            transfer the data.
+            DRAM stores data in a grid of rows and columns. To access a
+            memory location, the controller first selects the row using
+            <strong>RAS</strong>, then the column using <strong>CAS</strong>.
+            This two-step process reduces hardware complexity while allowing
+            fast access to the requested data.
           </p>
 
           <div class="info-split">
 
             <div class="info-split-item">
               <h4>
-                RAS
+                RAS (Row Access Strobe)
               </h4>
 
               <p>
-                RAS latches the row address into DRAM before memory
-                access continues.
+                RAS activates the row containing the requested data. Once the
+                row is open, it remains ready for the column to be selected.
+              </p>
+
+              <p>
+                <strong>Purpose:</strong> Opens the correct memory row for access.
               </p>
             </div>
 
             <div class="info-split-item">
               <h4>
-                CAS
+                CAS (Column Access Strobe)
               </h4>
 
               <p>
-                CAS selects the target column from the active row so
-                the requested data can be transferred.
+                CAS selects the correct column within the active row and
+                retrieves the data stored at their intersection.
+              </p>
+
+              <p>
+                <strong>Purpose:</strong> Selects the exact memory cell within the active row.
               </p>
             </div>
 
