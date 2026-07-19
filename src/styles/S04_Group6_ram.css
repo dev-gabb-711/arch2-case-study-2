@@ -4421,72 +4421,59 @@
   text-align: left;
 }
 
+/* -------------------------------------------- */
+/* INSIDE THE RAM                                */
+/* -------------------------------------------- */
 
-/* -------------------------------------------- */
-/* INSIDE THE RAM                     */
-/* -------------------------------------------- */
+#inside-the-ram-the-internal-data-journey .glow-title {
+  
+  margin-top: -2rem !important; 
+}
+
+#inside-the-ram-the-internal-data-journey .journey-title{
+    top:-45px;
+}
+
+#inside-the-ram-the-internal-data-journey .journey-subtitle{
+    top:70px;
+}
+
+.journey-subtitle{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:50;
+    transition:all .8s ease;
+}
+
+.desc{
+
+    width:100%;
+    word-break:break-word;
+
+    overflow-wrap:anywhere;
+}
+
+/* 1. LAYOUT */
 
 .switch-container {
   position: relative;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1400px;   
   margin: -6rem auto 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
-  
-  /* to make the nintendo appear bigger */
-  transform: scale(1.2); 
 }
 
-.nintendo-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.6)); 
-}
-
-#inside-the-ram-the-internal-data-journey .glow-title {
-  margin-top: -2rem !important; 
-}
-
-/* -------------------------------------------- */
-/* INSIDE THE RAM                     */
-/* -------------------------------------------- */
-
-.switch-container {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  margin: -6rem auto 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-  
-  /* to make the nintendo appear bigger */
-  transform: scale(1.2); 
-}
-
-.nintendo-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.6)); 
-}
-
-#inside-the-ram-the-internal-data-journey .glow-title {
-  margin-top: -2rem !important; 
-}
 
 .switch-screen-content {
   position: absolute;
-  top: 23%;
-  bottom: 21%;
-  left: 18%;
-  right: 18%;
-  overflow: hidden;
+  top:12%;
+  bottom:6%;
+  left:-5%;
+  right:-5%;
+  overflow: visible;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -4494,16 +4481,83 @@
   border: 1px dashed rgba(0, 255, 136, 0.5);
 }
 
+.ram-journey-wrapper{
+    position:relative;
+    width:100%;
+    height:100%;
+}
+
 
 .ram-journey-hud {
   width: 100%;
   height: 100%;
+  overflow: visible;
   display: flex;
   flex-direction: column;
-  padding: 3cqw 3.2cqw 2cqw;
+  padding:1rem;
   box-sizing: border-box;
+   margin-top:0px;
   color: white;
+  transform:none;
 }
+.ram-journey-body{
+   display:grid;
+   flex:1;
+    min-height:0;
+    grid-template-columns:49% 50%;
+    gap:10px;
+    width:100%;
+    align-items:stretch;
+}
+
+/* 2. NINTENDO SWITCH */
+
+.nintendo-wrapper{
+    transition: transform .8s ease;
+}
+
+.nintendo-image{
+    width:100%;
+    transform:scale(1.0);
+    transform-origin:center;
+}
+
+.switch-container.journey-started .nintendo-wrapper{
+    transform: scale(2) translateY(10px);
+}
+
+   /* 3. HUD HEADER */
+
+
+.ram-journey-mission .pokeball {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  border-radius: 50%;
+  background: linear-gradient(#ff4d4d 50%, #fff 50%);
+  border: 1px solid #111;
+  margin-right: 0.45em;
+  vertical-align: -0.05em;
+}
+
+.ram-journey-tracker::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 4%;
+  right: 4%;
+  height: 2px;
+  background: rgba(0, 255, 136, 0.18);
+  z-index: 0;
+}
+
+
+.ram-journey-screen .pika {
+  font-size: 1.7em;
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
+}
+
 
 .ram-journey-header {
   display: flex;
@@ -4532,39 +4586,18 @@
   flex-shrink: 0;
 }
 
-.ram-journey-mission .pokeball {
-  display: inline-block;
-  width: 0.85em;
-  height: 0.85em;
-  border-radius: 50%;
-  background: linear-gradient(#ff4d4d 50%, #fff 50%);
-  border: 1px solid #111;
-  margin-right: 0.45em;
-  vertical-align: -0.05em;
-}
-
 .ram-journey-counter {
   color: rgba(255, 255, 255, 0.55);
   font-weight: 600;
 }
 
+/* 4. PROGRESS TRACKER */
 .ram-journey-tracker{
   display: flex;
   justify-content: space-between;
   margin: 2.4cqw 0;
   position: relative;
   flex: 0 0 auto;
-}
-
-.ram-journey-tracker::before {
-  content: "";
-  position: absolute;
-  top: 40%;
-  left: 4%;
-  right: 4%;
-  height: 1px;
-  background: rgba(0, 255, 136, 0.18);
-  z-index: 0;
 }
 
 .ram-journey-step{
@@ -4577,8 +4610,8 @@
 }
 
 .ram-journey-step .number{
-  width: 1.7em;
-  height: 1.7em;
+  width: 2.4em;
+  height: 2.4em;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -4592,9 +4625,11 @@
 }
 
 .ram-journey-step.active .number {
-  border-color: #00ff88;
-  color: #00ff88;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.55);
+  border-color:#00ff88;
+    box-shadow:
+        0 0 8px #00ff88,
+        0 0 16px #00ff88,
+        0 0 24px rgba(0,255,136,.5)
 }
 
 .ram-journey-step.completed .number {
@@ -4603,61 +4638,8 @@
   color: #9affd4;
 }
 
-.ram-journey-body{
-  flex: 1 1 auto;
-  display: grid;
-  grid-template-columns: 40% 58%;
-  gap: 2cqw;
-  min-height: 0;
-}
-
-.ram-journey-info{
-    width: 110%;
-
-    display:flex;
-    flex-direction:column;
-    gap:1rem;
-    min-width:0;
-    padding-right: 2cqw;
-}
-
-.ram-journey-info .step-badge{
-  color: #00ff88;
-  font-weight: 700;
-  font-size: clamp(0.4rem, 1cqw, 0.7rem);
-  letter-spacing: 0.06em;
-  text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
-}
-
-.ram-journey-info .status-label{
-  color: rgba(154, 255, 212, 0.8);
-  font-size: clamp(0.34rem, 0.8cqw, 0.56rem);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.ram-journey-info .status-value {
-  color: white;
-  font-weight: 700;
-  font-size: clamp(0.42rem, 1cqw, 0.72rem);
-  margin-top: 0.3em;
-}
-
-.ram-journey-info .desc {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: clamp(0.36rem, 0.85cqw, 0.6rem);
-  line-height: 1.5;
-}
-
-.ram-journey-info .learn-more {
-  display: none;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: clamp(0.34rem, 0.8cqw, 0.56rem);
-  line-height: 1.55;
-  border-top: 1px dashed rgba(0, 255, 136, 0.3);
-  padding-top: 3cqw;
-}
-
+   /* 5. INFORMATION PANEL */
+  
 .ram-journey-info .learn-more.open {
   display: block;
 }
@@ -4675,9 +4657,63 @@
   color: #9affd4;
 }
 
+.ram-journey-info{
+    width: 100%;
+     flex-direction:column;
+    justify-content:flex-start;
+    gap:10px;
+    height:100%;
+    min-width:0;
+    padding-right: 2cqw;
+}
+
+.ram-journey-info .step-badge{
+  color: #00ff88;
+  font-weight: 700;
+   font-size:13px;
+  letter-spacing:2px;
+  text-align:center;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+}
+
+.ram-journey-info .status-label{
+  color: rgba(154, 255, 212, 0.8);
+      font-size:10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.ram-journey-info .status-value {
+  color: white;
+  font-weight: 700;
+  font-size:10px;
+  margin-top: 0.3em;
+   letter-spacing:1px;
+}
+
+.ram-journey-info .desc {
+  text-align:justify;
+    text-justify:inter-word;
+    line-height:1.6;
+    font-size:9px;
+    color:rgba(255,255,255,.9);
+}
+
+.ram-journey-info .learn-more {
+  display: none;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(0.34rem, 0.8cqw, 0.56rem);
+  line-height: 1.55;
+  border-top: 1px dashed rgba(0, 255, 136, 0.3);
+  padding-top: 3cqw;
+}
+
+ /* 6. VISUAL PANEL */
+
 .ram-journey-visual {
-  width: 90%;
+  width: 100%;
   max-width: none;
+  min-width:0;
   border: 1px solid rgba(0, 255, 136, 0.25);
   border-radius: 16px;
   background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
@@ -4687,12 +4723,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: fit-content; 
+  height:fit-content;
+  min-height:170px;
   align-self: flex-start;
-  gap: 1cqw;           
-  padding: 1.2cqw;
+  gap: 12px;           
+  padding:14px;
+  box-sizing:border-box;
   position: relative;
-  transform: translate(-5px, -15px);    
 }
 
 .ram-journey-visual-labels {
@@ -4700,7 +4737,9 @@
   width: 100%;
   justify-content: space-between;
   color: rgba(255, 255, 255, 0.95);
-  font-size: clamp(0.32rem, 0.75cqw, 0.5rem);
+ font-size: 0.65rem;
+  padding: 15px; 
+  text-align:center;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -4711,44 +4750,35 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 3%;
+  justify-content:center;
+  gap:4%;
   position: relative;
 }
 
-.ram-journey-cpu,
-.ram-journey-screen {
-  width: 13%;
-  aspect-ratio: 1 / 1;
-  border-radius: 6px;
-  border: none;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  text-shadow: 0 0 6px rgba(0, 255, 136, 0.6);
-  font-size: clamp(0.3rem, 0.7cqw, 0.5rem);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-align: center;
-  padding: 4%;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 2;
-}
+/* ----- CPU ----- */
 
-
-
-.ram-journey-screen .pika {
-  font-size: 1.7em;
-  opacity: 0.25;
-  transition: opacity 0.3s ease;
-}
-
-.ram-journey-screen.loaded .pika {
+.ram-journey-cpu .cpu-pika {
   opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.7));
 }
+
+.cpu-pika{
+  width: 300%;
+  height: 300%;
+  object-fit: cover;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.mission-target {
+  cursor: pointer;
+}
+
+.mission-target .cpu-pika {
+  animation: cpuPulse 1.2s infinite;
+}
+
+/* ----- RAM ----- */
 
 .ram-journey-chips {
   flex: 0 0 auto;
@@ -4762,8 +4792,7 @@
   position: relative;
   z-index: 2;
 }
-
-.ram-journey-chip {
+ .ram-journey-chip {
   flex: 1;
   max-width: 9%;
   aspect-ratio: 1 / 3;
@@ -4772,21 +4801,72 @@
   border: 1px solid rgba(0, 255, 136, 0.2);
   transition: all 0.25s ease;
 }
-
 .ram-journey-chip.active {
-  background: rgba(0, 255, 136, 0.28);
-  border-color: #00ff88;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.55);
+  animation: chipPulse 1s infinite;
+}
+
+/* ----- SCREEN ----- */
+
+.ram-journey-screen.loaded .cpu-pika {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.8));
+}
+
+.ram-journey-cpu,
+.ram-journey-screen {
+  width: 52%;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(0, 255, 136, 0.6);
+  font-size: clamp(0.3rem, 0.7cqw, 0.5rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin: 4%;
+  padding: 3%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+
+.screen-finished .cpu-pika {
+  animation: screenFlash 0.6s ease-out;
+}
+.ram-journey-screen.loaded .pika {
+  opacity: 1;
+}
+
+.screen-finished .cpu-pika {
+  animation: screenPulse 1.2s infinite;
+  opacity: 1;
+  filter:
+    brightness(1.35)
+    saturate(1.3)
+    drop-shadow(0 0 12px #00ff88);
+}
+
+
+
+/* ----- DATA PACKET ----- */
+
+
+.ram-journey-packet.show {
+  opacity: 1;
+  animation: packetFloat 1.2s ease-in-out infinite;
 }
 
 .ram-journey-packet {
   position: absolute;
   top: 50%;
   left: 18%;
-
   width: 20px;
   height: 20px;
-
   transform: translate(-50%, -50%);
   transition:
     left 0.8s cubic-bezier(0.4, 0, 0.2, 1),
@@ -4800,26 +4880,41 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-
   filter:
     drop-shadow(0 0 6px rgba(255,255,255,0.5))
     drop-shadow(0 0 8px rgba(255,0,0,0.4));
 }
-.ram-journey-packet.show {
-  opacity: 1;
+
+.packet-cpu {
+  left: 11.5%;
 }
+
+.packet-ram {
+  left: 50%;
+}
+
+.packet-screen {
+  left: 89%;
+  top: 10%;
+  transform: translate(-50%, -50%) scale(0.7);
+}
+
+/* ----- STATUS HINT ----- */
 
 .ram-journey-hint {
   flex: 0 0 auto;
   margin-top: -3cqw;
   border: 1px solid rgba(0, 255, 136, 0.35);
   background: rgba(0, 255, 136, 0.06);
-  border-radius: 6px;
+  border-radius: 8px;
   color: #9affd4;
-  padding: 1.6cqw 2.4cqw;
-  font-size: clamp(0.32rem, 0.78cqw, 0.54rem);
+  padding:12px 18px;
+  font-size:0.60rem;
   letter-spacing: 0.03em;
 }
+
+/* ----- NAVIGATION ----- */
+
 
 .ram-journey-controls {
   flex: 0 0 auto;
@@ -4828,7 +4923,7 @@
   gap: 4cqw;
   margin-top: 1.8cqw;
   color: rgba(255, 255, 255, 0.75);
-  font-size: clamp(0.32rem, 0.78cqw, 0.54rem);
+  font-size:0.72rem;
 }
 
 .ram-journey-controls button {
@@ -4866,22 +4961,221 @@
   cursor: default;
 }
 
-.cpu-pika{
-  width: 300%;
-  height: 300%;
-  object-fit: cover;
-  opacity: 0.4;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+/* 7. INTRO SCREEN */
+
+.intro-pikachu{
+    width:110px;
+    height:auto;
+    display:block;
+     margin-top:50px;
+    margin-bottom:5px;
+    animation: floatBall 2.5s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 0 8px rgba(255,255,255,.4))
+        drop-shadow(0 0 15px rgba(255,0,0,.35));
 }
 
-.ram-journey-cpu .cpu-pika {
-  opacity: 1;
-  filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.7));
+.journey-intro{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    gap:14px;
+
+    transform:translateY(-50px);
+
+    z-index:100;
+}
+.start-btn{
+    position:relative;
+    overflow:hidden;
+    margin-top: 0;          /* itaas ng kaunti */
+    padding:10px 20px;         /* mas maliit */
+    border:3px solid #111;
+    border-radius:18px;
+
+    background:#ffffff;
+    color:#4e1919;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:1px;
+    text-transform:uppercase;
+
+    font-family:"Press Start 2P","Orbitron","Trebuchet MS",sans-serif;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+    box-shadow:
+        0 6px 0 #111,
+        0 0 18px rgba(255,255,255,.35);
 }
 
-.ram-journey-screen.loaded .cpu-pika {
-  opacity: 1;
-  filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.8));
+.start-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:
+        0 8px 0 #111,
+        0 0 24px rgba(255,255,255,.6);
+}
+
+.start-btn:active{
+    transform:translateY(4px);
+
+    box-shadow:
+        0 2px 0 #111,
+        0 0 10px rgba(255,255,255,.3);
+}
+
+   /* 8. ASH GUIDE */
+
+.ram-journey-guide{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:0px;
+    padding: 5px;
+    margin-bottom:14px;
+    border-radius:18px;
+    border:1px solid rgba(0,255,136,.25);
+    background:rgba(0,255,136,.06)
+}
+
+.ash-avatar{
+     width: 120px;
+    flex-shrink:0;
+}
+
+.ash-dialogue{
+     min-width:0;
+    flex:1;
+}
+
+.ash-name{
+    color:#00ff88;
+    font-weight:700;
+    font-size:13px;
+    margin-bottom:3px;
+    letter-spacing:2px;
+}
+
+.ash-dialogue p{
+  font-size:8px;
+    line-height:1.45;
+    margin:0;
+    color:white;
+}
+
+.ash-avatar.talk{
+    animation: ashSpeak .6s ease;
+}
+
+/* 9. ANIMATIONS */
+ 
+
+
+@keyframes floatBall{
+    0%,100%{
+        transform: translateY(0);
+    }
+
+    50%{
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes ashSpeak{
+    0%{
+        transform: rotate(-2deg);
+    }
+
+    25%{
+        transform: rotate(3deg) translateY(-3px);
+    }
+
+    50%{
+        transform: rotate(-3deg);
+    }
+
+    75%{
+        transform: rotate(2deg);
+    }
+
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes screenPulse {
+  0%,100%{
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px rgba(0,255,136,.5));
+  }
+
+  50%{
+    transform: scale(1.05);
+    filter:
+      drop-shadow(0 0 18px rgba(0,255,136,.9))
+      drop-shadow(0 0 30px rgba(0,255,136,.4));
+  }
+}
+
+
+
+@keyframes screenFlash {
+  0% {
+    filter: brightness(1);
+  }
+
+  30% {
+    filter: brightness(2.2);
+  }
+
+  100% {
+    filter: brightness(1.3);
+  }
+}
+
+@keyframes packetFloat {
+  0% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateY(-3px);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+}
+
+@keyframes cpuPulse {
+
+  0%{
+    transform:scale(1);
+    filter:
+      drop-shadow(0 0 8px rgba(0,255,136,.6));
+  }
+
+  50%{
+    transform:scale(1.05);
+    filter:
+      drop-shadow(0 0 18px rgba(0,255,136,1))
+      drop-shadow(0 0 30px rgba(0,255,136,.5));
+  }
+
+  100%{
+    transform:scale(1);
+    filter:
+      drop-shadow(0 0 8px rgba(0,255,136,.6));
+  }
 }
 
 @keyframes missionPulse {
@@ -4903,41 +5197,24 @@
   }
 }
 
-.mission-target {
-  cursor: pointer;
-  animation: missionPulse 1.2s infinite;
-}
-
-.packet-cpu {
-  left: 18%;
-}
-
-.packet-ram {
-  left: 50%;
-}
-
-.packet-screen {
-  left: 82%;
-}
-
-@keyframes packetFloat {
-  0% {
-    transform: translate(-50%, -50%) translateY(0px);
+@keyframes chipPulse {
+  0%,100%{
+    background: rgba(0,255,136,.25);
+    box-shadow: 0 0 6px rgba(0,255,136,.4);
   }
 
-  50% {
-    transform: translate(-50%, -50%) translateY(-3px);
-  }
-
-  100% {
-    transform: translate(-50%, -50%) translateY(0px);
+  50%{
+    background: rgba(0,255,136,.6);
+    box-shadow: 0 0 15px rgba(0,255,136,.9);
   }
 }
 
 .ram-journey-packet.show {
   opacity: 1;
-  animation: packetFloat 1.2s ease-in-out infinite;
 }
+
+
+
 /*------------------------------------------- */
 /* CHALLENGE QUIZ SECTION                       */
 /* -------------------------------------------- */
