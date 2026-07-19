@@ -12,7 +12,15 @@ const quiz_bank = [
         answerIndex: 0
     },
     {
-        question: "The process that lets the CPU perform a sequence of operations is called _____",
+        question: "The memory stores program instructions and data digitally using packets.",
+        options: [
+            "True",
+            "False"
+        ],
+        answerIndex: 1
+    },
+    {
+        question: "The process that lets the CPU perform a sequence of operations is called ________.",
         options: [
             "Go-Grow-Glow Cycle",
             "Discover-Offer-Request-Acknowledge Cycle",
@@ -22,12 +30,66 @@ const quiz_bank = [
         answerIndex: 3
     },
     {
-        question: "RAM is a type of volatile memory.",
+        question: "The RAM is a device that forwards data packets between computer networks.",
+        options: [
+            "True",
+            "False"
+        ],
+        answerIndex: 1
+    },
+    {
+        question: "All of the choices are part of Von Neumann Architecture, except:",
+        options: [
+            "CPU",
+            "Memory Unit",
+            "Input Device",
+            "Switching Fabric"
+        ],
+        answerIndex: 3
+    },
+    {
+        question: "This is a type of memory that stores information magnetically on the surface of a metal cylinder.",
+        options: [
+            "Magnetic Core Memory",
+            "Fiber Optic Memory",
+            "Drum Memory",
+            "Matrix Core Memory"
+        ],
+        answerIndex: 2
+    },
+    {
+        question: "The RAM gives the computer a workspace to run programs.",
         options: [
             "True",
             "False"
         ],
         answerIndex: 0
+    },
+    {
+        question: "This is a type of bus which identifies the memory location of a data",
+        options: [
+            "Data Bus",
+            "Forwarding Bus",
+            "Address Bus",
+            "Control Bus"
+        ],
+        answerIndex: 2
+    },
+    {
+        question: "The CPU has to request for the data in the memory first if it is not available in its registers.",
+        options: [
+            "True",
+            "False"
+        ],
+        answerIndex: 0
+    },
+    {
+        question: "In the DRAM, the controller selects CAS first before RAS to access the correct row and column memory cell.",
+        options: [
+            "True",
+            "False"
+        ],
+        answerIndex: 1
     }
 ];
 
