@@ -2,101 +2,120 @@ import { useEffect } from "react";
 
 const quiz_bank = [
     {
-        question: "Question 1",
+        question: "What is RAM?",
         options: [
-            "Ans1",
-            "Ans2",
-            "Ans3",
-            "Ans4"
+            "A semiconductor that temporarily stores data and program instructions",
+            "A router that temporarily stores data and program instructions",
+            "A switch that temporarily stores data and program instructions",
+            "A semiconductor that permanently stores data and program instructions"
         ],
         answerIndex: 0
     },
     {
-        question: "Question 2",
+        question: "The process that lets the CPU perform a sequence of operations is called _____",
         options: [
-            "Ans1",
-            "Ans2",
-            "Ans3",
-            "Ans4"
+            "Go-Grow-Glow Cycle",
+            "Discover-Offer-Request-Acknowledge Cycle",
+            "Read-Write-Update Cycle",
+            "Fetch-Decode-Execute Cycle"
         ],
-        answerIndex: 1
+        answerIndex: 3
+    },
+    {
+        question: "RAM is a type of volatile memory.",
+        options: [
+            "True",
+            "False"
+        ],
+        answerIndex: 0
     }
-]
+];
 
 export default function QuizLogic() {
     useEffect(() => {
+        if (typeof window === 'undefined') return;
+
         let currentIndex = 0;
+        let answerLocked = false;
 
         const qNum = document.querySelector('.question-number');
         const qText = document.querySelector('.question-text');
-        const choices = document.querySelectorAll('.quiz-option:not(#next-btn)');
         const next = document.querySelector('#next-btn');
+        const choicesHolder = document.querySelector('#quiz-choices');
+        const alphabet = ["A.", "B.", "C.", "D."];
 
         function loadQuestion() {
             const current = quiz_bank[currentIndex];
+            answerLocked = false;
 
-            if (qNum)
+            if (qNum) {
                 qNum.innerText = `QUESTION ${currentIndex + 1}`;
-            if (qText)
+            }
+
+            if (qText) {
                 qText.innerText = current.question;
-            if (next)
+            }
+
+            if (next) {
                 next.style.display = 'none';
+            }
 
-            choices.forEach((btn, i) => {
-                btn.classList.remove('active');
-                const textSpan = btn.querySelector('.option-text');
-                if (textSpan)
-                    textSpan.innerText = current.options[i]
-            })
+            if (choicesHolder) {
+                choicesHolder.innerHTML = '';
+
+                current.options.forEach((optionText, i) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'quiz-option';
+
+                    btn.innerHTML = `
+                        <span class="option-letter">${alphabet[i]}</span>
+                        <span class="option-text">${optionText}</span>
+                    `;
+
+                    btn.addEventListener('click', () => {
+                        if (answerLocked) return;
+                        answerLocked = true;
+
+                        if (document.activeElement instanceof HTMLElement) {
+                            document.activeElement.blur();
+                        }
+
+                        const allChoices = choicesHolder.querySelectorAll('.quiz-option');
+
+                        allChoices.forEach((b, id) => {
+                            b.classList.remove('active');
+                            if (id === current.answerIndex) {
+                                b.classList.add('correct');
+                            } else if (id === i) {
+                                b.classList.add('incorrect');
+                            }
+                        });
+
+                        setTimeout(() => {
+                            if (next) {
+                                next.style.display = "block";
+                                next.querySelector('.option-text').innerText = 
+                                    currentIndex === quiz_bank.length - 1 ? "Restart Quiz ↺" : "Next Question →";
+                            }
+                        }, 600);
+                    });
+                    
+                    choicesHolder.appendChild(btn);
+                });
+            }
         }
-
-        let selectedIndex = null;
-        let answerLocked = false;
-
-        choices.forEach((btn, i) => {
-            btn.addEventListener('click', () => {
-                if (answerLocked) return
-                answerLocked = true;
-                
-                if (document.activeElement instanceof HTMLElement) {
-                    document.activeElement.blur();
-                }
-
-                selectedIndex = i;
-                const currentQuestion = quiz_bank[currentIndex]
-
-                choices.forEach((b, i) => {
-                    if (i === currentQuestion.answerIndex) {
-                        b.classList.add('correct')
-                    } else if (i === selectedIndex) {
-                        b.classList.add('incorrect')
-                    }
-                })
-
-                setTimeout(() => {
-                    if (next) {
-                        next.style.display = "block"
-                        next.querySelector('.option-text').innerText = currentIndex === quiz_bank.length - 1 ? "Restart Quiz ↺" : "Next Question →"
-                    }
-                }, 600)
-            })
-        })
 
         if (next) {
             next.addEventListener('click', () => {
-                answerLocked = false;
-                selectedIndex = null;
-                choices.forEach(btn => btn.classList.remove('correct', 'incorrect'))
-
                 if (currentIndex < quiz_bank.length - 1) {
                     currentIndex++;
                 } else {
                     currentIndex = 0;
                 }
                 loadQuestion();
-            })
+            });
         }
 
         loadQuestion();
-    }, [])
+    }, []);
 }
