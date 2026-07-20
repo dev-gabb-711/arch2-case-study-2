@@ -405,7 +405,7 @@ const MemoryCommunication = () => {
     }
 
     if (selectedCell) {
-      return "DATA RETURNED";
+      return "Sent";
     }
 
     return "IDLE";
@@ -645,7 +645,7 @@ const MemoryCommunication = () => {
               <span>LATENCY</span>
 
               <strong>
-                {currentGeneration.delay} MS
+                {currentGeneration.delay}MS
               </strong>
             </div>
 
