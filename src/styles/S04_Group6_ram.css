@@ -12,7 +12,6 @@
 /* =========================================================
    TABLE OF CONTENTS
    ========================================================= */
-
 .article > h2 {
   position: relative;
 
@@ -46,10 +45,32 @@
 #ram-exhibit-internal-journey,
 #ram-exhibit-memory-access,
 #ram-exhibit-challenge-quiz {
+  position: relative;
+  width: 100%;
+
   scroll-margin-top: 1rem;
 }
 
 .ram-section-anchor {
+  position: relative;
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: visible;
+}
+
+.ram-section-anchor > .big-section,
+.ram-section-anchor > section,
+.ram-section-anchor > header {
+  width: 100%;
+}
+
+.inside-ram-section {
   position: relative;
   width: 100%;
 }
