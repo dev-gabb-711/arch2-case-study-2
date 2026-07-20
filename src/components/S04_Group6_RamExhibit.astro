@@ -323,16 +323,41 @@ import nintendoSwitch from "../assets/S04_Group6_ir-nintendo.png";
       class="ram-section-anchor"
     >
       <section
-        class="big-section"
+        id="inside-the-ram-the-internal-data-journey"
+        class="big-section journey-section"
       >
-        <h2 class="journey-title">
-          INSIDE THE RAM
-        </h2>
+        <!-- Decorative HUD background matching Sections 2, 4, and 5 -->
+        <div
+          class="journey-hud-background"
+          aria-hidden="true"
+        >
+          <div class="journey-background-grid"></div>
+          <div class="journey-background-glow"></div>
+          <div class="journey-outer-frame"></div>
+        </div>
 
-        <p class="journey-subtitle">
-          THE INTERNAL DATA JOURNEY
-        </p>
+        <!-- Section header -->
+        <header class="journey-header">
+          <div class="journey-section-marker">
+            <span class="journey-marker-dots"></span>
 
+            <span>
+              SECTION 03
+            </span>
+
+            <span class="journey-marker-dots"></span>
+          </div>
+
+          <h2 class="journey-title glow-title">
+            INSIDE THE RAM
+          </h2>
+
+          <p class="journey-subtitle">
+            THE INTERNAL DATA JOURNEY
+          </p>
+        </header>
+
+        <!-- Interactive Nintendo Switch journey -->
         <div
           id="switch-container"
           class="switch-container"

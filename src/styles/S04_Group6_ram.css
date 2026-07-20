@@ -8885,335 +8885,1277 @@
 
 
 
-/* -------------------------------------------- */
-/* INSIDE THE RAM                                */
-/* -------------------------------------------- */
+/* =========================================================
+   SECTION 3 — INSIDE THE RAM (INTERNAL DATA JOURNEY)
+   ========================================================= */
 
-#inside-the-ram-the-internal-data-journey .glow-title {
-  
-  margin-top: -2rem !important; 
+#inside-the-ram-the-internal-data-journey {
+  --journey-green: #76ff89;
+  --journey-green-bright: #a8ffaf;
+  --journey-green-soft: rgba(118, 255, 137, 0.56);
+  --journey-green-line: rgba(118, 255, 137, 0.32);
+  --journey-green-faint: rgba(118, 255, 137, 0.08);
+
+  position: relative;
+
+  display: block !important;
+
+  width: 100%;
+  aspect-ratio: 16 / 14;
+  height: auto;
+  min-height: unset;
+
+  margin: 0;
+  padding: 0 !important;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  color: #ffffff;
+  text-align: left;
+
+  background: #000000;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.25);
 }
 
-#inside-the-ram-the-internal-data-journey .journey-title{
-    top:-45px;
+#inside-the-ram-the-internal-data-journey,
+#inside-the-ram-the-internal-data-journey * {
+  box-sizing: border-box;
 }
 
-#inside-the-ram-the-internal-data-journey .journey-subtitle{
-    top:70px;
+#inside-the-ram-the-internal-data-journey::before,
+#inside-the-ram-the-internal-data-journey::after {
+  content: none !important;
+  display: none !important;
 }
 
-.journey-subtitle{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:50;
-    transition:all .8s ease;
+/* ---------------------------------------------------------
+   Background Style
+   --------------------------------------------------------- */
+
+.journey-hud-background {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
 }
 
-.desc{
+.journey-background-grid {
+  position: absolute !important;
+  inset: 0;
 
-    width:100%;
-    word-break:break-word;
+  background-image:
+    linear-gradient(
+      rgba(118, 255, 137, 0.028) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(118, 255, 137, 0.028) 1px,
+      transparent 1px
+    );
 
-    overflow-wrap:anywhere;
+  background-size:
+    clamp(2.7rem, 5cqw, 4.6rem)
+    clamp(2.7rem, 5cqw, 4.6rem);
+
+  mask-image:
+    radial-gradient(
+      circle at 50% 48%,
+      #000000 0%,
+      rgba(0, 0, 0, 0.92) 50%,
+      transparent 84%
+    );
+
+  opacity: 0.76;
 }
 
-/* 1. LAYOUT */
+.journey-background-glow {
+  position: absolute !important;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 43%,
+      rgba(0, 255, 136, 0.31) 0%,
+      rgba(0, 255, 136, 0.13) 24%,
+      rgba(0, 255, 136, 0.038) 46%,
+      transparent 70%
+    );
+
+  animation:
+    journey-background-pulse
+    5.5s
+    ease-in-out
+    infinite;
+}
+
+.journey-outer-frame {
+  position: absolute !important;
+  inset: 2.2%;
+
+  pointer-events: none;
+}
+
+.journey-outer-frame::before,
+.journey-outer-frame::after {
+  content: "";
+
+  position: absolute;
+  top: 1%;
+
+  width: 28%;
+  height: 2.5rem;
+
+  opacity: 0.76;
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(118, 255, 137, 0.26)
+    );
+}
+
+.journey-outer-frame::before {
+  left: 1.4%;
+
+  background:
+    linear-gradient(
+      var(--journey-green),
+      var(--journey-green)
+    )
+      left top / 75% 1px no-repeat,
+
+    linear-gradient(
+      135deg,
+      transparent 47%,
+      var(--journey-green) 48%,
+      var(--journey-green) 52%,
+      transparent 53%
+    )
+      right top / 1.6rem 1.6rem no-repeat,
+
+    linear-gradient(
+      var(--journey-green),
+      var(--journey-green)
+    )
+      right 1.55rem / 30% 1px no-repeat,
+
+    repeating-linear-gradient(
+      135deg,
+      var(--journey-green) 0 3px,
+      transparent 3px 7px
+    )
+      left 0.5rem top 0.55rem / 2rem 0.38rem no-repeat;
+}
+
+.journey-outer-frame::after {
+  right: 1.4%;
+
+  background:
+    linear-gradient(
+      var(--journey-green),
+      var(--journey-green)
+    )
+      right top / 75% 1px no-repeat,
+
+    linear-gradient(
+      225deg,
+      transparent 47%,
+      var(--journey-green) 48%,
+      var(--journey-green) 52%,
+      transparent 53%
+    )
+      left top / 1.6rem 1.6rem no-repeat,
+
+    linear-gradient(
+      var(--journey-green),
+      var(--journey-green)
+    )
+      left 1.55rem / 30% 1px no-repeat,
+
+    repeating-linear-gradient(
+      45deg,
+      var(--journey-green) 0 3px,
+      transparent 3px 7px
+    )
+      right 0.5rem top 0.55rem / 2rem 0.38rem no-repeat;
+}
+
+/* ---------------------------------------------------------
+   Header
+   --------------------------------------------------------- */
+
+.journey-header {
+  position: absolute !important;
+  top: 2.6%;
+  right: 2.2%;
+  left: 2.2%;
+  z-index: 20;
+
+  display: block;
+
+  width: auto;
+
+  margin: 0;
+  padding: 0;
+
+  text-align: center;
+}
+
+.journey-section-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap:
+    clamp(
+      0.9rem,
+      2cqw,
+      1.75rem
+    );
+
+  margin-bottom: 0.95rem;
+
+  color: var(--journey-green);
+
+  font-size:
+    clamp(
+      0.58rem,
+      0.82cqw,
+      0.81rem
+    );
+
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.52em;
+  white-space: nowrap;
+
+  text-shadow:
+    0 0 0.6rem
+    rgba(118, 255, 137, 0.45);
+}
+
+.journey-marker-dots {
+  width:
+    clamp(
+      2rem,
+      4.2cqw,
+      3.8rem
+    );
+
+  height: 0.45rem;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--journey-green) 0 1.5px,
+      transparent 2px
+    )
+      center / 0.65rem 0.45rem repeat-x;
+
+  opacity: 0.68;
+}
+
+#inside-the-ram-the-internal-data-journey
+.journey-header
+.journey-title,
+#inside-the-ram-the-internal-data-journey
+.journey-header
+.journey-title.glow-title {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  left: auto !important;
+
+  display: block;
+
+  width: 100%;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #e4ffe8 !important;
+
+  font-family:
+    "RQND Pro",
+    Arial,
+    sans-serif !important;
+
+  font-size:
+    clamp(
+      2.65rem,
+      6.45cqw,
+      5.8rem
+    ) !important;
+
+  font-weight: 800 !important;
+  line-height: 0.86 !important;
+  letter-spacing: 0.025em !important;
+
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  border: none !important;
+  background: none !important;
+
+  text-shadow:
+    0 0 8px rgba(118, 255, 137, 1),
+    0 0 22px rgba(118, 255, 137, 0.68),
+    0 0 45px rgba(68, 255, 101, 0.28) !important;
+
+  animation:
+    journey-title-pulse
+    4.6s
+    ease-in-out
+    infinite;
+}
+
+#inside-the-ram-the-internal-data-journey
+.journey-header
+.journey-title::before,
+#inside-the-ram-the-internal-data-journey
+.journey-header
+.journey-title::after {
+  content: none !important;
+  display: none !important;
+}
+
+#inside-the-ram-the-internal-data-journey
+.journey-header
+.journey-subtitle {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  left: auto !important;
+
+  display: block;
+
+  width: 100%;
+
+  margin: 0.85rem auto 0 !important;
+
+  color: rgba(255, 255, 255, 0.94);
+
+  font-size:
+    clamp(
+      0.68rem,
+      1.2cqw,
+      1.08rem
+    );
+
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.62em;
+
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  text-shadow:
+    0 0 0.8rem
+    rgba(255, 255, 255, 0.18);
+
+  transform: none !important;
+}
+
+@keyframes journey-background-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(0.98);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.035);
+  }
+}
+
+/* ---------------------------------------------------------
+   Main Console Layout
+   --------------------------------------------------------- */
 
 .switch-container {
-  position: relative;
-  width: 100%;
-  max-width: 1400px;   
-  margin: -6rem auto 0 auto;
+  position: absolute !important;
+
+  top: 19.8%;
+  right: 2.2%;
+  bottom: 2.8%;
+  left: 2.2%;
+
+  z-index: 5;
+
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  width: auto;
+  max-width: none;
+  height: auto;
+
+  margin: 0;
+
+  animation:
+    journey-console-enter
+    900ms
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
 }
 
+.nintendo-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  transition:
+    transform
+    0.85s
+    cubic-bezier(0.16, 1, 0.3, 1);
+
+  filter:
+    drop-shadow(
+      0 0 1.4rem
+      rgba(0, 255, 136, 0.1)
+    );
+}
+
+.nintendo-image {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  transform: scale(1);
+  transform-origin: center;
+}
+
+.switch-container.journey-started .nintendo-wrapper {
+  transform:
+    scale(1.92)
+    translateY(0.55rem);
+}
 
 .switch-screen-content {
   position: absolute;
-  top:12%;
-  bottom:6%;
-  left:-5%;
-  right:-5%;
-  overflow: visible;
+
+  top: 11.2%;
+  right: 1.7%;
+  bottom: 7.2%;
+  left: 1.7%;
+
+  z-index: 3;
+
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   justify-content: center;
-  align-items: center; 
-  border: 1px dashed rgba(0, 255, 136, 0.5);
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  clip-path:
+    inset(
+      0
+      0
+      0
+      0
+      round
+      clamp(
+        0.45rem,
+        1.1cqw,
+        1rem
+      )
+    );
 }
 
-.ram-journey-wrapper{
-    position:relative;
-    width:100%;
-    height:100%;
-}
+.ram-journey-wrapper {
+  position: relative;
 
-
-.ram-journey-hud {
   width: 100%;
   height: 100%;
-  overflow: visible;
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+}
+.ram-journey-hud {
+  position: relative;
+
   display: flex;
   flex-direction: column;
-  padding:1rem;
-  box-sizing: border-box;
-   margin-top:0px;
-  color: white;
-  transform:none;
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  margin: 0;
+
+  padding:
+    clamp(
+      0.65rem,
+      1.05cqw,
+      0.95rem
+    )
+    clamp(
+      0.72rem,
+      1.2cqw,
+      1.05rem
+    );
+
+  overflow: hidden;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(118, 255, 137, 0.035),
+      rgba(0, 0, 0, 0.1)
+    );
+
+  transform: none;
 }
-.ram-journey-body{
-   display:grid;
-   flex:1;
-    min-height:0;
-    grid-template-columns:49% 50%;
-    gap:10px;
-    width:100%;
-    align-items:stretch;
+
+.ram-journey-hud::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(118, 255, 137, 0.02) 0,
+      rgba(118, 255, 137, 0.02) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  opacity: 0.9;
 }
 
-/* 2. NINTENDO SWITCH */
+.ram-journey-body {
+  position: relative;
+  z-index: 2;
 
-.nintendo-wrapper{
-    transition: transform .8s ease;
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.92fr)
+    minmax(0, 1.08fr);
+
+  gap:
+    clamp(
+      0.55rem,
+      0.92cqw,
+      0.82rem
+    );
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  flex: 1;
+
+  align-items: stretch;
+
+  overflow: hidden;
 }
 
-.nintendo-image{
-    width:100%;
-    transform:scale(1.0);
-    transform-origin:center;
+/* ---------------------------------------------------------
+   Progress
+   --------------------------------------------------------- */
+
+.ram-journey-header {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  gap: 0.8rem;
+  padding:
+    0.2rem
+    0
+    0.5rem;
+  color: #fff;
+  font-size:
+    clamp(
+      0.46rem,
+      0.72cqw,
+      0.66rem
+    );
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border-bottom:
+    1px solid
+    rgba(118, 255, 137, 0.18);
 }
 
-.switch-container.journey-started .nintendo-wrapper{
-    transform: scale(2) translateY(10px);
+.ram-journey-mission {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 0.5em;
+  color: #d9ffe9;
+  font-weight: 700;
+  text-shadow:
+    0 0 8px
+    rgba(0, 255, 136, 0.55);
 }
-
-   /* 3. HUD HEADER */
-
 
 .ram-journey-mission .pokeball {
   display: inline-block;
   width: 0.85em;
   height: 0.85em;
   border-radius: 50%;
-  background: linear-gradient(#ff4d4d 50%, #fff 50%);
+  background:
+    linear-gradient(
+      #ff4d4d 50%,
+      #fff 50%
+    );
   border: 1px solid #111;
   margin-right: 0.45em;
   vertical-align: -0.05em;
 }
 
-.ram-journey-tracker::before {
-  content: "";
-  position: absolute;
-  top: 40%;
-  left: 4%;
-  right: 4%;
-  height: 2px;
-  background: rgba(0, 255, 136, 0.18);
-  z-index: 0;
-}
-
-
-.ram-journey-screen .pika {
-  font-size: 1.7em;
-  opacity: 0.25;
-  transition: opacity 0.3s ease;
-}
-
-
-.ram-journey-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex: 0 0 auto;
-  font-size: clamp(0.4rem, 1cqw, 0.7rem);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.ram-journey-mission {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  color: #d9ffe9;
-  font-weight: 700;
-  text-shadow: 0 0 8px rgba(0, 255, 136, 0.55);
-}
-
 .pokeball-icon {
-  width: 2.0em;
-  height: 2.0em;
+  width: 1.8em;
+  height: 1.8em;
   object-fit: contain;
   border-radius: 50%;
   flex-shrink: 0;
+  filter:
+    drop-shadow(
+      0 0 0.35rem
+      rgba(118, 255, 137, 0.4)
+    );
 }
 
 .ram-journey-counter {
-  color: rgba(255, 255, 255, 0.55);
+  flex: 0 0 auto;
+  color: rgba(255, 255, 255, 0.58);
   font-weight: 600;
 }
 
-/* 4. PROGRESS TRACKER */
-.ram-journey-tracker{
-  display: flex;
-  justify-content: space-between;
-  margin: 2.4cqw 0;
-  position: relative;
-  flex: 0 0 auto;
+.ram-journey-progress {
+  display: none !important;
 }
 
-.ram-journey-step{
+
+.ram-journey-tracker {
   position: relative;
-  z-index: 1;
-  flex: 1;
-  display: flex;
-  justify-content: center;
+  z-index: 3;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(8, minmax(0, 1fr));
+
+  align-items: center;
+
+  width: 100%;
+
+  margin:
+    clamp(
+      0.5rem,
+      0.82cqw,
+      0.72rem
+    )
+    0
+    clamp(
+      0.48rem,
+      0.78cqw,
+      0.68rem
+    );
+
+  padding:
+    clamp(
+      0.42rem,
+      0.65cqw,
+      0.58rem
+    )
+    clamp(
+      0.4rem,
+      0.7cqw,
+      0.62rem
+    );
+
+  flex: 0 0 auto;
+
+  border-top:
+    1px solid
+    rgba(118, 255, 137, 0.13);
+
+  border-bottom:
+    1px solid
+    rgba(118, 255, 137, 0.13);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(118, 255, 137, 0.035) 18%,
+      rgba(118, 255, 137, 0.055) 50%,
+      rgba(118, 255, 137, 0.035) 82%,
+      transparent
+    );
+}
+
+.ram-journey-tracker::before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  right: 6%;
+  left: 6%;
+  z-index: 0;
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(118, 255, 137, 0.18) 5%,
+      rgba(118, 255, 137, 0.48) 50%,
+      rgba(118, 255, 137, 0.18) 95%,
+      transparent
+    );
+
+  box-shadow:
+    0 0 0.55rem
+    rgba(118, 255, 137, 0.18);
+
+  transform:
+    translateY(-50%);
+}
+
+.ram-journey-step {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  place-items: center;
+
+  min-width: 0;
+
   cursor: pointer;
 }
 
-.ram-journey-step .number{
-  width: 2.4em;
-  height: 2.4em;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: clamp(0.36rem, 0.85cqw, 0.6rem);
+.ram-journey-step .number {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  width:
+    clamp(
+      1.35rem,
+      2.15cqw,
+      1.9rem
+    );
+
+  aspect-ratio: 1;
+
+  color:
+    rgba(255, 255, 255, 0.46);
+
+  font-family:
+    monospace !important;
+
+  font-size:
+    clamp(
+      0.42rem,
+      0.62cqw,
+      0.58rem
+    );
+
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.45);
-  transition: all 0.25s ease;
+  line-height: 1;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.24);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.065),
+      rgba(0, 0, 0, 0.82) 68%
+    );
+
+  box-shadow:
+    inset 0 0 0.55rem
+    rgba(255, 255, 255, 0.025),
+    0 0 0
+    rgba(118, 255, 137, 0);
+
+  transition:
+    color 220ms ease,
+    transform 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.ram-journey-step .number::before {
+  content: "";
+
+  position: absolute;
+  inset: -0.3rem;
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  transition:
+    border-color 220ms ease,
+    transform 220ms ease,
+    opacity 220ms ease;
+}
+
+.ram-journey-step:hover .number {
+  color: #ffffff;
+
+  border-color:
+    rgba(118, 255, 137, 0.68);
+
+  transform:
+    translateY(-0.08rem)
+    scale(1.06);
+
+  box-shadow:
+    0 0 0.7rem
+    rgba(118, 255, 137, 0.18);
 }
 
 .ram-journey-step.active .number {
-  border-color:#00ff88;
-    box-shadow:
-        0 0 8px #00ff88,
-        0 0 16px #00ff88,
-        0 0 24px rgba(0,255,136,.5)
+  color: #041108;
+
+  border-color:
+    #caffcf;
+
+  background:
+    radial-gradient(
+      circle,
+      #d9ffdc 0%,
+      #76ff89 45%,
+      #16c75f 100%
+    );
+
+  transform:
+    scale(1.14);
+
+  box-shadow:
+    0 0 0.5rem
+    rgba(118, 255, 137, 1),
+    0 0 1.05rem
+    rgba(118, 255, 137, 0.78),
+    0 0 1.8rem
+    rgba(118, 255, 137, 0.34);
+
+  animation:
+    journey-step-pulse
+    1.65s
+    ease-in-out
+    infinite;
+}
+
+.ram-journey-step.active .number::before {
+  border-color:
+    rgba(118, 255, 137, 0.48);
+
+  animation:
+    journey-step-ring
+    1.65s
+    ease-out
+    infinite;
 }
 
 .ram-journey-step.completed .number {
-  border-color: rgba(0, 255, 136, 0.5);
-  background: rgba(0, 255, 136, 0.12);
-  color: #9affd4;
+  color: #a8ffaf;
+
+  border-color:
+    rgba(118, 255, 137, 0.72);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(118, 255, 137, 0.2),
+      rgba(0, 15, 6, 0.94) 70%
+    );
+
+  box-shadow:
+    0 0 0.55rem
+    rgba(118, 255, 137, 0.22);
 }
 
+.ram-journey-step.completed .number::after {
+  content: "";
 
-.ram-journey-progress {
+  position: absolute;
+  right: -0.15rem;
+  bottom: -0.08rem;
+
+  width: 0.38rem;
+  height: 0.38rem;
+
+  border-radius: 50%;
+
+  background:
+    var(--journey-green);
+
+  box-shadow:
+    0 0 0.45rem
+    rgba(118, 255, 137, 0.85);
+}
+/* ---------------------------------------------------------
+   Left Information Panel
+   --------------------------------------------------------- */
+
+.desc {
+  width: 100%;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+.ram-journey-info {
+  position: relative;
+
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  flex: 0 0 auto;
-  margin-top: 0.6rem;
-}
-
-.ram-journey-progress-track {
-  flex: 1;
-  height: 6px;
-  overflow: hidden;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 255, 136, 0.2);
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.ram-journey-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #00ff88, #76ff89);
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
-  transition: width 500ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.ram-journey-progress-label {
-  min-width: 2.6em;
-  color: #9affd4;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-align: right;
-}
-
-
-    /*restart*/
-.ram-journey-complete {
-  display: flex;
-  flex: 1;
   flex-direction: column;
+  justify-content: flex-start;
+
+  gap:
+    clamp(
+      0.38rem,
+      0.65cqw,
+      0.58rem
+    );
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+
+  padding:
+    clamp(
+      0.62rem,
+      0.9cqw,
+      0.82rem
+    );
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(118, 255, 137, 0.34);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(118, 255, 137, 0.055),
+      rgba(0, 0, 0, 0.42) 61%,
+      rgba(118, 255, 137, 0.015)
+    );
+
+  clip-path:
+    polygon(
+      0.75rem 0,
+      calc(100% - 0.75rem) 0,
+      100% 0.75rem,
+      100% calc(100% - 0.75rem),
+      calc(100% - 0.75rem) 100%,
+      0.75rem 100%,
+      0 calc(100% - 0.75rem),
+      0 0.75rem
+    );
+
+  box-shadow:
+    inset 0 0 1.7rem
+    rgba(118, 255, 137, 0.025),
+    0 0 1.25rem
+    rgba(118, 255, 137, 0.045);
+}
+
+.ram-journey-info::before,
+.ram-journey-visual::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  right: 0.55rem;
+  z-index: 8;
+  width: 2rem;
+  height: 0.38rem;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(118, 255, 137, 0.85) 0 3px,
+      transparent 3px 7px
+    );
+  opacity: 0.78;
+  pointer-events: none;
+}
+
+.ram-journey-info::after,
+.ram-journey-visual::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 8;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-right:
+    1px solid
+    rgba(118, 255, 137, 0.48);
+  border-bottom:
+    1px solid
+    rgba(118, 255, 137, 0.48);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.ram-journey-guide {
+  position: relative;
+  display: grid;
+  grid-template-columns:
+    clamp(
+      5.1rem,
+      7.8cqw,
+      7rem
+    )
+    minmax(0, 1fr);
   align-items: center;
-  justify-content: center;
-  gap: 14px;
-  text-align: center;
-  padding: 2rem 1rem;
+  gap:
+    clamp(
+      0.5rem,
+      0.8cqw,
+      0.72rem
+    );
+  padding:
+    clamp(
+      0.55rem,
+      0.82cqw,
+      0.75rem
+    );
+  margin: 0;
+  border:
+    1px solid
+    rgba(118, 255, 137, 0.2);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(118, 255, 137, 0.07),
+      rgba(255, 255, 255, 0.012)
+    );
+  clip-path:
+    polygon(
+      0.55rem 0,
+      calc(100% - 0.55rem) 0,
+      100% 0.55rem,
+      100% 100%,
+      0 100%,
+      0 0.55rem
+    );
+  overflow: hidden;
 }
 
-.complete-pikachu {
-  width: 130px;
+.ash-avatar {
+  width: 100%;
+  max-width: 7rem;
   height: auto;
-  animation: floatBall 2.5s ease-in-out infinite;
+  flex-shrink: 0;
   filter:
-    drop-shadow(0 0 10px rgba(0, 255, 136, 0.55))
-    drop-shadow(0 0 20px rgba(0, 255, 136, 0.3));
+    drop-shadow(
+      0 0 7px
+      rgba(0, 255, 136, 0.5)
+    )
+    drop-shadow(
+      0 0 14px
+      rgba(40, 140, 255, 0.2)
+    );
+  animation:
+    ash-idle
+    3s
+    ease-in-out
+    infinite;
 }
 
-.complete-title {
-  margin: 0;
-  color: #00ff88;
-  font-family: "Press Start 2P", "Orbitron", "Trebuchet MS", sans-serif;
-  font-size: clamp(1.1rem, 3cqw, 1.9rem);
-  letter-spacing: 2px;
+.ash-dialogue {
+  min-width: 0;
+  flex: 1;
+}
+
+.ash-name {
+  margin: 0 0 0.3rem;
+  color: var(--journey-green);
+  font-size:
+    clamp(
+      0.7rem,
+      1cqw,
+      0.9rem
+    );
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.14em;
   text-shadow:
-    0 0 10px rgba(0, 255, 136, 0.8),
-    0 0 24px rgba(0, 255, 136, 0.5);
-  animation: completeTitlePulse 2.2s ease-in-out infinite;
+    0 0 0.6rem
+    rgba(0, 255, 136, 0.55);
 }
 
-.complete-text {
-  max-width: 34rem;
+.ash-dialogue p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.78rem;
-  line-height: 1.6;
-  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.9);
+  font-size:
+    clamp(
+      0.54rem,
+      0.78cqw,
+      0.68rem
+    );
+  line-height: 1.45;
+  text-align: left;
 }
 
-.restart-btn {
-  margin-top: 6px;
-  padding: 10px 22px;
-  border: 3px solid #111;
-  border-radius: 18px;
-  background: #00ff88;
-  color: #04170c;
-  font-family: "Press Start 2P", "Orbitron", "Trebuchet MS", sans-serif;
-  font-size: 12px;
-  letter-spacing: 1px;
+.ash-avatar.talk {
+  animation:
+    ash-speak
+    0.6s
+    ease;
+}
+
+.ash-guide-text {
+  min-height: 2.4em;
+}
+
+.ash-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: #00ff88;
+  animation:
+    ash-cursor-blink
+    0.8s
+    steps(1)
+    infinite;
+}
+
+.ram-journey-info .step-badge {
+  margin-top: 0.05rem;
+  color: var(--journey-green);
+  font-size:
+    clamp(
+      0.72rem,
+      1.08cqw,
+      0.95rem
+    );
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-align: center;
+  text-shadow:
+    0 0 8px
+    rgba(0, 255, 136, 0.6),
+    0 0 18px
+    rgba(0, 255, 136, 0.22);
+}
+
+.ram-journey-info .status-label {
+  color:
+    rgba(154, 255, 212, 0.82);
+  font-size:
+    clamp(
+      0.52rem,
+      0.76cqw,
+      0.68rem
+    );
+  line-height: 1;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
-  cursor: pointer;
-  box-shadow:
-    0 6px 0 #111,
-    0 0 18px rgba(0, 255, 136, 0.5);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.restart-btn:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 8px 0 #111,
-    0 0 26px rgba(0, 255, 136, 0.7);
+.ram-journey-info .status-value {
+  margin-top: 0.16rem;
+  color: #fff;
+  font-size:
+    clamp(
+      0.56rem,
+      0.82cqw,
+      0.72rem
+    );
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
 }
 
-.restart-btn:active {
-  transform: translateY(4px);
-  box-shadow:
-    0 2px 0 #111,
-    0 0 10px rgba(0, 255, 136, 0.4);
+.ram-journey-info .desc {
+  margin: 0;
+  padding:
+    clamp(
+      0.58rem,
+      0.9cqw,
+      0.8rem
+    );
+  color:
+    rgba(255, 255, 255, 0.88);
+  font-size:
+    clamp(
+      0.58rem,
+      0.86cqw,
+      0.76rem
+    );
+  line-height: 1.55;
+  text-align: left;
+  border-left:
+    2px solid
+    rgba(118, 255, 137, 0.82);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(118, 255, 137, 0.075),
+      rgba(118, 255, 137, 0.015) 62%,
+      transparent
+    );
 }
 
+.ram-journey-info .learn-more {
+  display: none;
+  margin-top: 0;
+  padding-top: 0.4rem;
+  color:
+    rgba(255, 255, 255, 0.75);
+  font-size:
+    clamp(
+      0.48rem,
+      0.7cqw,
+      0.64rem
+    );
+  line-height: 1.5;
+}
 
-   /* 5. INFORMATION PANEL */
-  
 .ram-journey-info .learn-more.open {
   display: block;
 }
@@ -9231,117 +10173,230 @@
   color: #9affd4;
 }
 
-.ram-journey-info{
-    width: 100%;
-     flex-direction:column;
-    justify-content:flex-start;
-    gap:10px;
-    height:100%;
-    min-width:0;
-    padding-right: 2cqw;
-}
-
-.ram-journey-info .step-badge{
-  color: #00ff88;
-  font-weight: 700;
-   font-size:13px;
-  letter-spacing:2px;
-  text-align:center;
-  text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
-}
-
-.ram-journey-info .status-label{
-  color: rgba(154, 255, 212, 0.8);
-      font-size:10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.ram-journey-info .status-value {
-  color: white;
-  font-weight: 700;
-  font-size:10px;
-  margin-top: 0.3em;
-   letter-spacing:1px;
-}
-
-.ram-journey-info .desc {
-  text-align:justify;
-    text-justify:inter-word;
-    line-height:1.6;
-    font-size:9px;
-    color:rgba(255,255,255,.9);
-}
-
-.ram-journey-info .learn-more {
-  display: none;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: clamp(0.34rem, 0.8cqw, 0.56rem);
-  line-height: 1.55;
-  border-top: 1px dashed rgba(0, 255, 136, 0.3);
-  padding-top: 3cqw;
-}
-
- /* 6. VISUAL PANEL */
+/* ---------------------------------------------------------
+   Right Panel
+   --------------------------------------------------------- */
 
 .ram-journey-visual {
-  width: 100%;
-  max-width: none;
-  min-width:0;
-  border: 1px solid rgba(0, 255, 136, 0.25);
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-  backdrop-filter: blur(14px) saturate(140%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 24px rgba(0,255,136,0.05);
+  position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height:fit-content;
-  min-height:170px;
-  align-self: flex-start;
-  gap: 12px;           
-  padding:14px;
-  box-sizing:border-box;
-  position: relative;
+
+  gap:
+    clamp(
+      0.38rem,
+      0.65cqw,
+      0.58rem
+    );
+
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+
+  padding:
+    clamp(
+      0.62rem,
+      0.9cqw,
+      0.82rem
+    );
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(118, 255, 137, 0.34);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(118, 255, 137, 0.055),
+      rgba(0, 0, 0, 0.42) 61%,
+      rgba(118, 255, 137, 0.015)
+    );
+
+  clip-path:
+    polygon(
+      0.75rem 0,
+      calc(100% - 0.75rem) 0,
+      100% 0.75rem,
+      100% calc(100% - 0.75rem),
+      calc(100% - 0.75rem) 100%,
+      0.75rem 100%,
+      0 calc(100% - 0.75rem),
+      0 0.75rem
+    );
+
+  box-shadow:
+    inset 0 0 1.7rem
+    rgba(118, 255, 137, 0.025),
+    0 0 1.25rem
+    rgba(118, 255, 137, 0.045);
 }
 
 .ram-journey-visual-labels {
-  display: flex;
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
   width: 100%;
-  justify-content: space-between;
-  color: rgba(255, 255, 255, 0.95);
- font-size: 0.65rem;
-  padding: 15px; 
-  text-align:center;
-  letter-spacing: 0.08em;
+  padding:
+    0
+    0
+    clamp(
+      0.5rem,
+      0.8cqw,
+      0.7rem
+    );
+  color:
+    rgba(255, 255, 255, 0.94);
+  font-size:
+    clamp(
+      0.56rem,
+      0.8cqw,
+      0.7rem
+    );
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.09em;
+  text-align: center;
   text-transform: uppercase;
+  border-bottom:
+    1px solid
+    rgba(118, 255, 137, 0.18);
 }
 
 .ram-journey-track {
-  flex: 0 0 auto;
-  min-height: 90px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content:center;
-  gap:4%;
   position: relative;
+  z-index: 3;
+  flex: 1;
+  min-height:
+    clamp(
+      8rem,
+      14cqw,
+      11rem
+    );
+  width: 100%;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.88fr)
+    minmax(0, 1.24fr)
+    minmax(0, 0.88fr);
+  align-items: center;
+  justify-items: center;
+  gap:
+    clamp(
+      0.3rem,
+      0.62cqw,
+      0.56rem
+    );
 }
 
-/* ----- CPU ----- */
+.ram-journey-track::before,
+.ram-journey-track::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  z-index: 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(118, 255, 137, 0.68),
+      transparent
+    );
+  box-shadow:
+    0 0 0.75rem
+    rgba(118, 255, 137, 0.35);
+  animation:
+    journey-data-lane
+    2.1s
+    linear
+    infinite;
+}
+
+.ram-journey-track::before {
+  left: 20%;
+  width: 27%;
+}
+
+.ram-journey-track::after {
+  right: 20%;
+  width: 27%;
+  animation-delay: 0.65s;
+}
+
+.ram-journey-cpu,
+.ram-journey-screen {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width:
+    clamp(
+      5.8rem,
+      9.2cqw,
+      8.1rem
+    );
+  aspect-ratio: 1;
+  margin: 0;
+  padding: 4%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:
+    1px solid
+    rgba(118, 255, 137, 0.16);
+  border-radius: 8px;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(118, 255, 137, 0.08),
+      transparent 66%
+    );
+  color: #fff;
+  font-size:
+    clamp(
+      0.38rem,
+      0.7cqw,
+      0.56rem
+    );
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-shadow:
+    0 0 6px
+    rgba(0, 255, 136, 0.6);
+  box-shadow:
+    inset 0 0 1rem
+    rgba(118, 255, 137, 0.03);
+}
+
+.cpu-pika {
+  width: 128%;
+  height: 128%;
+  object-fit: contain;
+  opacity: 0.48;
+  transition:
+    opacity 0.35s ease,
+    filter 0.35s ease,
+    transform 0.35s ease;
+}
 
 .ram-journey-cpu .cpu-pika {
   opacity: 1;
-  filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.7));
-}
-
-.cpu-pika{
-  width: 300%;
-  height: 300%;
-  object-fit: cover;
-  opacity: 0.4;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  filter:
+    drop-shadow(
+      0 0 6px
+      rgba(0, 255, 136, 0.7)
+    );
 }
 
 .mission-target {
@@ -9349,185 +10404,376 @@
 }
 
 .mission-target .cpu-pika {
-  animation: cpuPulse 1.2s infinite;
+  animation:
+    cpu-pulse
+    1.2s
+    infinite;
 }
-
-/* ----- RAM ----- */
 
 .ram-journey-chips {
-  flex: 0 0 auto;
-  width: 45%;
-  display: flex;
-  gap: 1.5%;
-  justify-content: center;
-  padding: 3% 2%;
-  border-radius: 6px;
-  border: 1px solid rgba(0, 255, 136, 0.35);
   position: relative;
   z-index: 2;
-}
- .ram-journey-chip {
-  flex: 1;
-  max-width: 9%;
-  aspect-ratio: 1 / 3;
-  border-radius: 3px;
-  background: rgba(0, 255, 136, 0.06);
-  border: 1px solid rgba(0, 255, 136, 0.2);
-  transition: all 0.25s ease;
-}
-.ram-journey-chip.active {
-  animation: chipPulse 1s infinite;
-}
-
-/* ----- SCREEN ----- */
-
-.ram-journey-screen.loaded .cpu-pika {
-  opacity: 1;
-  filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.8));
-}
-
-.ram-journey-cpu,
-.ram-journey-screen {
-  width: 52%;
-  aspect-ratio: 1 / 1;
-  border-radius: 6px;
-  border: none;
-  background: transparent;
+  width: 100%;
+  min-height:
+    clamp(
+      4.2rem,
+      7.6cqw,
+      6.1rem
+    );
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  text-shadow: 0 0 6px rgba(0, 255, 136, 0.6);
-  font-size: clamp(0.3rem, 0.7cqw, 0.5rem);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-align: center;
-  margin: 4%;
-  padding: 3%;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 2;
+  gap: 1.6%;
+  padding: 5% 4%;
+  overflow: hidden;
+  border:
+    1px solid
+    rgba(0, 255, 136, 0.4);
+  border-radius: 8px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(118, 255, 137, 0.055),
+      rgba(0, 0, 0, 0.18)
+    );
+  box-shadow:
+    inset 0 0 1rem
+    rgba(0, 255, 136, 0.035),
+    0 0 0.9rem
+    rgba(0, 255, 136, 0.06);
 }
 
-.screen-finished .cpu-pika {
-  animation: screenFlash 0.6s ease-out;
+.ram-journey-chips::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -35%;
+  width: 25%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(118, 255, 137, 0.32),
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+  filter: blur(3px);
+  animation:
+    ram-sweep
+    2.8s
+    ease-in-out
+    infinite;
 }
+
+.ram-journey-chip {
+  flex: 1;
+  max-width: 9%;
+  min-width: 0;
+  aspect-ratio: 1 / 3;
+  border-radius: 3px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(118, 255, 137, 0.16),
+      rgba(0, 255, 136, 0.03)
+    );
+  border:
+    1px solid
+    rgba(0, 255, 136, 0.26);
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.ram-journey-chip.active {
+  animation:
+    chip-pulse
+    1s
+    infinite;
+}
+
+.ram-journey-screen.loaded .cpu-pika {
+  opacity: 1;
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(0, 255, 136, 0.8)
+    );
+}
+
 .ram-journey-screen.loaded .pika {
   opacity: 1;
 }
 
 .screen-finished .cpu-pika {
-  animation: screenPulse 1.2s infinite;
   opacity: 1;
   filter:
     brightness(1.35)
     saturate(1.3)
-    drop-shadow(0 0 12px #00ff88);
+    drop-shadow(
+      0 0 12px
+      #00ff88
+    );
+  animation:
+    screen-pulse
+    1.2s
+    infinite;
 }
 
-
-
-/* ----- DATA PACKET ----- */
-
-
-.ram-journey-packet.show {
-  opacity: 1;
-  animation: packetFloat 1.2s ease-in-out infinite;
-}
+/* ---------------------------------------------------------
+   Data Packet
+   --------------------------------------------------------- */
 
 .ram-journey-packet {
   position: absolute;
+
   top: 50%;
-  left: 18%;
-  width: 20px;
-  height: 20px;
-  transform: translate(-50%, -50%);
-  transition:
-    left 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.3s ease;
- pointer-events: none;
-  opacity: 1;
+  left: 16.666%;
+
   z-index: 10;
+
+  display: grid;
+  place-items: center;
+
+  width:
+    clamp(
+      1.7rem,
+      2.8cqw,
+      2.45rem
+    );
+
+  height:
+    clamp(
+      1.7rem,
+      2.8cqw,
+      2.45rem
+    );
+
+  margin: 0;
+
+  opacity: 1;
+
+  pointer-events: none;
+
+  transform:
+    translate(-50%, -50%);
+
+  transition:
+    top 0.8s
+      cubic-bezier(0.4, 0, 0.2, 1),
+    left 0.8s
+      cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.35s ease,
+    height 0.35s ease,
+    opacity 0.3s ease;
 }
 
 .ram-journey-packet img {
+  display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: contain;
+
   filter:
-    drop-shadow(0 0 6px rgba(255,255,255,0.5))
-    drop-shadow(0 0 8px rgba(255,0,0,0.4));
+    drop-shadow(
+      0 0 6px
+      rgba(255, 255, 255, 0.58)
+    )
+    drop-shadow(
+      0 0 12px
+      rgba(255, 50, 50, 0.52)
+    );
 }
 
-.packet-cpu {
-  left: 11.5%;
+.ram-journey-packet.show {
+  opacity: 1;
+
+  animation:
+    packet-float
+    1.05s
+    ease-in-out
+    infinite,
+    packet-glow
+    1.4s
+    ease-in-out
+    infinite;
 }
 
-.packet-ram {
-  left: 50%;
+
+.ram-journey-track
+.ram-journey-packet.packet-cpu {
+  top: 50% !important;
+  left: 14.8% !important;
+
+  width:
+    clamp(
+      2.1rem,
+      3.8cqw,
+      3.15rem
+    );
+
+  height:
+    clamp(
+      2.1rem,
+      3.8cqw,
+      3.15rem
+    );
+
+  transform:
+    translate(-50%, -50%) !important;
 }
 
-.packet-screen {
-  left: 89%;
-  top: 10%;
-  transform: translate(-50%, -50%) scale(0.7);
+.ram-journey-track
+.ram-journey-packet.packet-ram {
+  top: 50% !important;
+  left: 50% !important;
+
+  transform:
+    translate(-50%, -50%) !important;
 }
 
-/* ----- STATUS HINT ----- */
+.ram-journey-track
+.ram-journey-packet.packet-screen {
+  top: 50% !important;
+  left: 83.8% !important;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.82) !important;
+}
+
+/* ---------------------------------------------------------
+   Hint + Controls
+   --------------------------------------------------------- */
 
 .ram-journey-hint {
+  position: relative;
+  z-index: 4;
   flex: 0 0 auto;
-  margin-top: -3cqw;
-  border: 1px solid rgba(0, 255, 136, 0.35);
-  background: rgba(0, 255, 136, 0.06);
-  border-radius: 8px;
+  width: min(76%, 24rem);
+  margin-top: 0;
+  padding:
+    clamp(
+      0.5rem,
+      0.78cqw,
+      0.7rem
+    )
+    clamp(
+      0.72rem,
+      1.1cqw,
+      0.95rem
+    );
   color: #9affd4;
-  padding:12px 18px;
-  font-size:0.60rem;
+  font-size:
+    clamp(
+      0.54rem,
+      0.76cqw,
+      0.68rem
+    );
+  line-height: 1.35;
   letter-spacing: 0.03em;
+  text-align: center;
+  border:
+    1px solid
+    rgba(0, 255, 136, 0.4);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 255, 136, 0.075),
+      rgba(0, 255, 136, 0.02)
+    );
+  box-shadow:
+    inset 0 0 0.8rem
+    rgba(118, 255, 137, 0.025),
+    0 0 0.8rem
+    rgba(118, 255, 137, 0.06);
+  animation:
+    hint-glow
+    2.4s
+    ease-in-out
+    infinite;
 }
 
-/* ----- NAVIGATION ----- */
-
-
 .ram-journey-controls {
+  position: relative;
+  z-index: 4;
   flex: 0 0 auto;
   display: flex;
   justify-content: center;
-  gap: 4cqw;
-  margin-top: 1.8cqw;
-  color: rgba(255, 255, 255, 0.75);
-  font-size:0.72rem;
+  gap:
+    clamp(
+      1.5rem,
+      3.2cqw,
+      2.8rem
+    );
+  margin-top:
+    clamp(
+      0.45rem,
+      0.8cqw,
+      0.7rem
+    );
+  color:
+    rgba(255, 255, 255, 0.76);
+  font-size:
+    clamp(
+      0.58rem,
+      0.8cqw,
+      0.72rem
+    );
 }
 
 .ram-journey-controls button {
-  background: none;
-  border: none;
-  color: inherit;
-  font-family: inherit;
-  font-size: 1em;
-  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.5em;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease,
+    text-shadow 0.2s ease;
+}
+
+.ram-journey-controls button:hover:not(:disabled) {
+  color: #fff;
+  transform:
+    translateY(-0.08rem);
+  text-shadow:
+    0 0 0.55rem
+    rgba(118, 255, 137, 0.4);
 }
 
 .ram-journey-controls .key {
   width: 1.5em;
   height: 1.5em;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
   font-size: 0.85em;
+  font-weight: 700;
 }
 
 .ram-journey-controls button.primary .key {
-  background: #00ff88;
   color: #020503;
   border-color: #00ff88;
+  background: #00ff88;
+  box-shadow:
+    0 0 0.55rem
+    rgba(0, 255, 136, 0.45);
 }
 
 .ram-journey-controls button:disabled {
@@ -9535,295 +10781,934 @@
   cursor: default;
 }
 
-/* 7. INTRO SCREEN */
+/* ---------------------------------------------------------
+   Intro Screen
+   --------------------------------------------------------- */
 
-.intro-pikachu{
-    width:110px;
-    height:auto;
-    display:block;
-     margin-top:50px;
-    margin-bottom:5px;
-    animation: floatBall 2.5s ease-in-out infinite;
+.journey-intro {
+  position: absolute;
 
-    filter:
-        drop-shadow(0 0 8px rgba(255,255,255,.4))
-        drop-shadow(0 0 15px rgba(255,0,0,.35));
+  inset:
+    clamp(
+      0.75rem,
+      1.3cqw,
+      1.15rem
+    );
+
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap:
+    clamp(
+      0.75rem,
+      1.3cqw,
+      1.1rem
+    );
+
+  overflow: hidden;
+
+  transform: none;
+
+  clip-path:
+    inset(
+      0
+      0
+      0
+      0
+      round
+      clamp(
+        0.5rem,
+        1cqw,
+        0.9rem
+      )
+    );
 }
 
-.journey-intro{
-    position:absolute;
-    inset:0;
 
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
 
-    gap:14px;
-
-    transform:translateY(-50px);
-
-    z-index:100;
-}
-.start-btn{
-    position:relative;
-    overflow:hidden;
-    margin-top: 0;          /* itaas ng kaunti */
-    padding:10px 20px;         /* mas maliit */
-    border:3px solid #111;
-    border-radius:18px;
-
-    background:#ffffff;
-    color:#4e1919;
-    font-size:14px;
-    font-weight:600;
-    letter-spacing:1px;
-    text-transform:uppercase;
-
-    font-family:"Press Start 2P","Orbitron","Trebuchet MS",sans-serif;
-
-    cursor:pointer;
-
-    transition:all .25s ease;
-
-    box-shadow:
-        0 6px 0 #111,
-        0 0 18px rgba(255,255,255,.35);
+.intro-pikachu {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width:
+    clamp(
+      5.5rem,
+      10cqw,
+      8.5rem
+    );
+  max-width: 32%;
+  height: auto;
+  margin: 0;
+  transform-origin: center;
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(255, 255, 255, 0.4)
+    )
+    drop-shadow(
+      0 0 15px
+      rgba(255, 0, 0, 0.35)
+    );
+  animation:
+    intro-orbit
+    3.2s
+    ease-in-out
+    infinite;
 }
 
-.start-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:
-        0 8px 0 #111,
-        0 0 24px rgba(255,255,255,.6);
+.start-btn {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  margin-top: 0;
+  padding:
+    clamp(
+      0.62rem,
+      1cqw,
+      0.9rem
+    )
+    clamp(
+      1.1rem,
+      2cqw,
+      1.8rem
+    );
+  color: #eaffed;
+  font-family:
+    "RQND Pro",
+    "Orbitron",
+    Arial,
+    sans-serif;
+  font-size:
+    clamp(
+      0.68rem,
+      1cqw,
+      0.9rem
+    );
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border:
+    1px solid
+    rgba(118, 255, 137, 0.52);
+  border-radius: 0;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(118, 255, 137, 0.12),
+      rgba(0, 0, 0, 0.48)
+    );
+  box-shadow:
+    inset 0 0 1rem
+    rgba(118, 255, 137, 0.04),
+    0 0 1rem
+    rgba(118, 255, 137, 0.12);
+  cursor: pointer;
+  clip-path:
+    polygon(
+      0.55rem 0,
+      calc(100% - 0.55rem) 0,
+      100% 0.55rem,
+      100% calc(100% - 0.55rem),
+      calc(100% - 0.55rem) 100%,
+      0.55rem 100%,
+      0 calc(100% - 0.55rem),
+      0 0.55rem
+    );
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.start-btn:active{
-    transform:translateY(4px);
-
-    box-shadow:
-        0 2px 0 #111,
-        0 0 10px rgba(255,255,255,.3);
+.start-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      110deg,
+      transparent 0 38%,
+      rgba(255, 255, 255, 0.3) 48%,
+      transparent 58% 100%
+    );
+  transform:
+    translateX(-130%);
+  animation:
+    button-sweep
+    3.2s
+    ease-in-out
+    infinite;
 }
 
-   /* 8. ASH GUIDE */
-
-.ram-journey-guide{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    gap:0px;
-    padding: 5px;
-    margin-bottom:14px;
-    border-radius:18px;
-    border:1px solid rgba(0,255,136,.25);
-    background:rgba(0,255,136,.06)
+.start-btn:hover {
+  color: #fff;
+  transform:
+    translateY(-0.12rem);
+  border-color:
+    var(--journey-green);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(118, 255, 137, 0.2),
+      rgba(0, 0, 0, 0.48)
+    );
+  box-shadow:
+    inset 0 0 1rem
+    rgba(118, 255, 137, 0.06),
+    0 0 1.4rem
+    rgba(118, 255, 137, 0.25);
 }
 
-.ash-avatar{
-     width: 120px;
-    flex-shrink:0;
+.start-btn:active {
+  transform:
+    translateY(0.08rem);
 }
 
-.ash-dialogue{
-     min-width:0;
-    flex:1;
+/* ---------------------------------------------------------
+   Completion Screen
+   --------------------------------------------------------- */
+
+.ram-journey-complete {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap:
+    clamp(
+      0.65rem,
+      1.1cqw,
+      1rem
+    );
+  padding:
+    clamp(
+      1rem,
+      2cqw,
+      1.8rem
+    );
+  text-align: center;
 }
 
-.ash-name{
-    color:#00ff88;
-    font-weight:700;
-    font-size:13px;
-    margin-bottom:3px;
-    letter-spacing:2px;
+.complete-pikachu {
+  width:
+    clamp(
+      6rem,
+      10cqw,
+      8.5rem
+    );
+  height: auto;
+  animation:
+    completion-float
+    2.5s
+    ease-in-out
+    infinite;
+  filter:
+    drop-shadow(
+      0 0 10px
+      rgba(0, 255, 136, 0.55)
+    )
+    drop-shadow(
+      0 0 20px
+      rgba(0, 255, 136, 0.3)
+    );
 }
 
-.ash-dialogue p{
-  font-size:8px;
-    line-height:1.45;
-    margin:0;
-    color:white;
-}
-
-.ash-avatar.talk{
-    animation: ashSpeak .6s ease;
-}
-
-.ash-guide-text {
-  min-height: 2.4em;
-}
-
-.ash-cursor {
-  display: inline-block;
-  margin-left: 2px;
+.complete-title {
+  margin: 0;
   color: #00ff88;
-  animation: ash-cursor-blink 0.8s steps(1) infinite;
+  font-family:
+    "RQND Pro",
+    "Orbitron",
+    Arial,
+    sans-serif;
+  font-size:
+    clamp(
+      1.1rem,
+      3cqw,
+      1.9rem
+    );
+  letter-spacing: 0.08em;
+  text-shadow:
+    0 0 10px
+    rgba(0, 255, 136, 0.8),
+    0 0 24px
+    rgba(0, 255, 136, 0.5);
+  animation:
+    complete-title-pulse
+    2.2s
+    ease-in-out
+    infinite;
 }
 
-/* 9. ANIMATIONS */
-
-@keyframes completeTitlePulse {
-  0%, 100% { filter: brightness(0.95); }
-  50% { filter: brightness(1.25); }
+.complete-text {
+  max-width: 34rem;
+  margin: 0;
+  color:
+    rgba(255, 255, 255, 0.85);
+  font-size:
+    clamp(
+      0.58rem,
+      0.82cqw,
+      0.74rem
+    );
+  line-height: 1.55;
+  letter-spacing: 0.02em;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .complete-pikachu,
-  .complete-title {
-    animation: none;
+.restart-btn {
+  margin-top: 0.3rem;
+  padding:
+    0.65rem
+    1.2rem;
+  color: #eaffed;
+  font-family:
+    "RQND Pro",
+    "Orbitron",
+    Arial,
+    sans-serif;
+  font-size:
+    clamp(
+      0.62rem,
+      0.9cqw,
+      0.8rem
+    );
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border:
+    1px solid
+    rgba(118, 255, 137, 0.52);
+  background:
+    rgba(118, 255, 137, 0.08);
+  cursor: pointer;
+  clip-path:
+    polygon(
+      0.55rem 0,
+      calc(100% - 0.55rem) 0,
+      100% 0.55rem,
+      100% calc(100% - 0.55rem),
+      calc(100% - 0.55rem) 100%,
+      0.55rem 100%,
+      0 calc(100% - 0.55rem),
+      0 0.55rem
+    );
+  box-shadow:
+    0 0 1rem
+    rgba(118, 255, 137, 0.12);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.restart-btn:hover {
+  transform:
+    translateY(-0.12rem);
+  border-color:
+    var(--journey-green);
+  background:
+    rgba(118, 255, 137, 0.16);
+  box-shadow:
+    0 0 1.4rem
+    rgba(118, 255, 137, 0.25);
+}
+
+/* ---------------------------------------------------------
+   Animations
+   --------------------------------------------------------- */
+
+@keyframes journey-title-pulse {
+  0%,
+  100% {
+    filter: brightness(0.96);
+  }
+
+  50% {
+    filter: brightness(1.16);
   }
 }
- 
-@media (prefers-reduced-motion: reduce) {
-  .ram-journey-progress-fill {
-    transition: none;
+
+@keyframes journey-console-enter {
+  from {
+    opacity: 0;
+    transform:
+      translateY(1.2rem)
+      scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes journey-progress-sweep {
+  0%,
+  55% {
+    transform:
+      translateX(-120%);
+    opacity: 0;
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translateX(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes journey-step-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes ash-idle {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(0);
+  }
+
+  50% {
+    transform:
+      translateY(-0.18rem)
+      rotate(-0.35deg);
+  }
+}
+
+@keyframes ash-speak {
+  0% {
+    transform: rotate(-2deg);
+  }
+
+  25% {
+    transform:
+      rotate(3deg)
+      translateY(-3px);
+  }
+
+  50% {
+    transform: rotate(-3deg);
+  }
+
+  75% {
+    transform: rotate(2deg);
+  }
+
+  100% {
+    transform: rotate(0);
   }
 }
 
 @keyframes ash-cursor-blink {
-  0%, 50% { opacity: 1; }
-  50.01%, 100% { opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ash-cursor {
-    animation: none;
+  0%,
+  50% {
     opacity: 1;
   }
+
+  50.01%,
+  100% {
+    opacity: 0;
+  }
 }
 
-@keyframes floatBall{
-    0%,100%{
-        transform: translateY(0);
-    }
-
-    50%{
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes ashSpeak{
-    0%{
-        transform: rotate(-2deg);
-    }
-
-    25%{
-        transform: rotate(3deg) translateY(-3px);
-    }
-
-    50%{
-        transform: rotate(-3deg);
-    }
-
-    75%{
-        transform: rotate(2deg);
-    }
-
-    100%{
-        transform: rotate(0deg);
-    }
-}
-
-@keyframes screenPulse {
-  0%,100%{
-    transform: scale(1);
-    filter: drop-shadow(0 0 8px rgba(0,255,136,.5));
+@keyframes journey-data-lane {
+  0% {
+    opacity: 0.2;
+    background-position: -100% 0;
   }
 
-  50%{
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.2;
+    background-position: 100% 0;
+  }
+}
+
+@keyframes ram-sweep {
+  0%,
+  18% {
+    left: -35%;
+    opacity: 0;
+  }
+
+  28% {
+    opacity: 1;
+  }
+
+  78% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 112%;
+    opacity: 0;
+  }
+}
+
+@keyframes chip-pulse {
+  0%,
+  100% {
+    transform: scaleY(1);
+    background:
+      rgba(0, 255, 136, 0.25);
+    box-shadow:
+      0 0 6px
+      rgba(0, 255, 136, 0.4);
+  }
+
+  50% {
+    transform: scaleY(1.05);
+    background:
+      rgba(0, 255, 136, 0.62);
+    box-shadow:
+      0 0 15px
+      rgba(0, 255, 136, 0.9);
+  }
+}
+
+@keyframes cpu-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter:
+      drop-shadow(
+        0 0 8px
+        rgba(0, 255, 136, 0.6)
+      );
+  }
+
+  50% {
+    transform: scale(1.06);
+    filter:
+      drop-shadow(
+        0 0 18px
+        rgba(0, 255, 136, 1)
+      )
+      drop-shadow(
+        0 0 30px
+        rgba(0, 255, 136, 0.5)
+      );
+  }
+}
+
+@keyframes screen-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter:
+      drop-shadow(
+        0 0 8px
+        rgba(0, 255, 136, 0.5)
+      );
+  }
+
+  50% {
     transform: scale(1.05);
     filter:
-      drop-shadow(0 0 18px rgba(0,255,136,.9))
-      drop-shadow(0 0 30px rgba(0,255,136,.4));
+      drop-shadow(
+        0 0 18px
+        rgba(0, 255, 136, 0.9)
+      )
+      drop-shadow(
+        0 0 30px
+        rgba(0, 255, 136, 0.4)
+      );
   }
 }
 
+@keyframes packet-float {
+  0%,
+  100% {
+    transform:
+      translate(-50%, -50%)
+      translateY(0);
+  }
 
+  50% {
+    transform:
+      translate(-50%, -50%)
+      translateY(-0.2rem);
+  }
+}
 
-@keyframes screenFlash {
-  0% {
+@keyframes packet-glow {
+  0%,
+  100% {
     filter: brightness(1);
   }
 
-  30% {
-    filter: brightness(2.2);
-  }
-
-  100% {
-    filter: brightness(1.3);
-  }
-}
-
-@keyframes packetFloat {
-  0% {
-    transform: translate(-50%, -50%) translateY(0px);
-  }
-
   50% {
-    transform: translate(-50%, -50%) translateY(-3px);
+    filter: brightness(1.35);
   }
+}
 
+@keyframes hint-glow {
+  0%,
   100% {
-    transform: translate(-50%, -50%) translateY(0px);
-  }
-}
-
-@keyframes cpuPulse {
-
-  0%{
-    transform:scale(1);
-    filter:
-      drop-shadow(0 0 8px rgba(0,255,136,.6));
-  }
-
-  50%{
-    transform:scale(1.05);
-    filter:
-      drop-shadow(0 0 18px rgba(0,255,136,1))
-      drop-shadow(0 0 30px rgba(0,255,136,.5));
-  }
-
-  100%{
-    transform:scale(1);
-    filter:
-      drop-shadow(0 0 8px rgba(0,255,136,.6));
-  }
-}
-
-@keyframes missionPulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 8px rgba(0,255,136,0.5);
-  }
-
-  50% {
-    transform: scale(1.08);
+    border-color:
+      rgba(0, 255, 136, 0.34);
     box-shadow:
-      0 0 20px rgba(0,255,136,0.9),
-      0 0 40px rgba(0,255,136,0.5);
+      inset 0 0 0.8rem
+      rgba(118, 255, 137, 0.02),
+      0 0 0.55rem
+      rgba(118, 255, 137, 0.04);
+  }
+
+  50% {
+    border-color:
+      rgba(118, 255, 137, 0.68);
+    box-shadow:
+      inset 0 0 1rem
+      rgba(118, 255, 137, 0.045),
+      0 0 1rem
+      rgba(118, 255, 137, 0.14);
+  }
+}
+
+@keyframes intro-orbit {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-2deg)
+      scale(0.98);
+  }
+
+  50% {
+    transform:
+      translateY(-0.45rem)
+      rotate(2deg)
+      scale(1.04);
+  }
+}
+
+@keyframes button-sweep {
+  0%,
+  60% {
+    transform:
+      translateX(-130%);
+    opacity: 0;
+  }
+
+  70% {
+    opacity: 1;
   }
 
   100% {
-    transform: scale(1);
-    box-shadow: 0 0 8px rgba(0,255,136,0.5);
+    transform:
+      translateX(130%);
+    opacity: 0;
   }
 }
 
-@keyframes chipPulse {
-  0%,100%{
-    background: rgba(0,255,136,.25);
-    box-shadow: 0 0 6px rgba(0,255,136,.4);
+@keyframes completion-float {
+  0%,
+  100% {
+    transform:
+      translateY(0);
   }
 
-  50%{
-    background: rgba(0,255,136,.6);
-    box-shadow: 0 0 15px rgba(0,255,136,.9);
+  50% {
+    transform:
+      translateY(-0.55rem);
   }
 }
 
-.ram-journey-packet.show {
-  opacity: 1;
+@keyframes complete-title-pulse {
+  0%,
+  100% {
+    filter: brightness(0.95);
+  }
+
+  50% {
+    filter: brightness(1.25);
+  }
+}
+
+@keyframes journey-step-ring {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.72);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+
+/* ---------------------------------------------------------
+   Tablet
+   --------------------------------------------------------- */
+
+@media (max-width: 980px) {
+  #inside-the-ram-the-internal-data-journey .journey-title,
+  #inside-the-ram-the-internal-data-journey .glow-title {
+    width: 96%;
+    font-size:
+      clamp(
+        2.05rem,
+        6.2cqw,
+        4.4rem
+      ) !important;
+  }
+
+  #inside-the-ram-the-internal-data-journey .journey-title::after,
+  #inside-the-ram-the-internal-data-journey .glow-title::after {
+    width: 94vw;
+  }
+
+  .switch-container {
+    width: 98%;
+  }
+
+  .ram-journey-body {
+    grid-template-columns:
+      minmax(0, 0.96fr)
+      minmax(0, 1.04fr);
+  }
+
+  .ram-journey-guide {
+    grid-template-columns:
+      clamp(
+        4.5rem,
+        7cqw,
+        6rem
+      )
+      minmax(0, 1fr);
+  }
+
+  .ram-journey-info .desc {
+    font-size:
+      clamp(
+        0.52rem,
+        0.86cqw,
+        0.7rem
+      );
+  }
+}
+
+/* ---------------------------------------------------------
+   Mobile
+   --------------------------------------------------------- */
+
+@media (max-width: 700px) {
+  #inside-the-ram-the-internal-data-journey {
+    min-height: auto;
+    overflow: visible;
+    padding-bottom: 2rem;
+  }
+
+  #inside-the-ram-the-internal-data-journey .journey-title,
+  #inside-the-ram-the-internal-data-journey .glow-title {
+    width: 94%;
+    margin-top: 1.8rem !important;
+    padding-inline: 1rem !important;
+    white-space: normal;
+  }
+
+  #inside-the-ram-the-internal-data-journey .journey-title::before,
+  #inside-the-ram-the-internal-data-journey .glow-title::before {
+    letter-spacing: 0.28em;
+  }
+
+  #inside-the-ram-the-internal-data-journey .journey-title::after,
+  #inside-the-ram-the-internal-data-journey .glow-title::after {
+    display: none;
+  }
+
+  #inside-the-ram-the-internal-data-journey .journey-subtitle {
+    width: 92%;
+    line-height: 1.35;
+    letter-spacing: 0.3em;
+    white-space: normal;
+  }
+
+  .switch-container {
+    width: 100%;
+    margin-top: 1.2rem;
+  }
+
+  .nintendo-wrapper {
+    display: none;
+  }
+
+  .switch-screen-content {
+    position: relative;
+    inset: auto;
+    overflow: visible;
+    clip-path: none;
+  }
+
+  .ram-journey-hud {
+    min-height: 0;
+    height: auto;
+    padding:
+      1rem
+      0.75rem
+      1.4rem;
+    transform: none;
+  }
+
+  .ram-journey-body {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .ram-journey-info,
+  .ram-journey-visual {
+    min-height: 25rem;
+  }
+
+  .ram-journey-track {
+    grid-template-columns: 1fr;
+    min-height: 20rem;
+  }
+
+  .ram-journey-track::before,
+  .ram-journey-track::after {
+    display: none;
+  }
+
+  .ram-journey-cpu,
+  .ram-journey-screen {
+    max-width: 8rem;
+  }
+
+  .ram-journey-chips {
+    max-width: 18rem;
+  }
+
+  .ram-journey-guide {
+    grid-template-columns:
+      5rem
+      minmax(0, 1fr);
+  }
+
+  .journey-intro {
+    position: relative;
+    inset: auto;
+    min-height: 24rem;
+  }
+
+  .intro-pikachu {
+    max-width: 8rem;
+  }
+
+  .ram-journey-controls {
+    gap: 1.1rem;
+  }
+}
+
+
+@media (max-width: 700px) {
+  #inside-the-ram-the-internal-data-journey {
+    aspect-ratio: auto;
+    min-height: 118rem;
+  }
+
+  #inside-the-ram-the-internal-data-journey::before {
+    top: 1.7rem;
+    font-size: 0.46rem;
+    letter-spacing: 0.34em;
+  }
+
+  #inside-the-ram-the-internal-data-journey::after {
+    top: 1.35rem;
+    right: 1rem;
+    left: 1rem;
+    opacity: 0.5;
+  }
+
+  #inside-the-ram-the-internal-data-journey .journey-title,
+  #inside-the-ram-the-internal-data-journey .glow-title {
+    top: 4.6rem !important;
+    right: 1rem;
+    left: 1rem;
+    white-space: normal;
+  }
+
+  #inside-the-ram-the-internal-data-journey .journey-subtitle {
+    top: 9.6rem !important;
+    right: 1rem;
+    left: 1rem !important;
+    line-height: 1.35;
+    letter-spacing: 0.3em;
+    white-space: normal;
+  }
+
+  .switch-container {
+    position: absolute;
+    top: 12.5rem;
+    right: 0.65rem;
+    left: 0.65rem;
+    height: auto;
+  }
+}
+
+/* ---------------------------------------------------------
+   Reduced Motion
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  #inside-the-ram-the-internal-data-journey .journey-title,
+  #inside-the-ram-the-internal-data-journey .glow-title,
+  .switch-container,
+  .ram-journey-progress-fill::after,
+  .ram-journey-step.active .number,
+  .ash-avatar,
+  .ram-journey-chips::before,
+  .ram-journey-chip.active,
+  .mission-target .cpu-pika,
+  .screen-finished .cpu-pika,
+  .ram-journey-packet.show,
+  .ram-journey-hint,
+  .intro-pikachu,
+  .start-btn::before,
+  .complete-pikachu,
+  .complete-title {
+    animation: none !important;
+  }
+
+  .ram-journey-progress-fill,
+  .nintendo-wrapper,
+  .ram-journey-step .number,
+  .cpu-pika,
+  .ram-journey-chip,
+  .ram-journey-controls button,
+  .start-btn,
+  .restart-btn {
+    transition: none !important;
+  }
+
+  .ash-cursor {
+    animation: none !important;
+    opacity: 1;
+  }
 }
 
 
@@ -10533,8 +12418,6 @@
 
 .quiz-reticle-middle {
   width: 55%;
-
-  border-style: dashed;
 
   animation:
     quiz-reticle-reverse
@@ -11667,9 +13550,6 @@
 
 .quiz-results-ring-two {
   width: 68%;
-
-  border-style: dashed;
-
   animation:
     quiz-reticle-reverse
     14s
