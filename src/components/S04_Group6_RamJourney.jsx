@@ -1,4 +1,3 @@
-
 import cpuImg from '../assets/S04_Group6_InsideRAMImg/cpuImg.png';
 import monitor from '../assets/S04_Group6_InsideRAMImg/monitor.png';
 import pokeball from '../assets/S04_Group6_InsideRAMImg/pokeball.png';
@@ -88,10 +87,17 @@ export default function RamJourney() {
     hint: "Reveal Pikachu on the display."
   }
   ];
-  const [ashTalking, setAshTalking] = useState(false);
-  const [started, setStarted] = useState(false);
- const [currentStep, setCurrentStep] = useState(0);
+
+const [ashTalking, setAshTalking] = useState(false);
+const [started, setStarted] = useState(false);
+const [currentStep, setCurrentStep] = useState(0);
 const [missionComplete, setMissionComplete] = useState(false);
+
+/* MISSION COMPLETE SCREEN*/
+const [journeyFinished, setJourneyFinished] = useState(false);
+
+const [typedGuide, setTypedGuide] = useState("");
+
 useEffect(() => {
     setAshTalking(true);
 
@@ -101,6 +107,27 @@ useEffect(() => {
 
     return () => clearTimeout(timer);
 }, [currentStep]);
+
+
+  /* typewriter animation */
+  useEffect(() => {
+    const fullText = stepsData[currentStep].guide;
+    setTypedGuide("");
+
+    let i = 0;
+    const typingSpeed = 22; // ms per character — lower = faster
+
+    const interval = setInterval(() => {
+      i++;
+      setTypedGuide(fullText.slice(0, i));
+
+      if (i >= fullText.length) {
+        clearInterval(interval);
+      }
+    }, typingSpeed);
+
+    return () => clearInterval(interval);
+  }, [currentStep]);
   
   const handleComponentClick = (component) => {
     if (
@@ -110,6 +137,22 @@ useEffect(() => {
       setMissionComplete(true);
     }
   };
+
+
+  /* RESTART JOURNEY */
+  const handleRestartJourney = () => {
+    setCurrentStep(0);
+    setMissionComplete(false);
+    setJourneyFinished(false);
+  };
+
+
+  /* PROGRESS BAR */
+  const progressPercent = Math.round(
+    ((currentStep + (missionComplete ? 1 : 0)) / stepsData.length) * 100
+  );
+
+
   const getPacketPosition = () => {
   const target = stepsData[currentStep].target;
 
@@ -169,252 +212,300 @@ useEffect(() => {
 
           </div>
 
-          {/* TRACKER */}
-          <div className="ram-journey-tracker">
 
-            {stepsData.map((_, index) => {
+          {/* PROGRESS BAR */}
+          <div className="ram-journey-progress">
+            <div className="ram-journey-progress-track">
+              <div
+                className="ram-journey-progress-fill"
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
+            <span className="ram-journey-progress-label">
+              {progressPercent}%
+            </span>
+          </div>
 
-              let stepClass = "ram-journey-step";
 
-              if (index === currentStep)
-                stepClass += " active";
 
-              else if (index < currentStep)
-                stepClass += " completed";
+          {journeyFinished ? (
+            /* ================= MISSION COMPLETE ================= */
+            <div className="ram-journey-complete">
+              <img
+                src={pokemonMini.src}
+                alt="Pikachu"
+                className="complete-pikachu"
+              />
 
-              return (
-                <div
-                  key={index}
-                  className={stepClass}
-                  onClick={() => {
-                    if (index <= currentStep) {
-                      setCurrentStep(index);
-                      setMissionComplete(false);
-                    }
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  <div className="number">
-                    {index + 1}
-                  </div>
-                </div>
-              );
+              <h2 className="complete-title">MISSION COMPLETE!</h2>
 
-            })}
+              <p className="complete-text">
+                You successfully guided Pikachu's data all the way from
+                the CPU request to the screen display. Great work, Trainer!
+              </p>
+
+              <button
+                className="restart-btn"
+                onClick={handleRestartJourney}
+              >
+                ⟲ RESTART JOURNEY
+              </button>
+            </div>
+          ) : (
+            <>
+              {/* TRACKER */}
+              <div className="ram-journey-tracker">
+
+                {stepsData.map((_, index) => {
+
+                  let stepClass = "ram-journey-step";
+
+                  if (index === currentStep)
+                    stepClass += " active";
+
+                  else if (index < currentStep)
+                    stepClass += " completed";
+
+                  return (
+                    <div
+                      key={index}
+                      className={stepClass}
+                      onClick={() => {
+                        if (index <= currentStep) {
+                          setCurrentStep(index);
+                          setMissionComplete(false);
+                        }
+                      }}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <div className="number">
+                        {index + 1}
+                      </div>
+                    </div>
+                  );
+
+                })}
+
+              </div>
+
+             {/* BODY */}
+    <div className="ram-journey-body">
+
+      {/* LEFT PANEL */}
+      <div className="ram-journey-info">
+
+        {/* ASH GUIDE */}
+        <div className="ram-journey-guide">
+
+          <img
+            src={ashImg.src}
+        alt="Ash Ketchum"
+        className={`ash-avatar ${ashTalking ? "talk" : ""}`}
+          />
+
+          <div className="ash-dialogue">
+
+            <div className="ash-name">
+              ASH KETCHUM
+            </div>
+
+            <p className="ash-guide-text">
+              {typedGuide}
+              <span className="ash-cursor">▌</span>
+            </p>
 
           </div>
 
-         {/* BODY */}
-<div className="ram-journey-body">
-
-  {/* LEFT PANEL */}
-  <div className="ram-journey-info">
-
-    {/* ASH GUIDE */}
-    <div className="ram-journey-guide">
-
-      <img
-        src={ashImg.src}
-    alt="Ash Ketchum"
-    className={`ash-avatar ${ashTalking ? "talk" : ""}`}
-      />
-
-      <div className="ash-dialogue">
-
-        <div className="ash-name">
-          ASH KETCHUM
         </div>
 
-        <p>{stepsData[currentStep].guide}</p>
+        {/* STEP INFO */}
+    <div className="step-info">
 
+      <div className="step-badge">
+        STEP {currentStep + 1}
       </div>
+
+      <div className="status-line">
+        <span className="status-label">
+          STATUS:  
+        </span>
+
+        <span className="status-value">
+          {stepsData[currentStep].title}
+        </span>
+      </div>
+
+      <p className="desc">
+        {stepsData[currentStep].desc}
+      </p>
 
     </div>
 
-    {/* STEP INFO */}
-<div className="step-info">
+      </div>
 
-  <div className="step-badge">
-    STEP {currentStep + 1}
-  </div>
+                {/* RIGHT PANEL */}
 
-  <div className="status-line">
-    <span className="status-label">
-      STATUS:  
-    </span>
+                <div className="ram-journey-visual">
 
-    <span className="status-value">
-      {stepsData[currentStep].title}
-    </span>
-  </div>
+                  <div className="ram-journey-visual-labels">
+                    <span>CPU</span>
+                    <span>RAM MODULE</span>
+                    <span>SCREEN</span>
+                  </div>
 
-  <p className="desc">
-    {stepsData[currentStep].desc}
-  </p>
+                  <div className="ram-journey-track">
 
-</div>
+                    {/* CPU */}
 
-  </div>
-
-            {/* RIGHT PANEL */}
-
-            <div className="ram-journey-visual">
-
-              <div className="ram-journey-visual-labels">
-                <span>CPU</span>
-                <span>RAM MODULE</span>
-                <span>SCREEN</span>
-              </div>
-
-              <div className="ram-journey-track">
-
-                {/* CPU */}
-
-                <div
-                  className={`ram-journey-cpu ${stepsData[currentStep].target === "cpu" &&
-                    !missionComplete
-                    ? "mission-target"
-                    : ""
-                    }`}
-                  onClick={() =>
-                    handleComponentClick("cpu")
-                  }
-                >
-
-                  <img
-                    src={cpuImg.src}
-                    alt="CPU"
-                    className="cpu-pika"
-                  />
-
-                </div>
-
-                {/* RAM */}
-
-                <div
-                  className={`ram-journey-chips ${stepsData[currentStep].target === "ram" &&
-                    !missionComplete
-                    ? "mission-target"
-                    : ""
-                    }`}
-                  onClick={() =>
-                    handleComponentClick("ram")
-                  }
-                >
-
-                  {stepsData.map((_, index) => (
                     <div
-                      key={index}
-                      className={`ram-journey-chip ${currentStep >= index
-                        ? "active"
+                      className={`ram-journey-cpu ${stepsData[currentStep].target === "cpu" &&
+                        !missionComplete
+                        ? "mission-target"
                         : ""
                         }`}
-                    />
-                  ))}
+                      onClick={() =>
+                        handleComponentClick("cpu")
+                      }
+                    >
 
-                </div>
+                      <img
+                        src={cpuImg.src}
+                        alt="CPU"
+                        className="cpu-pika"
+                      />
 
-                {/* SCREEN */}
+                    </div>
 
-                <div
-                  className={`ram-journey-screen
-                  ${currentStep === 7 ? "loaded" : ""}
-                  ${currentStep === 7 &&
-                      missionComplete
-                      ? "screen-finished"
-                      : ""
-                    }
-                  ${stepsData[currentStep].target ===
-                      "screen" &&
-                      !missionComplete
-                      ? "mission-target"
-                      : ""
-                    }`}
-                  onClick={() =>
-                    handleComponentClick("screen")
-                  }
-                >
+                    {/* RAM */}
 
-                  <img
-                    src={monitor.src}
-                    alt="Screen"
-                    className="cpu-pika"
-                  />
+                    <div
+                      className={`ram-journey-chips ${stepsData[currentStep].target === "ram" &&
+                        !missionComplete
+                        ? "mission-target"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        handleComponentClick("ram")
+                      }
+                    >
 
-                </div>
+                      {stepsData.map((_, index) => (
+                        <div
+                          key={index}
+                          className={`ram-journey-chip ${currentStep >= index
+                            ? "active"
+                            : ""
+                            }`}
+                        />
+                      ))}
 
-                {/* PACKET */}
+                    </div>
 
-                {!(currentStep === 7 && missionComplete) && (
-                  <div
-                    className={`ram-journey-packet show ${getPacketPosition()}`}
-                  >
-                    <img
-                      src={pokemonMini.src}
-                      alt="Pokemon Data"
-                    />
+                    {/* SCREEN */}
+
+                    <div
+                      className={`ram-journey-screen
+                      ${currentStep === 7 ? "loaded" : ""}
+                      ${currentStep === 7 &&
+                          missionComplete
+                          ? "screen-finished"
+                          : ""
+                        }
+                      ${stepsData[currentStep].target ===
+                          "screen" &&
+                          !missionComplete
+                          ? "mission-target"
+                          : ""
+                        }`}
+                      onClick={() =>
+                        handleComponentClick("screen")
+                      }
+                    >
+
+                      <img
+                        src={monitor.src}
+                        alt="Screen"
+                        className="cpu-pika"
+                      />
+
+                    </div>
+
+                    {/* PACKET */}
+
+                    {!(currentStep === 7 && missionComplete) && (
+                      <div
+                        className={`ram-journey-packet show ${getPacketPosition()}`}
+                      >
+                        <img
+                          src={pokemonMini.src}
+                          alt="Pokemon Data"
+                        />
+                      </div>
+                    )}
+
                   </div>
-                )}
+
+                  {/* HINT */}
+
+                  <div className="ram-journey-hint">
+
+                    {missionComplete
+                      ? `✓ ${stepsData[currentStep].title} completed`
+                      : stepsData[currentStep].target ===
+                        "cpu"
+                        ? "Awaiting CPU activation..."
+                        : stepsData[currentStep].target ===
+                          "ram"
+                          ? "Awaiting memory response..."
+                          : "Awaiting display initialization..."}
+
+                  </div>
+
+                  {/* CONTROLS */}
+
+                  <div className="ram-journey-controls">
+
+                    <button
+                      disabled={currentStep === 0}
+                      onClick={() => {
+                        setCurrentStep((s) =>
+                          Math.max(0, s - 1)
+                        );
+                        setMissionComplete(false);
+                      }}
+                    >
+                      ◀ BACK
+                    </button>
+
+                    <button
+                      className="primary"
+                      disabled={!missionComplete}
+                      onClick={() => {
+                        if (currentStep === stepsData.length - 1) {
+                          setJourneyFinished(true);
+                        } else {
+                          setCurrentStep((s) =>
+                            Math.min(
+                              stepsData.length - 1,
+                              s + 1
+                            )
+                          );
+                          setMissionComplete(false);
+                        }
+                      }}
+                    >
+                      {currentStep === stepsData.length - 1
+                        ? "FINISH ✔"
+                        : "NEXT ▶"}
+                    </button>
+
+                  </div>
+
+                </div>
 
               </div>
-
-              {/* HINT */}
-
-              <div className="ram-journey-hint">
-
-                {missionComplete
-                  ? `✓ ${stepsData[currentStep].title} completed`
-                  : stepsData[currentStep].target ===
-                    "cpu"
-                    ? "Awaiting CPU activation..."
-                    : stepsData[currentStep].target ===
-                      "ram"
-                      ? "Awaiting memory response..."
-                      : "Awaiting display initialization..."}
-
-              </div>
-
-              {/* CONTROLS */}
-
-              <div className="ram-journey-controls">
-
-                <button
-                  disabled={currentStep === 0}
-                  onClick={() => {
-                    setCurrentStep((s) =>
-                      Math.max(0, s - 1)
-                    );
-                    setMissionComplete(false);
-                  }}
-                >
-                  ◀ BACK
-                </button>
-
-                <button
-                  className="primary"
-                  disabled={
-                    currentStep ===
-                    stepsData.length - 1 ||
-                    !missionComplete
-                  }
-                  onClick={() => {
-                    setCurrentStep((s) =>
-                      Math.min(
-                        stepsData.length - 1,
-                        s + 1
-                      )
-                    );
-                    setMissionComplete(false);
-                  }}
-                >
-                  NEXT ▶
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
+            </>
+          )}
 
         </div>
       )}
