@@ -497,20 +497,26 @@ export default function WhatIsRam() {
     });
 
     return () => {
-      observers.forEach((observer) => observer.disconnect());
+      observers.forEach((observer) => {
+        observer.disconnect();
+      });
     };
   }, []);
 
   const activeTopic = ramTopics[activeIndex];
 
   return (
-    <section id="what-is-ram" className="what-scroll-section">
+    <div className="what-scroll-section">
       <header className="what-scroll-header">
         <div className="what-scroll-header-line">
-          <span className="what-scroll-section-number">SECTION 01</span>
+          <span className="what-scroll-section-number">
+            SECTION 01
+          </span>
         </div>
 
-        <h2 className="glow-title">UNDERSTANDING RAM</h2>
+        <h2 className="glow-title">
+          UNDERSTANDING RAM
+        </h2>
 
         <div className="what-scroll-active-chapter">
           <span>{activeTopic.chapterLabel}</span>
@@ -519,6 +525,7 @@ export default function WhatIsRam() {
       </header>
 
       <div className="what-scroll-content">
+
         {/* LEFT: lecture text */}
         <div className="what-scroll-left">
 
@@ -532,36 +539,48 @@ export default function WhatIsRam() {
                 activeIndex === index ? "is-active" : ""
               }`}
             >
-
               <div className="what-scroll-step-copy">
+
                 <span className="what-scroll-chapter-label">
                   {topic.chapterLabel}
                 </span>
 
-                <h3>{topic.title}</h3>
+                <h3>
+                  {topic.title}
+                </h3>
 
                 <div className="what-scroll-paragraphs">
-                  {topic.paragraphs.map((paragraph, paragraphIndex) => (
-                    <p key={`${topic.id}-${paragraphIndex}`}>
-                      {paragraph}
-                    </p>
-                  ))}
+                  {topic.paragraphs.map(
+                    (paragraph, paragraphIndex) => (
+                      <p key={`${topic.id}-${paragraphIndex}`}>
+                        {paragraph}
+                      </p>
+                    )
+                  )}
                 </div>
 
                 <div className="what-scroll-takeaway">
-                  <span>KEY TAKEAWAY</span>
-                  <strong>{topic.takeaway}</strong>
+                  <span>
+                    KEY TAKEAWAY
+                  </span>
+
+                  <strong>
+                    {topic.takeaway}
+                  </strong>
                 </div>
+
               </div>
             </article>
           ))}
+
         </div>
 
-        {/* CENTER: image placeholder */}
+        {/* CENTER: active chapter image */}
         <div className="what-scroll-center">
           <div className="what-scroll-center-sticky">
 
             <div className="what-scroll-visual">
+
               <div className="what-scroll-image-glow"></div>
 
               <div className="what-scroll-scan-ring ring-one"></div>
@@ -578,6 +597,7 @@ export default function WhatIsRam() {
               <div className="what-scroll-floor-grid"></div>
 
             </div>
+
           </div>
         </div>
 
@@ -589,7 +609,8 @@ export default function WhatIsRam() {
 
             <div className="what-scroll-progress">
               <span>
-                CHAPTER {String(activeIndex + 1).padStart(2, "0")} OF{" "}
+                CHAPTER{" "}
+                {String(activeIndex + 1).padStart(2, "0")} OF{" "}
                 {String(ramTopics.length).padStart(2, "0")}
               </span>
 
@@ -604,9 +625,11 @@ export default function WhatIsRam() {
                 ></div>
               </div>
             </div>
+
           </div>
         </aside>
+
       </div>
-    </section>
+    </div>
   );
 }

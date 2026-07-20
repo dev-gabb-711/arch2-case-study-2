@@ -660,20 +660,48 @@ const ramData = [
 
 export default function EvolutionLogic() {
   const [currentIndex, setCurrentIndex] = useState(0);
+
   const timelineRef = useRef(null);
+  const hasMountedRef = useRef(false);
 
   const currentGeneration = ramData[currentIndex];
 
   useEffect(() => {
-    const activeCard =
-      timelineRef.current?.querySelector(
-        `[data-generation-index="${currentIndex}"]`
-      );
+    /*
+     * Skip the first render so the timeline does not pull
+     * the entire webpage down to Section 2 on initial load.
+     */
+    if (!hasMountedRef.current) {
+      hasMountedRef.current = true;
+      return;
+    }
 
-    activeCard?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "center"
+    const timeline = timelineRef.current;
+
+    if (!timeline) {
+      return;
+    }
+
+    const activeCard = timeline.querySelector(
+      `[data-generation-index="${currentIndex}"]`
+    );
+
+    if (!activeCard) {
+      return;
+    }
+
+    /*
+     * Scroll only the horizontal timeline container.
+     * Using scrollIntoView here can also move the main page vertically.
+     */
+    const targetScrollLeft =
+      activeCard.offsetLeft -
+      timeline.clientWidth / 2 +
+      activeCard.clientWidth / 2;
+
+    timeline.scrollTo({
+      left: Math.max(0, targetScrollLeft),
+      behavior: "smooth"
     });
   }, [currentIndex]);
 
@@ -740,7 +768,6 @@ export default function EvolutionLogic() {
 
   return (
     <section
-      id="the-evolution-of-ram"
       className="evolution-section"
       onKeyDown={handleKeyDown}
     >

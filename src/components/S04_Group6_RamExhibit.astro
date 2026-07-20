@@ -16,13 +16,19 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
   <div class="ram-page">
 
     <!-- =====================================================
-         SECTION 0 - TITLE SECTION
+         SECTION 0 — TITLE SECTION
          ===================================================== -->
 
-    <header id="title" class="ram-hero">
+    <header
+      id="ram-exhibit-title"
+      class="ram-hero"
+    >
 
       <!-- Decorative HUD layer -->
-      <div class="hero-hud" aria-hidden="true">
+      <div
+        class="hero-hud"
+        aria-hidden="true"
+      >
         <div class="hero-grid"></div>
         <div class="hero-circle-glow"></div>
         <div class="hero-frame"></div>
@@ -30,7 +36,10 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
       </div>
 
       <!-- System status -->
-      <div class="hero-system-status" aria-hidden="true">
+      <div
+        class="hero-system-status"
+        aria-hidden="true"
+      >
         <span class="hero-status-dots"></span>
 
         <span class="hero-status-text">
@@ -42,7 +51,6 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
 
       <!-- Main title -->
       <div class="hero-title-block">
-
         <h1 class="glow-title">
           INSIDE RAM
         </h1>
@@ -58,7 +66,10 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
         aria-label="RAM fact"
       >
         <div class="hero-panel-heading">
-          <span class="hero-panel-marker" aria-hidden="true"></span>
+          <span
+            class="hero-panel-marker"
+            aria-hidden="true"
+          ></span>
 
           <span class="hero-panel-kicker">
             DID YOU KNOW?
@@ -72,7 +83,10 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
           such as the Nintendo Switch.
         </p>
 
-        <div class="hero-fact-status" aria-hidden="true">
+        <div
+          class="hero-fact-status"
+          aria-hidden="true"
+        >
           <span>MEMORY ARCHIVE</span>
           <span>READY</span>
         </div>
@@ -103,7 +117,10 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
         />
 
         <div class="hero-device-readout">
-          <span class="hero-device-dot" aria-hidden="true"></span>
+          <span
+            class="hero-device-dot"
+            aria-hidden="true"
+          ></span>
 
           <span class="hero-device-label">
             NINTENDO SWITCH
@@ -120,9 +137,11 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
         class="hero-directory"
         aria-label="Exhibit Navigation"
       >
-
         <div class="hero-directory-heading">
-          <span class="hero-directory-marker" aria-hidden="true"></span>
+          <span
+            class="hero-directory-marker"
+            aria-hidden="true"
+          ></span>
 
           <span>
             DISCUSSION DIRECTORY
@@ -233,7 +252,6 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
             ›
           </span>
         </a>
-
       </nav>
 
       <!-- Bottom HUD -->
@@ -279,275 +297,396 @@ import cubeQuestion from "../assets/S04_Group6_cube.png";
          SECTION 1 — UNDERSTANDING RAM
          ===================================================== -->
 
-    <WhatIsRam client:load />
+    <div
+      id="ram-exhibit-what-is-ram"
+      class="ram-section-anchor"
+    >
+      <WhatIsRam client:load />
+    </div>
 
     <!-- =====================================================
          SECTION 2 — EVOLUTION OF RAM
          ===================================================== -->
 
-    <EvolutionLogic client:load />
+    <div
+      id="ram-exhibit-evolution"
+      class="ram-section-anchor"
+    >
+      <EvolutionLogic client:load />
+    </div>
 
     <!-- =====================================================
          SECTION 3 — INTERNAL DATA JOURNEY
          ===================================================== -->
 
-   <section
-  id="inside-the-ram-the-internal-data-journey"
-  class="big-section"
->
+    <div
+      id="ram-exhibit-internal-journey"
+      class="ram-section-anchor"
+    >
+      <section
+        id="inside-the-ram-the-internal-data-journey"
+        class="big-section"
+      >
+        <h2 class="journey-title">
+          INSIDE THE RAM
+        </h2>
 
-  <h2 class="journey-title">
-    INSIDE THE RAM
-  </h2>
+        <p class="journey-subtitle">
+          THE INTERNAL DATA JOURNEY
+        </p>
 
-  <p class="journey-subtitle">
-    THE INTERNAL DATA JOURNEY
-  </p>
+        <div
+          id="switch-container"
+          class="switch-container"
+        >
+          <div class="nintendo-wrapper">
+            <img
+              class="nintendo-image"
+              src={nintendoSwitch.src}
+              alt="Nintendo Switch"
+            />
+          </div>
 
- <div id="switch-container" class="switch-container">
-
-  <div class="nintendo-wrapper">
-    <img
-      class="nintendo-image"
-      src={nintendoSwitch.src}
-      alt="Nintendo Switch"
-    />
-  </div>
-
-  <div class="switch-screen-content">
-    <RamJourney client:load />
-  </div>
-
-</div>
-
-</section>
+          <div class="switch-screen-content">
+            <RamJourney client:load />
+          </div>
+        </div>
+      </section>
+    </div>
 
     <!-- =====================================================
          SECTION 4 — MEMORY ACCESS
          ===================================================== -->
 
-    <section
-      id="memory-access-and-communication"
-      class="big-section"
+    <div
+      id="ram-exhibit-memory-access"
+      class="ram-section-anchor"
     >
-      <div class="memory-header">
+      <section
+        id="memory-access-and-communication"
+        class="big-section"
+      >
+        <div class="memory-header">
+          <h2 class="glow-title">
+            MEMORY ACCESS SIMULATOR
+          </h2>
 
-        <h2 class="glow-title">
-          MEMORY ACCESS SIMULATOR
-        </h2>
+          <p class="memory-subtitle">
+            CPU TO RAM COMMUNICATION
+          </p>
+        </div>
 
-        <p class="memory-subtitle">
-          CPU TO RAM COMMUNICATION
-        </p>
+        <div class="memory-middle">
 
-      </div>
+          <div class="memory-grid-area">
 
-      <div class="memory-middle">
+            <div class="memory-grid-header">
+              <span></span>
 
-        <div class="memory-grid-area">
+              {
+                Array.from({ length: 12 }).map((_, col) => (
+                  <span>C{col}</span>
+                ))
+              }
+            </div>
 
-          <div class="memory-grid-header">
-            <span></span>
+            <div class="memory-grid">
+              {
+                Array.from({ length: 5 }).map((_, row) => (
+                  <>
+                    <span class="row-label">
+                      R{row}
+                    </span>
 
-            {
-              Array.from({ length: 12 }).map((_, col) => (
-                <span>C{col}</span>
-              ))
-            }
+                    {
+                      Array.from({ length: 12 }).map((_, col) => (
+                        <div
+                          class={`memory-cell
+                            ${row === 2 ? "active-row" : ""}
+                            ${col === 4 ? "active-column" : ""}
+                            ${
+                              row === 2 && col === 4
+                                ? "selected-cell"
+                                : ""
+                            }`}
+                        >
+                        </div>
+                      ))
+                    }
+                  </>
+                ))
+              }
+            </div>
+
+            <div class="memory-step">
+              Click any cell to see how RAS (row) and CAS (column)
+              addresses split to target data in the matrix.
+            </div>
+
           </div>
 
-          <div class="memory-grid">
-            {
-              Array.from({ length: 5 }).map((_, row) => (
-                <>
-                  <span class="row-label">
-                    R{row}
-                  </span>
+          <div class="memory-output">
 
-                  {
-                    Array.from({ length: 12 }).map((_, col) => (
-                      <div
-                        class={`memory-cell
-                          ${row === 2 ? "active-row" : ""}
-                          ${col === 4 ? "active-column" : ""}
-                          ${
-                            row === 2 && col === 4
-                              ? "selected-cell"
-                              : ""
-                          }`}
-                      >
-                      </div>
-                    ))
-                  }
-                </>
-              ))
-            }
-          </div>
+            <div class="memory-card cpu-request">
+              <h3>
+                CPU REQUEST
+              </h3>
 
-          <div class="memory-step">
-            Click any cell to see how RAS (row) and CAS (column)
-            addresses split to target data in the matrix.
+              <div class="request-item">
+                <span>Operation</span>
+                <strong>READ</strong>
+              </div>
+
+              <div class="request-item">
+                <span>Address</span>
+                <strong>[UNINITIALIZED]</strong>
+              </div>
+
+              <div class="request-item">
+                <span>Data</span>
+                <strong>[UNIDENTIFIED]</strong>
+              </div>
+            </div>
+
+            <div class="memory-card">
+              <h3>
+                CURRENT SELECTION
+              </h3>
+
+              <p>
+                <strong>Row:</strong> R
+                <strong> Col:</strong> C
+              </p>
+
+              <p>
+                <strong>Payload:</strong> [DATA]
+              </p>
+            </div>
+
           </div>
 
         </div>
 
-        <div class="memory-output">
-
-          <div class="memory-card cpu-request">
-            <h3>
-              CPU REQUEST
-            </h3>
-
-            <div class="request-item">
-              <span>Operation</span>
-              <strong>READ</strong>
-            </div>
-
-            <div class="request-item">
-              <span>Address</span>
-              <strong>[UNINITIALIZED]</strong>
-            </div>
-
-            <div class="request-item">
-              <span>Data</span>
-              <strong>[UNIDENTIFIED]</strong>
-            </div>
-          </div>
+        <div class="memory-info">
 
           <div class="memory-card">
+
             <h3>
-              CURRENT SELECTION
+              HOW MEMORY ACCESS WORKS
             </h3>
 
             <p>
-              <strong>Row:</strong> R
-              <strong> Col:</strong> C
+              DRAM stores data in a grid of rows and columns. To access a
+              memory location, the controller first selects the row using
+              <strong> RAS</strong>, then the column using
+              <strong> CAS</strong>. This two-step process reduces hardware
+              complexity while allowing fast access to the requested data.
             </p>
 
-            <p>
-              <strong>Payload:</strong> [DATA]
-            </p>
-          </div>
+            <div class="info-split">
 
-        </div>
+              <div class="info-split-item">
+                <h4>
+                  RAS (Row Access Strobe)
+                </h4>
 
-      </div>
+                <p>
+                  RAS activates the row containing the requested data. Once the
+                  row is open, it remains ready for the column to be selected.
+                </p>
 
-      <div class="memory-info">
+                <p>
+                  <strong>Purpose:</strong>
+                  Opens the correct memory row for access.
+                </p>
+              </div>
 
-        <div class="memory-card">
+              <div class="info-split-item">
+                <h4>
+                  CAS (Column Access Strobe)
+                </h4>
 
-          <h3>
-            HOW MEMORY ACCESS WORKS
-          </h3>
+                <p>
+                  CAS selects the correct column within the active row and
+                  retrieves the data stored at their intersection.
+                </p>
 
-          <p>
-            DRAM stores data in a grid of rows and columns. To access a
-            memory location, the controller first selects the row using
-            <strong>RAS</strong>, then the column using <strong>CAS</strong>.
-            This two-step process reduces hardware complexity while allowing
-            fast access to the requested data.
-          </p>
+                <p>
+                  <strong>Purpose:</strong>
+                  Selects the exact memory cell within the active row.
+                </p>
+              </div>
 
-          <div class="info-split">
-
-            <div class="info-split-item">
-              <h4>
-                RAS (Row Access Strobe)
-              </h4>
-
-              <p>
-                RAS activates the row containing the requested data. Once the
-                row is open, it remains ready for the column to be selected.
-              </p>
-
-              <p>
-                <strong>Purpose:</strong> Opens the correct memory row for access.
-              </p>
-            </div>
-
-            <div class="info-split-item">
-              <h4>
-                CAS (Column Access Strobe)
-              </h4>
-
-              <p>
-                CAS selects the correct column within the active row and
-                retrieves the data stored at their intersection.
-              </p>
-
-              <p>
-                <strong>Purpose:</strong> Selects the exact memory cell within the active row.
-              </p>
             </div>
 
           </div>
 
         </div>
 
-      </div>
-
-      <MemComEvolution client:load />
-    </section>
+        <MemComEvolution client:load />
+      </section>
+    </div>
 
     <!-- =====================================================
          SECTION 5 — CHALLENGE QUIZ
          ===================================================== -->
 
-    <section
-      id="challenge-quiz"
-      class="big-section quiz-section"
+    <div
+      id="ram-exhibit-challenge-quiz"
+      class="ram-section-anchor"
     >
-      <h2 class="glow-title">
-        CHALLENGE QUIZ
-      </h2>
+      <section
+        id="challenge-quiz"
+        class="big-section quiz-section"
+      >
+        <h2 class="glow-title">
+          CHALLENGE QUIZ
+        </h2>
 
-      <p class="title-caption">
-        TEST YOUR KNOWLEDGE
-      </p>
+        <p class="title-caption">
+          TEST YOUR KNOWLEDGE
+        </p>
 
-      <div class="quiz-container">
+        <div class="quiz-container">
 
-        <div class="quiz-left">
+          <div class="quiz-left">
 
-          <h3 class="question-number">
-            QUESTION 1
-          </h3>
+            <h3 class="question-number">
+              QUESTION 1
+            </h3>
 
-          <p class="question-text">
-            This section will reinforce the viewer's learning by
-            asking questions about the information presented in the
-            previous sections.
-          </p>
+            <p class="question-text">
+              This section will reinforce the viewer's learning by
+              asking questions about the information presented in the
+              previous sections.
+            </p>
 
-          <div class="cube-container">
+            <div class="cube-container">
+              <div class="cube-glow-bg"></div>
 
-            <div class="cube-glow-bg"></div>
+              <img
+                src={cubeQuestion.src}
+                alt="Glowing question cube"
+                class="quiz-cube"
+              />
+            </div>
 
-            <img
-              src={cubeQuestion.src}
-              alt="Glowing question cube"
-              class="quiz-cube"
-            />
+          </div>
+
+          <div class="quiz-right">
+
+            <div
+              id="quiz-choices"
+              class="quiz-choices"
+            ></div>
+
+            <button
+              id="next-btn"
+              class="quiz-option"
+              type="button"
+            >
+              <span class="option-text">
+                Next Question →
+              </span>
+            </button>
 
           </div>
 
         </div>
 
-        <div class="quiz-right">
-          <div id="quiz-choices" class="quiz-right"/>
-          
-          <button id="next-btn" class="quiz-option">
-            <span class="option-text" style="font-weight: bold;">Next Question →</span>
-          </button>
-        </div>
-
-      </div>
-
-      <QuizLogic client:load />
-    </section>
-
-
+        <QuizLogic client:load />
+      </section>
+    </div>
 
   </div>
 </section>
+
+<script is:inline>
+  const ramSectionMap = {
+    "#title":
+      "#ram-exhibit-title",
+
+    "#what-is-ram":
+      "#ram-exhibit-what-is-ram",
+
+    "#the-evolution-of-ram":
+      "#ram-exhibit-evolution",
+
+    "#inside-the-ram-the-internal-data-journey":
+      "#ram-exhibit-internal-journey",
+
+    "#inside-the-ram---the-internal-data-journey":
+      "#ram-exhibit-internal-journey",
+
+    "#memory-access-and-communication":
+      "#ram-exhibit-memory-access",
+
+    "#challenge-quiz":
+      "#ram-exhibit-challenge-quiz"
+  };
+
+  function scrollToRamSection(hash, behavior = "smooth") {
+    const targetSelector = ramSectionMap[hash];
+
+    if (!targetSelector) {
+      return false;
+    }
+
+    const target = document.querySelector(targetSelector);
+
+    if (!target) {
+      return false;
+    }
+
+    target.scrollIntoView({
+      behavior,
+      block: "start"
+    });
+
+    history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}${hash}`
+    );
+
+    return true;
+  }
+
+  document.addEventListener("click", (event) => {
+    const clickedElement = event.target;
+
+    if (!(clickedElement instanceof Element)) {
+      return;
+    }
+
+    const link = clickedElement.closest('a[href^="#"]');
+
+    if (!link) {
+      return;
+    }
+
+    const hash = link.getAttribute("href");
+
+    if (!hash || !ramSectionMap[hash]) {
+      return;
+    }
+
+    event.preventDefault();
+
+    scrollToRamSection(hash);
+  });
+
+  window.addEventListener("load", () => {
+    const currentHash = window.location.hash;
+
+    if (!ramSectionMap[currentHash]) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        scrollToRamSection(currentHash, "auto");
+      });
+    });
+  });
+</script>
