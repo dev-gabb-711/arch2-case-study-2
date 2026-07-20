@@ -53,6 +53,13 @@
   - Fixed the format and layout of Memory Access Communication segment so that it fits better
   - Had an "Aha!" moment where I realized that our old format for section 4 simply does not work because of the size of the virtual exhibit format. Therefore it was changed to a more lenient style
 
+- **July 20**
+  - Implemented the interactive elements
+    - Added a typewriter animation for Ash's dialogue to make the walkthrough feel more like an in-game conversation rather than displaying all the text at once
+    - Implemented a progress bar (0–100%) that updates as users move through the guided RAM journey
+    - Created a Mission Complete screen that appears after the final step of the simulation, together with a Restart button so users can easily replay the experience without refreshing the page
+  - Realized that separating the walkthrough into individual states made it easier to control animations, transitions, and future feature additions
+
 ## Reference Citations
 
 - Patterson, D. A., & Hennessy, J. L. (2021). Computer organization and design RISC-V edition: The hardware/software interface (2nd ed.). Morgan Kaufmann.
