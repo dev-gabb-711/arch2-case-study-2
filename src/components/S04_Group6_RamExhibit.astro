@@ -356,172 +356,17 @@ import nintendoSwitch from "../assets/S04_Group6_ir-nintendo.png";
          SECTION 4 — MEMORY ACCESS
          ===================================================== -->
 
-    <div
-      id="ram-exhibit-memory-access"
-      class="ram-section-anchor"
-    >
-      <section
-        id="memory-access-and-communication"
-        class="big-section"
-      >
+    <div id="ram-exhibit-memory-access" class="ram-section-anchor">
+      <section id="memory-access-and-communication" class="big-section">
+        
         <div class="memory-header">
-          <h2 class="glow-title">
-            MEMORY ACCESS SIMULATOR
-          </h2>
-
-          <p class="memory-subtitle">
-            CPU TO RAM COMMUNICATION
-          </p>
+          <h2 class="glow-title">MEMORY ACCESS SIMULATOR</h2>
+          <p class="memory-subtitle">CPU TO RAM COMMUNICATION</p>
         </div>
 
-        <div class="memory-middle">
-
-          <div class="memory-grid-area">
-
-            <div class="memory-grid-header">
-              <span></span>
-
-              {
-                Array.from({ length: 12 }).map((_, col) => (
-                  <span>C{col}</span>
-                ))
-              }
-            </div>
-
-            <div class="memory-grid">
-              {
-                Array.from({ length: 5 }).map((_, row) => (
-                  <>
-                    <span class="row-label">
-                      R{row}
-                    </span>
-
-                    {
-                      Array.from({ length: 12 }).map((_, col) => (
-                        <div
-                          class={`memory-cell
-                            ${row === 2 ? "active-row" : ""}
-                            ${col === 4 ? "active-column" : ""}
-                            ${
-                              row === 2 && col === 4
-                                ? "selected-cell"
-                                : ""
-                            }`}
-                        >
-                        </div>
-                      ))
-                    }
-                  </>
-                ))
-              }
-            </div>
-
-            <div class="memory-step">
-              Click any cell to see how RAS (row) and CAS (column)
-              addresses split to target data in the matrix.
-            </div>
-
-          </div>
-
-          <div class="memory-output">
-
-            <div class="memory-card cpu-request">
-              <h3>
-                CPU REQUEST
-              </h3>
-
-              <div class="request-item">
-                <span>Operation</span>
-                <strong>READ</strong>
-              </div>
-
-              <div class="request-item">
-                <span>Address</span>
-                <strong>[UNINITIALIZED]</strong>
-              </div>
-
-              <div class="request-item">
-                <span>Data</span>
-                <strong>[UNIDENTIFIED]</strong>
-              </div>
-            </div>
-
-            <div class="memory-card">
-              <h3>
-                CURRENT SELECTION
-              </h3>
-
-              <p>
-                <strong>Row:</strong> R
-                <strong> Col:</strong> C
-              </p>
-
-              <p>
-                <strong>Payload:</strong> [DATA]
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="memory-info">
-
-          <div class="memory-card">
-
-            <h3>
-              HOW MEMORY ACCESS WORKS
-            </h3>
-
-            <p>
-              DRAM stores data in a grid of rows and columns. To access a
-              memory location, the controller first selects the row using
-              <strong> RAS</strong>, then the column using
-              <strong> CAS</strong>. This two-step process reduces hardware
-              complexity while allowing fast access to the requested data.
-            </p>
-
-            <div class="info-split">
-
-              <div class="info-split-item">
-                <h4>
-                  RAS (Row Access Strobe)
-                </h4>
-
-                <p>
-                  RAS activates the row containing the requested data. Once the
-                  row is open, it remains ready for the column to be selected.
-                </p>
-
-                <p>
-                  <strong>Purpose:</strong>
-                  Opens the correct memory row for access.
-                </p>
-              </div>
-
-              <div class="info-split-item">
-                <h4>
-                  CAS (Column Access Strobe)
-                </h4>
-
-                <p>
-                  CAS selects the correct column within the active row and
-                  retrieves the data stored at their intersection.
-                </p>
-
-                <p>
-                  <strong>Purpose:</strong>
-                  Selects the exact memory cell within the active row.
-                </p>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
+        <!-- The React component renders the grid, the info section, and the DDR buttons -->
         <MemComEvolution client:load />
+
       </section>
     </div>
 
