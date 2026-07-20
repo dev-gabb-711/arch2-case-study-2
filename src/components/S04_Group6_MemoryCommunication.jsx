@@ -401,7 +401,7 @@ const MemoryCommunication = () => {
 
   const dataBusStatus = (() => {
     if (isAccessing) {
-      return "TRANSFERRING";
+      return "SENDING";
     }
 
     if (selectedCell) {
