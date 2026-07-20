@@ -52,6 +52,7 @@
 - **July 19**
   - Fixed the format and layout of Memory Access Communication segment so that it fits better
   - Had an "Aha!" moment where I realized that our old format for section 4 simply does not work because of the size of the virtual exhibit format. Therefore it was changed to a more lenient style
+  - Implemented Challenge Quiz functionality and questions
 
 ## Reference Citations
 
