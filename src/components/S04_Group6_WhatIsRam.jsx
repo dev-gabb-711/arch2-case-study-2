@@ -19,9 +19,9 @@ const ramTopics = [
     visualLabel: "INTRODUCTION TO WORKING MEMORY",
 
     paragraphs: [
-      "Random Access Memory, or RAM, is the computer’s primary working memory. It temporarily stores the programs, instructions, and data that the CPU is actively using, giving the processor much faster access than long-term storage devices such as SSDs and HDDs.",
+      "Random Access Memory (RAM) is the computer's primary temporary working memory. It stores the programs, instructions, and data that the CPU is actively using, allowing information to be accessed much faster than long-term storage devices such as SSDs and HDDs.",
 
-      "A useful example is the original Nintendo Game Boy. Its compact hardware still required memory to process instructions, respond to button presses, update the display, and preserve active game information while the system was operating.",
+      "To understand why RAM matters, consider the original Nintendo Game Boy. Every button press, character movement, and game event depended on memory that could be accessed instantly while the console was running. Although the Game Boy also relied on ROM to permanently store the game itself, RAM served as the console's active workspace, enabling smooth gameplay by temporarily holding the data the processor needed at that exact moment.",
     ],
 
     takeaway:
@@ -111,7 +111,7 @@ const ramTopics = [
     paragraphs: [
       "RAM can be compared to an office desk. Permanent storage acts like a filing cabinet containing every available document, while RAM holds only the materials required for the current task. The CPU works with this readily available information instead of repeatedly retrieving it from slower storage.",
 
-      "A larger workspace allows more programs, files, and operating-system data to remain available simultaneously. This reduces repeated transfers from storage and improves multitasking, application switching, and performance in memory-intensive programs.",
+      "The size of this workspace depends on the computer's RAM capacity. More RAM allows more programs, files, and operating-system data to remain available simultaneously, improving multitasking and reducing delays caused by repeatedly loading information from storage. While installing more RAM does not make the processor itself faster, it enables the CPU to work more efficiently by keeping more of the data it needs readily available.",
     ],
 
     takeaway:
@@ -188,9 +188,9 @@ const ramTopics = [
     visualLabel: "BITS, BYTES, AND ADDRESSES",
 
     paragraphs: [
-      "Computer memory stores program instructions and data digitally using bits. Each bit represents either a 0 or a 1, and groups of eight bits form a byte. Text, images, sound, video, variables, and program instructions are ultimately represented using combinations of these binary values.",
+      "Computer memory is the hardware that stores digital information so the processor can retrieve and use it when needed. Whether it contains program instructions, text, images, numbers, or variables, all information inside a computer is ultimately represented as binary values. Each bit stores either a 0 or a 1, and groups of eight bits form a byte.",
 
-      "Memory addresses organize these values so the CPU can locate them efficiently. A programming variable such as health, level, or score is ultimately stored at a physical memory location that the processor continuously reads and updates while the program runs.",
+      "To organize this information, every stored value is assigned a unique memory address. A programming variable such as a player's health, level, or score is ultimately stored at a specific memory location that the CPU can quickly locate, read, and update while a program is running.",
     ],
 
     takeaway:
@@ -274,9 +274,9 @@ const ramTopics = [
     visualLabel: "FETCH, DECODE, AND EXECUTE",
 
     paragraphs: [
-      "The Von Neumann Architecture stores program instructions and data together in main memory. The CPU repeatedly retrieves instructions from RAM, interprets them, performs the required operation, and stores updated values when necessary.",
+      "The Von Neumann Architecture stores both program instructions and data together in main memory. During program execution, the CPU continuously communicates with RAM to retrieve instructions, interpret their meaning, perform the required operation, and write updated results back to memory whenever necessary.",
 
-      "This process is known as the Fetch–Decode–Execute Cycle. It repeats continuously while the computer is running, allowing the processor to execute programs and respond to user input at extremely high speeds.",
+      "This repeating process is known as the Fetch–Decode–Execute Cycle. It continues millions or even billions of times every second while the computer is running, allowing programs to execute, respond to user input, and process information almost instantly. Without RAM supplying instructions and data throughout this cycle, the processor would have nothing to execute.",
     ],
 
     takeaway:
