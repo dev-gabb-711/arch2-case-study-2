@@ -23,10 +23,11 @@
   - Finished most of the layout required for the Challenge Quiz, will add the content after Mid-Milestone.
   - Finished the entirety of the layout and information needed for Memory Access Communication segment (Section 4)
   - Started on the layout of the Inside the RAM segment (Section 3).
+  - (Revisions for Section 3) The original concept for Section 3 was revised during development. Rather than animating the internal traversal of every RAM component, the final implementation presents an interactive guided simulation of the CPU–RAM–GPU/display data flow, with step-by-step explanations, animations, and user interaction. This approach was chosen to create a clearer and more engaging learning experience while remaining aligned with the project's educational objective.
   - Improved Section 3 layout and design.
 
 - **July 7**
-  - Finished the entirety of Section 3.
+  - Finished the initial strructure  of Section 3.
   - Finished the timeline on the RAM Evolution segment of Section 2.
   - Added additional required info in the What is RAM segment of Section 1.
   - Finished formatting and added references and AI disclosure
@@ -46,6 +47,10 @@
   - Fixed bottom tab moving by setting it at the bottom of the page by setting the top margin to auto
 
 - **July 16**
+  - Edited the filenames of all group-made files (components, styles, assets, etc.)
+  - Fixed the layout of the bottom part of Section 4 (Memory Access Communication)
+
+- **July 18**
   - Edited the filenames of all group-made files (components, styles, assets, etc.)
   - Fixed the layout of the bottom part of Section 4 (Memory Access Communication)
 

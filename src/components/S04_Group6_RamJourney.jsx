@@ -6,87 +6,88 @@ import ashImg from "../assets/S04_Group6_InsideRAMImg/ash.png";
 import { useState, useEffect } from "react";
 
 export default function RamJourney() {
- const stepsData = [
-  {
-    title: " CPU REQUEST",
-    guide:
-      "Hey, Trainer! Click the glowing CPU to request Pikachu's data and begin the mission!",
-    desc:
-      "The CPU needs Pikachu's data! The CPU executes an instruction that would need a display, so it determines that it needs assets or data not currently available. The CPU’s integrated memory controller generates a read command accompanied by a specific physical memory address.",
-    target: "cpu",
-    hint: "Click the glowing CPU to send a memory request."
-  },
+  const stepsData = [
+    {
+      title: " CPU REQUEST",
+      guide:
+        "Hey, Trainer! Click the glowing CPU to request Pikachu's data and begin the mission!",
+      desc:
+        "The CPU executes application code to load Pikachu's assets. After checking L1–L3 cache lines and encountering a cache miss, the Integrated Memory Controller (IMC) issues a physical memory read request across the system bus.",
+      target: "cpu",
+      hint: "Click the glowing CPU to send a memory request."
+    },
 
-  {
-    title: " SYSTEM RAM FETCH",
-    guide:
-      "Great job! Now RAM has to find Pikachu's battle stats. Click the RAM module so it can retrieve the requested data.",
-    desc:
-      "The read command travels to the System RAM to fetch Pikachu's data. The address is split into RAS and CAS signals. The row decoder activates the target wordline, and the column decoder selects the exact bits—Pikachu’s HP, Attack, and Speed—transferring them to the buffer.",
-    target: "ram",
-    hint: "Click the RAM module to fetch Pikachu's data."
-  },
+    {
+      title: " SYSTEM RAM FETCH",
+      guide:
+        "Great job! Now RAM has to find Pikachu's battle stats. Click the RAM module so it can retrieve the requested data.",
+      desc:
+        "The read command reaches System RAM. The physical memory address is decoded into RAS (Row Address Strobe) and CAS (Column Address Strobe). The row decoder activates the target wordline, allowing sense amplifiers to read Pikachu's raw data into the buffer.",
+      target: "ram",
+      hint: "Click the RAM module to fetch Pikachu's data."
+    },
 
-  {
-    title: " CPU PROCESSING",
-    guide:
-      "Awesome! Pikachu's data is back. The CPU now processes it into graphics commands. Click the CPU again!",
-    desc:
-      "The CPU receives Pikachu’s raw stats from RAM. It processes the data according to the running application logic, like calculating Pikachu’s Thunderbolt damage, and translates it into standardized graphics API commands for rendering.",
-    target: "cpu",
-    hint: "Click the CPU to process the retrieved data."
-  },
+    {
+      title: " CPU PROCESSING",
+      guide:
+        "Awesome! Pikachu's data is back. The CPU now processes it into graphics commands. Click the CPU again!",
+      desc:
+        "The CPU loads Pikachu’s stats into registers to process game logic (like damage calculations). The graphics driver then translates this data into API commands (DirectX/Vulkan) and packages them into an executable GPU Command Buffer.",
+      target: "cpu",
+      hint: "Click the CPU to process the retrieved data."
+    },
 
-  {
-    title: " PCI EXPRESS TRANSPORT",
-    guide:
-      "Perfect! Now let's send Pikachu's processed data to the graphics card. Click the RAM/VRAM area to transfer everything through PCI Express.",
-    desc:
-      "The CPU sends Pikachu’s battle-ready data through PCIe lanes. Using DMA or MMIO, the command buffer and texture data (like Pikachu’s sprite) are delivered directly into the GPU’s VRAM.",
-    target: "ram",
-    hint: "Transfer the processed data into VRAM."
-  },
+    {
+      title: " PCI EXPRESS TRANSPORT",
+      guide:
+        "Perfect! Now let's send Pikachu's processed data to the graphics card. Click the RAM/VRAM area to transfer everything through PCI Express.",
+      desc:
+        "The CPU initiates a Direct Memory Access (DMA) transfer over PCIe lanes. Command buffers, vertex geometry, and Pikachu’s texture maps stream directly into dedicated VRAM, bypassing software overhead.",
+      target: "ram",
+      hint: "Transfer the processed data into VRAM."
+    },
 
-  {
-    title: " GPU EXECUTION",
-    guide:
-      "The GPU is ready! Click the graphics processor so it can begin rendering Pikachu using thousands of parallel cores.",
-    desc:
-      "The GPU’s command processor fetches the instructions from VRAM and distributes the workload across its parallel computing pipelines, like Pikachu unleashing sparks in multiple directions, to begin rendering the frame.",
-    target: "ram",
-    hint: "The GPU begins rendering Pikachu's frame."
-  },
+    {
+      title: " GPU EXECUTION",
+      guide:
+        "The GPU is ready! Click the graphics processor so it can begin rendering Pikachu using thousands of parallel cores.",
+      desc:
+        "The GPU’s Command Processor parses the incoming VRAM buffer and dispatches workload across parallel compute units. Vertex Shaders calculate Pikachu’s geometry, while Fragment Shaders color and shade the pixels.",
+      target: "ram",
+      hint: "The GPU begins rendering Pikachu's frame."
+    },
 
-  {
-    title: " PAGE FLIPPING",
-    guide:
-      "We're almost there! The frame is complete. Click again so the Back Buffer becomes the Front Buffer, preparing Pikachu for display.",
-    desc:
-      "Once Pikachu’s frame is fully rendered in the Back Buffer, the system prepares to display it. The GPU waits for a sync signal, and a page flip occurs, making the Back Buffer the active Front Buffer. Pikachu’s sprite is now ready to appear on screen!",
-    target: "ram",
-    hint: "Complete the page flip."
-  },
+    {
+      title: " PAGE FLIPPING",
+      guide:
+        "We're almost there! The frame is complete. Click again so the Back Buffer becomes the Front Buffer, preparing Pikachu for display.",
+      desc:
+        "Once rendering completes in the off-screen Back Buffer, the system synchronizes with the display refresh rate (VSync). A pointer swap (page flip) instantly promotes the Back Buffer to the active Front Buffer to prevent screen tearing.",
+      target: "ram",
+      hint: "Complete the page flip."
+    },
 
-  {
-    title: " SIGNAL GENERATION",
-    guide:
-      "Excellent! The GPU is converting every pixel into a video signal. Click the monitor to send the finished image.",
-    desc:
-      "The GPU's Display Controller continuously scans the active Front Buffer in VRAM, pixel by pixel. It converts digital pixel data into a serialized stream of high-speed differential signals (like HDMI or DisplayPort).",
-    target: "screen",
-    hint: "Send the completed frame to the monitor."
-  },
+    {
+      title: " SIGNAL GENERATION",
+      guide:
+        "Excellent! The GPU is converting every pixel into a video signal. Click the monitor to send the finished image.",
+      desc:
+        "The GPU's Display Engine reads pixel data row-by-row from the Front Buffer in VRAM. It serializes RGB color bytes into high-speed differential signal streams (like TMDS for HDMI or Main Link for DisplayPort).",
+      target: "screen",
+      hint: "Send the completed frame to the monitor."
+    },
 
-  {
-    title: " SCREEN DISPLAY",
-    guide:
-      "Mission complete, Trainer! Click the monitor one last time to reveal Pikachu on the screen. We did it!",
-    desc:
-      "The serialized digital stream arrives at the monitor's input interface. Just as Pikachu’s Thunderbolt lights up the battlefield, the screen decodes these signals and illuminates pixels to reveal Pikachu’s sprite and stats to the player!",
-    target: "screen",
-    hint: "Reveal Pikachu on the display."
-  }
+    {
+      title: " SCREEN DISPLAY",
+      guide:
+        "Mission complete, Trainer! Click the monitor one last time to reveal Pikachu on the screen. We did it!",
+      desc:
+        "The monitor's Timing Controller (TCON) decodes the incoming differential bitstream into voltage commands. These signals drive individual pixel transistors on the panel to illuminate Pikachu’s sprite on screen!",
+      target: "screen",
+      hint: "Reveal Pikachu on the display."
+    }
   ];
+
 
 const [ashTalking, setAshTalking] = useState(false);
 const [started, setStarted] = useState(false);
