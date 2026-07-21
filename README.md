@@ -1,17 +1,29 @@
 ## Incremental README
+- **July 1**
+  - Began researching the topics covered across all sections of the exhibit.
+  - Started drafting the content to be included for each topic.
+  - Identified the challenge of presenting the broad and in-depth concepts of RAM in a way that would remain engaging, informative, and avoid overwhelming the audience with large blocks of text.
+  - Explored alternative layout designs for presenting information more effectively, particularly for Sections 1 and 2.
+
 
 - **July 2**
   - Created the `.mdx` page together with the Astro component and CSS file for the **Inside RAM - Computer Memory in Motion** exhibit.
+  - Discovered that the exhibit layout imposed strict size constraints, limiting the amount of information that could be displayed within each section.
+  - Explored the possibility of modifying the exhibit layout but determined that it needed to remain unchanged. The team instead focused on adapting the design to work within the provided constraints.
+  - Reflected that understanding these layout constraints earlier would have allowed the team to better align the initial proposal and interface design with the final implementation.
   - Started the basic layout for the Title Page and Section 1.
   - Matched the page ratio and overall structure to the approved style guide.
+
 
 - **July 3**
   - Finalized the layout of the Title Page and Section 1 to closely match the style guide.
   - Adjusted the sizing, spacing, positioning, and responsiveness of all the added UI elements.
   - Added info for Title and Section 1, Preparation for Layouting Section 2.
 
+
 - **July 4**
   - Started basic structure of the Memory Access Communication Segment of the Component.
+    - Continued maintaining a consistent aspect ratio across all sections while considering a potential redesign to better utilize the available space.
 
 - **July 5**
   - Finished half of the CCS for the Memory Access Communication Segment having trouble fitting the grid into the page, Overhauled Section 2 layout to have two individual parts instead.
@@ -42,16 +54,45 @@
   - Comparison chart among memory will be helpful
   - Keep improving the web contents and interactive elements of your web apps.
 
+- **July 11**
+  - Determined that the current exhibit layout was insufficient to accommodate all the intended content, particularly for Section 1, prompting further consideration of changing the aspect ratio.
+  - Held a team discussion on whether to prioritize preserving the original design style or adjusting the layout to better present the educational content.
+  - Considered reducing or simplifying some of the information to maintain the visual design, leading to further discussions on balancing aesthetics with content quality.
+  - Reached a partial solution by changing the exhibit's aspect ratio to **16:11**, providing additional space while preserving the overall design and improving information presentation.
+
 - **July 13**
   - Added information re: DDR4 and DDR5 for Section 2's RAM Evolution
   - Fixed bottom tab moving by setting it at the bottom of the page by setting the top margin to auto
+  - Evaluated whether to include the complete research for Section 1 or present a more concise version suitable for an interactive exhibit.
+  - Decided to organize Section 1 into **eight chapters** covering the fundamental concepts of RAM, making the content more accessible for beginners while avoiding unnecessary complexity.
+  - Revised and finalized the content for Section 1 to ensure it was both educational and appropriate for the exhibit's interactive format.
+
+- **July 14**
+  - Implemented the redesigned Section 1, featuring a chapter-based scrolling animation to guide users through the learning experience.
+  - Determined that the original proposed layout was no longer suitable for the new interactive format and required a redesign.
+  - Redesigned the section into a three-column layout consisting of a **description panel**, **illustrative graphic**, and **real-world example** to improve readability, engagement, and understanding.
+
 
 - **July 16**
   - Edited the filenames of all group-made files (components, styles, assets, etc.)
   - Fixed the layout of the bottom part of Section 4 (Memory Access Communication)
+  - Developed and tested the first redesign prototype for Section 1 to evaluate a new visual direction.
+  - Experimented with a cyberpunk-inspired header design but found that it was too visually overwhelming for the educational theme of the exhibit.
+  - Concluded that a cleaner and more minimalist design would better complement the content while maintaining the intended futuristic aesthetic.
+
+- **July 17**
+  - Developed and evaluated the second and third redesign iterations for Section 1, ultimately selecting **Version 3** as the final design.
+  - Enhanced the section by incorporating additional animations to create a more engaging and interactive learning experience.
+  - Refined the content by limiting each chapter to two concise paragraphs, improving readability while retaining the essential information.
+  - Finalized the redesign of Section 1 and decided to adopt the same visual style and design principles for the remaining sections to ensure a consistent user experience throughout the exhibit.
+
 
 - **July 18**
   - Section 3: Implemented the core RAM Journey interactive feature inside the Nintendo Switch interface. Built the mission flow, progress tracker, clickable CPU/RAM/Screen components, data packet animation, and the introductory "Start Journey" screen. Focused on establishing the overall functionality and interactive experience. We realized that creating an interactive simulation requires both functionality and good layout. Even if the logic works, poor spacing and scaling can make the interface difficult to use.
+  - Finalized the design and overall user experience of Section 1.
+  - Began redesigning the title section to better align with the visual style established in Section 1.
+  - Revised the introductory hook statements to create a more coherent and engaging opening for the exhibit.
+  - Researched and evaluated animation ideas that would enhance the title section while maintaining a clean and immersive presentation.
 
 
 - **July 19**
@@ -59,6 +100,14 @@
   - Fixed the format and layout of Memory Access Communication segment so that it fits better
   - Had an "Aha!" moment where I realized that our old format for section 4 simply does not work because of the size of the virtual exhibit format. Therefore it was changed to a more lenient style
   - Implemented Challenge Quiz functionality and questions
+    - Redesigned Section 2 to align with the visual style and interaction patterns established in Section 1.
+  - Reassessed the research materials to determine which information was most relevant and appropriate for inclusion in the exhibit.
+  - Introduced a side-by-side comparison feature to clearly highlight the improvements and differences between successive generations of RAM.
+  - Began redesigning Section 5 to better match the visual style and interactivity established in the earlier sections.
+  - Implemented a scoring system to provide users with immediate feedback on their performance in the interactive quiz.
+  - Revised the quiz prompts to make them more engaging and encourage greater user participation.
+  - Replaced the static cube illustration with a dynamic CSS-based animated graphic, creating a more visually appealing and interactive experience.
+  
 
 - **July 20**
   - Implemented the interactive elements
@@ -66,6 +115,20 @@
     - Implemented a progress bar (0–100%) that updates as users move through the guided RAM journey
     - Created a Mission Complete screen that appears after the final step of the simulation, together with a Restart button so users can easily replay the experience without refreshing the page
   - Realized that separating the walkthrough into individual states made it easier to control animations, transitions, and future feature additions
+    - Finalized the design and interactive elements of Section 5.
+  - Redesigned Sections 3 and 4 to align with the visual style and user experience established throughout the exhibit.
+  - Enhanced Section 4 by adding more animations and redesigning the interactive grid to create a more machine-like appearance that better reflects the topic.
+  - Adjusted the layout and section height of Section 4 to properly accommodate all content and prevent text from being clipped.
+  - Improved the interactive grid in Section 4 by increasing its size, making the animations and information more visible.
+  - Updated Section 3 by applying the same header style and overall visual design used in the other sections to maintain consistency.
+  - Resolved spacing and layout issues in Section 3, which required modifying both the CSS and Astro components due to their interconnected dependencies.
+  - Finalized the overall website design, animations, and interface by refining minor visual details and ensuring consistency across all sections.
+  
+
+- **July 21**
+  - Finalized and completed the incremental README, documenting the project's development process and major design decisions.
+  - Cleaned up the stylesheet by removing unused and redundant CSS rules to improve maintainability and organization.
+  - Refined the responsive layout to ensure the website displays properly across different screen sizes, including tablets and mobile devices.
 
 ## Reference Citations
 
@@ -92,8 +155,7 @@
 - Crucial. (2026, January 27). What is a memory rank. https://eu.crucial.com/support/articles-faq-memory/what-is-a-memory-rank
 
 ## Disclosure on the use of AI/LLM
-
-The group declares that this assignment is entirely of our own work and thought. No AI tools or LLMs were used in its making.
+The group declares that this assignment is entirely our own work and ideas. AI-generated images created using ChatGPT were used only for the illustrative graphics in Section 1 to provide clearer visual representations of the concepts discussed. All written content, research, programming, and implementation were completed by the group.
 
 # Case Study Project 2 Proposal
 ## CSARCH2 - S04
