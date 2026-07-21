@@ -27,7 +27,7 @@
   - Improved Section 3 layout and design.
 
 - **July 7**
-  - Finished the initial strructure  of Section 3.
+  - Section 3: Finished the initial strructure  of Section 3.
   - Finished the timeline on the RAM Evolution segment of Section 2.
   - Added additional required info in the What is RAM segment of Section 1.
   - Finished formatting and added references and AI disclosure
@@ -51,10 +51,11 @@
   - Fixed the layout of the bottom part of Section 4 (Memory Access Communication)
 
 - **July 18**
-  - Edited the filenames of all group-made files (components, styles, assets, etc.)
-  - Fixed the layout of the bottom part of Section 4 (Memory Access Communication)
+  - Section 3: Implemented the core RAM Journey interactive feature inside the Nintendo Switch interface. Built the mission flow, progress tracker, clickable CPU/RAM/Screen components, data packet animation, and the introductory "Start Journey" screen. Focused on establishing the overall functionality and interactive experience. We realized that creating an interactive simulation requires both functionality and good layout. Even if the logic works, poor spacing and scaling can make the interface difficult to use.
+
 
 - **July 19**
+  - Section 3: Focused on refining the interface by reorganizing the information panel, improving typography and spacing, fixing alignment issues, adjusting animations, and cleaning up the CSS structure. Continued debugging layout problems caused by scaling the Nintendo Switch and ensuring all elements fit properly within the screen.
   - Fixed the format and layout of Memory Access Communication segment so that it fits better
   - Had an "Aha!" moment where I realized that our old format for section 4 simply does not work because of the size of the virtual exhibit format. Therefore it was changed to a more lenient style
   - Implemented Challenge Quiz functionality and questions
