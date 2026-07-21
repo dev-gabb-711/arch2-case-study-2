@@ -110,12 +110,16 @@
   
 
 - **July 20**
-  - Implemented the interactive elements
+  - Implemented the final interactive elements for Section 3
     - Added a typewriter animation for Ash's dialogue to make the walkthrough feel more like an in-game conversation rather than displaying all the text at once
     - Implemented a progress bar (0–100%) that updates as users move through the guided RAM journey
     - Created a Mission Complete screen that appears after the final step of the simulation, together with a Restart button so users can easily replay the experience without refreshing the page
   - Realized that separating the walkthrough into individual states made it easier to control animations, transitions, and future feature additions
-    - Finalized the design and interactive elements of Section 5.
+  - Implemented the interactive element for Section 4
+    - Selecting of row and column simulation of RAS and CAS
+    - Outputting address and value to simulate a CPU request
+    - Simulating delays from different generations of DDR RAM 
+  - Finalized the design and interactive elements of Section 5.
   - Redesigned Sections 3 and 4 to align with the visual style and user experience established throughout the exhibit.
   - Enhanced Section 4 by adding more animations and redesigning the interactive grid to create a more machine-like appearance that better reflects the topic.
   - Adjusted the layout and section height of Section 4 to properly accommodate all content and prevent text from being clipped.
@@ -153,6 +157,18 @@
 - JLCPCB. (n.d.). What is a power management IC (PMIC): Functions and applications. https://jlcpcb.com/blog/what-is-a-power-management-ic
 - Logical Increments. (2019, September 8). RAM channels guide: The what, and the how. https://blog.logicalincrements.com/ram-channels-explanation-guide/
 - Crucial. (2026, January 27). What is a memory rank. https://eu.crucial.com/support/articles-faq-memory/what-is-a-memory-rank
+- Wikipedia. (n.d.). Synchronous dynamic random-access memory. In Wikipedia. Retrieved July 21, 2026, from https://en.wikipedia.org/wiki/Synchronous_dynamic_random-access_memory
+- Wikipedia. (n.d.). Dynamic random-access memory. In Wikipedia. Retrieved July 21, 2026, from https://en.wikipedia.org/wiki/Dynamic_random-access_memory
+- Honarmand, N. (n.d.). DRAM operation (DRAM OP) [PDF]. Stony Brook University. Retrieved July 21, 2026, from https://compas.cs.stonybrook.edu/~nhonarmand/courses/sp15/cse502/res/dramop.pdf
+- Hunt, T. (2016). DRAM notes [PDF]. The University of Texas at Austin. Retrieved July 21, 2026, from https://www.cs.utexas.edu/~hunt/class/2016-spring/cs350c/lectures/DRAMNotes.pdf
+- Digiopedia. (2025, December). DDR memory generations explained: From DDR to DDR5. Digiopedia. Retrieved July 21, 2026, from https://www.digiopedia.com/2025/12/ddr-memory-generations-explained-from.html
+- AES Techno. (n.d.). DDR4 vs DDR5 comparison. AES Techno. Retrieved July 21, 2026, from https://www.aestechno.com/en/ddr4-vs-ddr5-comparison/
+- TechSpot. (n.d.). JEDEC releases DDR5 memory specification. TechSpot. Retrieved July 21, 2026, from https://www.techspot.com/news/86000-jedec-releases-ddr5-memory-specification.html
+- Samsung Semiconductor. (n.d.). DDR5. Samsung Semiconductor. Retrieved July 21, 2026, from https://semiconductor.samsung.com/dram/ddr/ddr5/
+- Whalley, D. (n.d.). Chapter 2: Memory (CDA5155) [PDF]. Florida State University. Retrieved July 21, 2026, from https://www.cs.fsu.edu/~whalley/cda5155/chap2.pdf
+- Johnson, T. (n.d.). Memory and SDRAM [PDF]. Milwaukee School of Engineering. Retrieved July 21, 2026, from https://faculty-web.msoe.edu/johnsontimoj/CE1911/files1911/memory_sdram.pdf
+- Cambridge Computer Laboratory. (2001). Hardware design: Lecture slides [PDF]. University of Cambridge. Retrieved July 21, 2026, from https://www.cl.cam.ac.uk/teaching/2001/StHWDes/slides.pdf
+- Jia, J. (n.d.). SDRAM consecutive read [PNG]. Retrieved July 21, 2026, from https://jia.je/kb/hardware/sdram_consecutive_read.png
 
 ## Disclosure on the use of AI/LLM
 The group declares that this assignment is entirely our own work and ideas. AI-generated images created using ChatGPT were used only for the illustrative graphics in Section 1 to provide clearer visual representations of the concepts discussed. All written content, research, programming, and implementation were completed by the group.
@@ -162,7 +178,6 @@ The group declares that this assignment is entirely our own work and ideas. AI-g
 ### Group 6
 
 ### Members
-- Caindoy, Thistle
 - Infante, Gabriel
 - Martinez, Gabrielle
 - Melanio, Marion
